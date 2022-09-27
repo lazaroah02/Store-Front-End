@@ -1,0 +1,13 @@
+.CategoriesNavBar{
+    background-color:transparent;
+    margin-top:1rem;
+    text-align:center;
+    white-space:nowrap;
+    overflow-x: auto;
+}
+
+.CategoriesNavBar::-webkit-scrollbar{
+    width:0px;
+    height:0px;
+    background:transparent;
+}
