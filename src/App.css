@@ -1,13 +1,15 @@
-.App {
-  background-image: url('../public/background-img.jpeg');
+.ccc{
+  background-image: url('assets/background-img.jpeg');
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center center;
-  background-attachment: fixed;
-  background-color:gray;
+  background-attachment:fixed;}
+
+.App {
+  background-color:aliceblue;
   min-height:100vh;
 }
+
 .ProductsContainer{
   background-color:transparent;
-  
 }

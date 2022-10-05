@@ -1,0 +1,35 @@
+.logoCart{
+    width:35px;
+    height:35px;
+    float:right;
+    border-radius: 0.5rem;
+    border:1px solid;
+    position: relative;
+    top:0.5rem;
+    right:2rem
+}
+.logoCart:hover{
+    box-shadow: 2px 2px 2px black;
+}
+
+.A{
+    background-image: url('../../assets/cart.png');
+    background-repeat: no-repeat;
+    width:100%;
+    height: 100%;
+    position: relative;
+    top:0.2rem ;
+}
+.contador-cart{
+    background-color: aqua;
+    width:20px;
+    height:20px;
+    position: relative;
+    bottom: 2.5rem;
+    left: 1rem;
+    z-index:5;
+    border-radius:1rem;
+    text-align: center;
+    font-size:14px;
+
+}

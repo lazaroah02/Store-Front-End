@@ -1,0 +1,25 @@
+.ItemsContainer{
+    height:50px;
+    min-width:18rem;
+}
+
+.LoginLink{
+    margin-top:1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    position: relative;
+    bottom:0.2rem;
+    display: inline-block!important;
+}
+.Border{
+    max-width:80px;
+    display: inline-block!important;
+    position: relative;
+    top: 0.5rem;
+}
+
+.LogoutButton{
+    position: relative;
+    left: 1rem;
+    top: 0.3rem;
+}

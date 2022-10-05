@@ -1,21 +1,11 @@
-.NavBar{
-    background-color:gray;
-    height:50px;
+.NavBarColapse{
+    flex-grow: inherit !important;
 }
-.ul{
-    width:20%;
-    display:inline-block;
-    margin-left: 20rem;
-   
-}
-a{
-    display: inline-block;
-    height:50px;
-    margin-right: 0.5rem;
-}
-.Logo{
-    display:inline-block;
-    width:15%;
+.SignUpLink{
     margin-left:1rem;
-    margin-top:0.5rem;
+    margin-bottom: 0.5rem;
 }
+
+
+
+

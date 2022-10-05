@@ -1,18 +1,17 @@
 import './index.css'
-import {useContext} from 'react'
+import React,{useContext} from 'react'
 import CategoriesContext from '../../context/CategoriesContext'
 
 export default function Category({id, name}){
     const categoryContext = useContext(CategoriesContext)
-    const {category, setCategory} = categoryContext
-
+    const {setCategory} = categoryContext
     return(
-        <div 
+        <button 
             className = "Category" 
             onClick ={() => setCategory(id)}
             >
             {name}
             
-        </div>
+        </button>
     )
 }

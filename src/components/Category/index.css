@@ -2,28 +2,17 @@
     resize:horizontal;
     background-color:white;
     border-radius: 10px;
+    border:1px solid gray;
     display: inline-block;
     text-align: center;
     margin-left:1rem;
     padding:0.5rem 0.5rem 0.5rem;
+    min-width: 100px;
+    scroll-snap-align: center;
 }
 .Category:hover{
     background-color:azure;
-    box-shadow: 6px 6px 6px white;
+    box-shadow: 3px 3px 3px 3px aliceblue;
     cursor: pointer;
 }
 
-.CategoryOn{
-    resize:horizontal;
-    background-color:gray;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: center;
-    margin-left:1rem;
-    padding:0.5rem 0.5rem 0.5rem;
-}
-.CategoryOn:hover{
-    background-color:azure;
-    box-shadow: 6px 6px 6px white;
-    cursor: pointer;
-}
