@@ -2,19 +2,27 @@ import React, {useState, useContext, useEffect} from 'react'
 import './index.css'
 import Modal from 'react-bootstrap/Modal'
 import InfoUserContext from '../../context/InfoUserContext'
+import UserTokenContext from '../../context/UserTokenContext'
 import getInfoUser from '../../services/getInfoUser'
 import Cart from '../Cart'
 
 export default function LogoProfile(){
     const [showModal, setShowModal] = useState(false)
-    const [infoUser, setInfoUser] = useState({})
-    const {token} = useContext(InfoUserContext)
+    const [info, setInfo] = useState({})
+    const {infoUser, setInfoUser} = useContext(InfoUserContext)
+    const {token} = useContext(UserTokenContext)
 
     useEffect(function(){
-        getInfoUser(token)
-        .then(data => {
-            setInfoUser(data)    
-        })
+        if(infoUser == undefined || infoUser == null){
+            getInfoUser(token)
+            .then(data => {
+                setInfo(data)
+                setInfoUser(data)    
+            })
+        }
+        else{
+            setInfo(infoUser)
+        }    
     },[token])
 
     return(
@@ -33,9 +41,10 @@ export default function LogoProfile(){
             </Modal.Header>
             <Modal.Body>
                 <div>
-                <p>Name: {infoUser?infoUser.username:""}</p> 
-                <p>Last name: Altedill</p>
-                <p>Email: {infoUser?infoUser.email:""}</p>
+                <p>Username: {info?info.username:""}</p> 
+                <p>Name: {info?info.first_name:""}</p> 
+                <p>Last Name:{info?info.last_name:""}</p>
+                <p>Email: {info?info.email:""}</p>
                 <p>Phone: +53 51706583</p>
                 </div>
                 <button className = "btn btn-primary" onClick={() => alert("Cuidao")}>Edit info</button>

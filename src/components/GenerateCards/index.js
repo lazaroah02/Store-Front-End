@@ -33,7 +33,7 @@ export default function GenerateCard(){
                 {products[0] === 'Not Found'?
                 'Not Found':
                 products.map(product =><Card key ={product.id}{...product}/>)
-                }    
+                } 
             </div>
         </div>
         

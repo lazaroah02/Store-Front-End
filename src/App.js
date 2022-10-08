@@ -6,7 +6,8 @@ import AboutUs from './pages/AboutUs'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import {CategoryContextProvider} from './context/CategoriesContext/index'
-import {InfoUserContextProvider} from './context/InfoUserContext/index'
+import {InfoUserContextProvider} from './context/InfoUserContext'
+import {UserTokenContextProvider} from './context/UserTokenContext'
 import {InfoSearchedProduct} from './context/InfoSearchedProduct'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
 import bootstrap from 'bootstrap'
@@ -14,6 +15,7 @@ import bootstrap from 'bootstrap'
 export default function App() {
   return(
     <div>
+      <UserTokenContextProvider>
       <ProductsCartContextProvider>
       <CategoryContextProvider>
         <InfoUserContextProvider>
@@ -27,6 +29,7 @@ export default function App() {
         </InfoUserContextProvider>
       </CategoryContextProvider>
       </ProductsCartContextProvider>
+      </UserTokenContextProvider>
     </div>
   
   )

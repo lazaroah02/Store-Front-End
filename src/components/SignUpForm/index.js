@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./index.css";
 import { Link, useLocation } from "wouter";
 import register from "../../services/register";
 import validateRegisterForm from '../../customHooks/validateRegisterForm'
+import UserTokenContext from '../../context/UserTokenContext'
 
 export default function SignInForm() {
   const [, setLocation] = useLocation();
+  const {setToken} = useContext(UserTokenContext)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +20,7 @@ export default function SignInForm() {
     register(email, password1, password2)
     .then((key) => {
       window.localStorage.setItem('SessionToken',key.key)
+      setToken(key.key) 
       setLocation("/");
     })
     .catch(error => alert(error))

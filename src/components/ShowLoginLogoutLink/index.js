@@ -2,10 +2,12 @@ import './index.css'
 import React, {useContext, useState, useEffect} from 'react'
 import LogoProfile from '../LogoProfile'
 import {Link} from 'wouter'
+import UserTokenContext from '../../context/UserTokenContext'
 import InfoUserContext from '../../context/InfoUserContext'
 
 export default function ShowLinks(){
-    const {token, setToken} = useContext(InfoUserContext)
+    const {token, setToken} = useContext(UserTokenContext)
+    const {infoUser, setInfoUser} = useContext(InfoUserContext)
     const [islogged, setLogged] = useState()
 
     useEffect(() =>{
@@ -16,6 +18,7 @@ export default function ShowLinks(){
         window.localStorage.removeItem('SessionToken')
         setLogged(false)
         setToken(null)
+        setInfoUser(null)
     }
     return(
         <div className = "ItemsContainer">

@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./index.css";
 import { Link, useLocation } from "wouter";
 import login from "../../services/login";
+import UserTokenContext from '../../context/UserTokenContext'
 
 
 export default function SignInForm() {
   const [, setLocation] = useLocation();
+  const {setToken} = useContext(UserTokenContext)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -14,8 +16,8 @@ export default function SignInForm() {
 
     login(email, password)
     .then((key) => {
-      console.log(key)
       window.localStorage.setItem('SessionToken',key.key)
+      setToken(key.key)
       setLocation("/");
     })
     .catch(error => alert(error));
