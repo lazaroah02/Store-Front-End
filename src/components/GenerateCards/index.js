@@ -12,15 +12,15 @@ export default function GenerateCard(){
     const [loading, setLoading] = useState(true)
     const {category} = useContext(CategoriesContext)
     const {infoSearchedProduct} = useContext(InfoSearchedProduct)
-
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         setLoading(true)
-        GetProducts(category).then(data => {
+        GetProducts(category, page).then(data => {
         setProduct(data)
         setLoading(false)
         })
-    },[category])
+    },[category, page])
 
     useEffect(() => {
         setProduct(infoSearchedProduct)
@@ -29,12 +29,19 @@ export default function GenerateCard(){
     return(
         <div >
             {loading?<div className ="cargando"><ProgresGif/></div>:null }
+            <p id = 'start'></p>
             <div className = " ProductsContainer row justify-content-center">
                 {products[0] === 'Not Found'?
                 'Not Found':
                 products.map(product =><Card key ={product.id}{...product}/>)
                 } 
             </div>
+            <div>
+                {page > 1?<button onClick = {() => setPage(page - 1)}>Preview</button>:null}
+                <button onClick = {() => {
+                    setPage(page + 1)
+                    }}>Next</button>
+                </div>
         </div>
         
     )

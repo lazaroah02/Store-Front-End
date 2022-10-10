@@ -9,6 +9,6 @@ export default function CategoriesNavBar(){
         getCategories().then(data => {setCategories(data)})
      },[])
     return(
-        <div className = "CategoriesNavBar">{categories.map(category => <Category key={category.id} {...category}/>)}</div>
+        <div className = "CategoriesNavBar"><Category key={0} id = {0} name = {'All'}/>{categories.map(category => <Category key={category.id} {...category}/>)}</div>
     )
 }
