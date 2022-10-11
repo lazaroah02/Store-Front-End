@@ -18,7 +18,7 @@ export default function ShowVideo(){
         <div class = "container VideoContainer ">
             {loading?<ProgresGif/>:
             video.map(vid  => 
-            <video className = "Video-video align-top " controls = "true" autoplay = "true" muted = "true" >
+            <video className = "Video-video align-top " controls = "true" preload = 'false'>
                 <source 
                 className = "Video"
                 src = {`${BASE_URL}${vid.video}`} 

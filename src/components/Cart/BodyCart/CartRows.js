@@ -20,9 +20,9 @@ export default function CartRows() {
 
   function calulateSumaTotal(products) {
     let contSumTotal = 0;
-    products.map((element) => {
-      contSumTotal += element.subtotal;
-    });
+    products.map((element) => 
+      contSumTotal += element.subtotal
+    );
     return contSumTotal;
   }
 

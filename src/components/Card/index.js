@@ -12,7 +12,7 @@ export default function Card({id, name, precio, foto}){
   const [productAdded, setProductAdded] = useState(false)
 
   function addToCart(){
-    if(token === null){
+    if(token === null || token === undefined){
       alert('Login to use the Cart')
     }
     else{

@@ -1,0 +1,72 @@
+.FormInfoContainer{
+    width: 20rem;
+    margin-top: 3rem;
+    border-radius:1rem;
+}
+
+.FormButton{
+    margin-top:1rem;
+    width:100%;
+}
+.FormInfoTitle{
+    position: relative;
+    bottom: 3.5rem;
+    left:4rem;
+}
+.Input{
+    width:100%;
+}
+.Foot{
+    position:relative;
+    top:5rem;
+    right:2rem;
+    width: 20rem;
+    border-radius:1rem;
+    padding:0.5rem 0.5rem 0 0.5rem;
+    font-size:1rem
+}
+.GoHomeLink{
+    float:right;
+    position:relative;
+    top:0.1rem;
+    right:2rem;
+}
+span{
+    position:relative;
+    top:0.2rem
+}
+
+.Foot span{
+    position:relative;
+    left:2rem;
+}
+
+.infoContainer button{
+    width:30px;
+    height:20px;
+    font-size:0.8rem;
+    float:right;
+}
+
+.infoContainer span{
+    position:relative;
+    top:-0.4rem;
+    right:0.6rem;
+}
+
+.ModalEditInfoBody button{
+    float:right;
+    margin-top:1rem;
+}
+.ModalEditInfoBody input{
+    width:100%
+}
+
+.ModalHeader {
+    width:100%;
+}
+
+.ModalHeader button{
+    position:relative;
+    left:27rem;
+}

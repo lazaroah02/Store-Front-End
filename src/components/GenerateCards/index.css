@@ -3,3 +3,11 @@
     margin-left:0.2rem;  
 }
 
+.next-page-button-container{
+    text-align:center;
+}
+
+.next-page-button-container button{
+    border-radius:7px;
+    margin-left:5px;
+}

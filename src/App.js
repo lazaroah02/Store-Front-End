@@ -5,6 +5,7 @@ import ProductDetail from './pages/ProductDetail'
 import AboutUs from './pages/AboutUs'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import EditInfoUser from './pages/EditInfoUser'
 import {CategoryContextProvider} from './context/CategoriesContext/index'
 import {InfoUserContextProvider} from './context/InfoUserContext'
 import {UserTokenContextProvider} from './context/UserTokenContext'
@@ -20,11 +21,12 @@ export default function App() {
       <CategoryContextProvider>
         <InfoUserContextProvider>
           <InfoSearchedProduct>
-      <Route component = {ProductDetail} path = "/detail/:keyword"/>
-      <Route component = {Home} path = "/"/>
-      <Route component = {AboutUs} path = '/About_us'/>
-      <Route component = {SignIn} path = '/login'/>
-      <Route component = {SignUp} path = '/register'/>
+            <Route component = {ProductDetail} path = "/detail/:keyword"/>
+            <Route component = {Home} path = "/"/>
+            <Route component = {AboutUs} path = '/About_us'/>
+            <Route component = {SignIn} path = '/login'/>
+            <Route component = {SignUp} path = '/register'/>
+            <Route component = {EditInfoUser} path = '/info-user'/>
           </InfoSearchedProduct>
         </InfoUserContextProvider>
       </CategoryContextProvider>

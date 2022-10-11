@@ -16,7 +16,7 @@ export default function realizarPedido(listaPedido){
             },
         })
         .then(response => {
-            if(response.status == 201){
+            if(response.status === 201){
                 response.json()
                 .then(data => sendListaPedido(data.id_pedido,listaPedido))
             }
