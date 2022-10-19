@@ -10,25 +10,25 @@
 }
 .FormInfoTitle{
     position: relative;
-    bottom: 3.5rem;
-    left:4rem;
+    bottom: 7rem;
+    left:4.5rem;
 }
 .Input{
     width:100%;
 }
 .Foot{
     position:relative;
-    top:5rem;
-    right:2rem;
+    top:2.5rem;
     width: 20rem;
     border-radius:1rem;
     padding:0.5rem 0.5rem 0 0.5rem;
-    font-size:1rem
+    font-size:1rem;
+    margin:0 auto
 }
 .GoHomeLink{
     float:right;
     position:relative;
-    top:0.1rem;
+    top:0.2rem;
     right:2rem;
 }
 span{
@@ -59,14 +59,9 @@ span{
     margin-top:1rem;
 }
 .ModalEditInfoBody input{
-    width:100%
-}
-
-.ModalHeader {
     width:100%;
+    border-radius:5px;
 }
 
-.ModalHeader button{
-    position:relative;
-    left:27rem;
-}
+
+

@@ -11,3 +11,8 @@
     border-radius:7px;
     margin-left:5px;
 }
+
+.NotFoundMessage{
+    width:100%;
+    text-align:center;
+}

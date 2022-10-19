@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import './index.css';
 import PhotoProductDetail from './PhotoProductDetail'
-import InfoUserContext from '../../context/InfoUserContext'
+import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
 
 export default function ShowProductDetail(params){
-    const {token} = useContext(InfoUserContext)
+    const {token} = useContext(UserTokenContext)
     const [productAdded, setProductAdded] = useState(false)
     const [,add] = addProduct()
 

@@ -14,12 +14,10 @@ export default function login(email, password){
           password:password,
         }),
       }).then(response => {
-        if(response.status === 200){
-          return response.json();
-        }
-        else{
+        if(response.status != 200){
           throw new Error('Have ocurred an error, please try again later')
         }
+        return response.json();
       })
     )
 }

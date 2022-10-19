@@ -2,11 +2,11 @@ import React, {useContext, useState} from 'react'
 import './index.css'
 import {useLocation} from 'wouter'
 import {BASE_URL} from '../../settings'
-import InfoUserContext from '../../context/InfoUserContext'
+import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
 
 export default function Card({id, name, precio, foto}){
-  const {token} = useContext(InfoUserContext)
+  const {token} = useContext(UserTokenContext)
   const [, setLocation] = useLocation()
   const [,add] = addProduct()
   const [productAdded, setProductAdded] = useState(false)

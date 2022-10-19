@@ -35,7 +35,15 @@ export default function EditInfoUser(){
     }
 
     return (
-        <div>
+        <div >
+          <div className="card Foot">
+                <p>
+                  <span className="align-center">Go back to home</span>
+                  <Link className="GoHomeLink align-center" to="/">
+                    Home
+                  </Link>
+                </p>
+              </div>
           <div className="card FormInfoContainer container">
             <div class="card-body">
               <div className="FormInfoTitle">
@@ -91,8 +99,7 @@ export default function EditInfoUser(){
                     setEditing(['zip_code',info.zip_code])}}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Phone: 
-                  {info != undefined?info.phone: ''}
+                <p>Phone: {info != undefined? info.phone: ''}
                   {info != undefined?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
@@ -101,19 +108,12 @@ export default function EditInfoUser(){
                 </p>
                 
               </div>
-              <div className="card Foot">
-                <p>
-                  <span className="align-center">Go back to home</span>
-                  <Link className="GoHomeLink align-center" to="/">
-                    Home
-                  </Link>
-                </p>
-              </div>
             </div>
           </div>
 
           <Modal show = {showModal} >
-            <Modal.Header className = 'ModalHeader'>
+            <Modal.Header>
+              <Modal.Title></Modal.Title>
               <button className = 'btn btn-danger' onClick = {() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body className = 'ModalEditInfoBody'>

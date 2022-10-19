@@ -36,7 +36,7 @@ export default function GenerateCard() {
       ) : null}
       <div className=" ProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0
-          ? "Not Found"
+          ? <div className = 'NotFoundMessage'><strong>Not Found</strong></div>
           : products.map((product) => <Card key={product.id} {...product} />)}
       </div>
       <div className = 'next-page-button-container'>

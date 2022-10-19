@@ -16,12 +16,12 @@ export default function realizarPedido(listaPedido){
             },
         })
         .then(response => {
-            if(response.status === 201){
-                response.json()
-                .then(data => sendListaPedido(data.id_pedido,listaPedido))
+            if(response.status != 201){
+                alert('Error al procesar el pedido')
             }
             else{
-                alert('Error al procesar el pedido')
+                response.json()
+                .then(data => sendListaPedido(data.id_pedido,listaPedido))   
             }
         })
     )
