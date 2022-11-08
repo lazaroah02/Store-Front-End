@@ -1,0 +1,32 @@
+.FormContainer{
+    width: 90%;
+    max-width: 40rem;
+    margin-top: 7rem;
+    border-radius:1rem;
+    padding-bottom: 1rem;
+    padding:0!important;
+}
+
+.FormButton{
+    margin-top:1rem;
+    width:100%;
+}
+.SignTitle{
+    position: relative;
+    bottom: 3.5rem;
+    text-align: center;
+    font-size:1.5rem;
+}
+.Input{
+    width:100%;
+}
+.message{
+    min-height:200px;
+}
+.file{
+    width:100%;
+    max-width:30rem;
+}
+.error-message{
+    color:red;
+}

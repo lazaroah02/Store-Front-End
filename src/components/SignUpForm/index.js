@@ -1,13 +1,20 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import "./index.css";
 import { Link, useLocation } from "wouter";
 import register from "../../services/register";
-import validateRegisterForm from '../../customHooks/validateRegisterForm'
 import UserTokenContext from '../../context/UserTokenContext'
 
 export default function SignInForm() {
   const [, setLocation] = useLocation();
   const {setToken} = useContext(UserTokenContext)
+
+  //error messages
+  const [errorEmailExist, setErrorEmailExist] = useState(false)
+  const [errorEmailWrong, setErrorEmailWrong] = useState(false)
+  const [errorPasswordShort, setErrorPasswordShort] = useState(false)
+  const [errorPasswordDontMatch, setErrorPasswordDontMatch] = useState(false)
+  const [errorPasswordTooEasy, setErrorPasswrodTooEasy] = useState(false)
+  const [errorPasswordNotNaN, setErrorPasswordNotNaN] = useState(false)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -15,22 +22,40 @@ export default function SignInForm() {
     const password1 = event.target[1].value;
     const password2 = event.target[2].value;
 
-    const validation = validateRegisterForm(email, password1, password2)
-    if(validation === true){
-    register(email, password1, password2)
-    .then((key) => {
-      window.localStorage.setItem('SessionToken',key.key)
-      setToken(key.key) 
-      setLocation("/");
-    })
-    .catch(error => alert(error))
-    }else{alert(validation)}
+    //form's validation
+    const badPass1 = '12345678'
+    const badPass2 = '123456789'
+
+    if(email.substring(email.length - 4,email.length) !== '.com'){
+        setErrorEmailWrong(true)
+    }
+    else if(password1 !== password2){
+        setErrorPasswordDontMatch(true)
+    }
+    else if(password1.length < 8){
+        setErrorPasswordShort(true)
+    }
+    else if(password1 === badPass1 || password1 === badPass2){
+        setErrorPasswrodTooEasy(true)
+    }
+    else if(password1.replace(/[^0-9]/g,"").length === password1.length){
+      setErrorPasswordNotNaN(true)
+    }
+    else {
+      register(email, password1, password2)
+      .then((key) => {
+        window.localStorage.setItem('SessionToken',key.key)
+        setToken(key.key) 
+        setLocation("/");
+      })
+      .catch(error => setErrorEmailExist(true))
+    }
   }
   return (
     <div>
       <div className="card FormContainer container">
         <div class="card-body">
-          <div className="SignTitle">
+          <div className="SignUpTitle">
             <h4>Sign up to Store</h4>
           </div>
           <form
@@ -39,14 +64,46 @@ export default function SignInForm() {
           >
             <label>Email</label>
             <br />
-            <input className="Input" type="email"></input>
+            <input className="Input" type="email" onChange={() => {
+              setErrorEmailExist(false)
+              setErrorEmailWrong(false)
+              setErrorPasswordNotNaN(false)
+            }}></input>
+            {errorEmailWrong?
+            <p className = 'error-message'>Enter a valid email address eg: email@example.com'</p>
+            :null}
+            {errorEmailExist?
+            <p className = 'error-message'>The email already exist</p>
+            :null}
             <br />
             <label>Password</label>
             <br />
-            <input className="Input" type="password"></input>
+            <input className="Input" type="password" onChange={() => {
+              setErrorPasswordDontMatch(false)
+              setErrorPasswordShort(false)
+              setErrorPasswrodTooEasy(false)
+              setErrorPasswordNotNaN(false)
+            }}></input>
+            {errorPasswordShort?
+            <p className = 'error-message'>The password is too short</p>
+            :null}
+             {errorPasswordTooEasy?
+            <p className = 'error-message'>The password is too easy</p>
+            :null}
+             {errorPasswordDontMatch?
+            <p className = 'error-message'>The passwords dont match</p>
+            :null}
+            {errorPasswordNotNaN?
+            <p className = 'error-message'>The passwords most contain numbers and letters</p>
+            :null}
+
             <label>Confirm password</label>
             <br />
-            <input className="Input" type="password"></input>
+            <input className="Input" type="password" onChange={() => {
+              setErrorPasswordDontMatch(false)
+              setErrorPasswordShort(false)
+              setErrorPasswrodTooEasy(false)
+            }}></input>
             <button className="btn btn-primary FormButton" type="submit">
               Register
             </button>

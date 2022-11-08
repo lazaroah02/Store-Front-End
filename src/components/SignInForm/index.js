@@ -19,6 +19,7 @@ export default function SignInForm() {
       window.localStorage.setItem('SessionToken',key.key)
       setToken(key.key)
       setLocation("/");
+      window.location.reload();
     })
     .catch(error => alert(error));
   }

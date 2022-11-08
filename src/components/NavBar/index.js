@@ -1,18 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './index.css'
 import ShowItemsLinks from '../ShowLoginLogoutLink'
 import {Link} from 'wouter'
 import SearchProductForm from '../SearchProductForm'
 
 export default function NavBar(){
+  const [collSpanPressed, setPressed] =useState(false)
   return(
-    <div>
+    <div className = 'navBarDivContainer'>
     <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">=</span>
-    </button>
+    
+    {collSpanPressed?
+      <span className="navbar-toggler colspam-pressed" onClick = {() => setPressed(false)} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
+      :
+      <span className="navbar-toggler colspam-no-pressed" onClick = {() => setPressed(true)} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
+    }
+
     <div class="collapse navbar-collapse NavBarColapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -22,7 +35,7 @@ export default function NavBar(){
           <Link class="nav-link" to="/About_us">About us</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href = "mailto:lazaroah02@gmail.com">Contacto</a>
+          <Link class="nav-link " to = "/contact">Contacto</Link>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

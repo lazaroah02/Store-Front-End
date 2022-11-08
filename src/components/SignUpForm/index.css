@@ -8,19 +8,14 @@
     margin-top:1rem;
     width:100%;
 }
-.SignTitle{
-    position: relative;
-    bottom: 3.5rem;
-    left:2.3rem;
+.SignUpTitle{
+   text-align:center
 }
 .Input{
     width:100%;
 }
 .Fet{
-    position:relative;
-    top:5rem;
-    right:2rem;
-    width: 20rem;
+    margin-top: 1rem;
     border-radius:1rem;
     padding:0.5rem 0.5rem 0 0.5rem;
     font-size:1rem

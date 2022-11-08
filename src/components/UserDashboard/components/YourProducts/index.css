@@ -1,0 +1,26 @@
+.your-products{
+    width:86vw;
+    height:90vh;
+    float:right;
+}
+
+.AddProductForm input{
+    width:100%;
+}
+.AddProductForm textarea{
+    width:100%;
+}
+.AddProductForm select{
+    width:100%;
+}
+.error-message{
+    color:red;
+}
+.div-container-button{
+    text-align:center;
+    margin-top:1rem;
+}
+.btn-add-category{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}

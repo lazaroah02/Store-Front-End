@@ -1,26 +1,28 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, Suspense } from "react";
 import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
-import Card from "../Card";
+import Chargincards from '../CharginCards'
 import CategoriesContext from "../../context/CategoriesContext";
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
 
 export default function GenerateCard() {
+  const Card = React.lazy(() => import('../Card'))
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useContext(CategoriesContext);
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
-  const [page, setPage] = useState(1);
+  const [desde, setDesde] = useState(0);
+  const [hasta, setHasta] = useState(25);
 
   useEffect(() => {
     setLoading(true);
-    GetProducts(category, page).then((data) => {
+    GetProducts(category, desde, hasta).then((data) => {
       setProduct(data);
       setLoading(false);
     });
-  }, [category, page]);
+  }, [category, desde]);
 
   useEffect(() => {
     setProduct(infoSearchedProduct);
@@ -36,18 +38,22 @@ export default function GenerateCard() {
       ) : null}
       <div className=" ProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0
-          ? <div className = 'NotFoundMessage'><strong>Not Found</strong></div>
-          : products.map((product) => <Card key={product.id} {...product} />)}
+          ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
+          : products.map((product) => <Suspense fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
       </div>
       <div className = 'next-page-button-container'>
-        {page > 1 ? (
-          <button className = 'btn btn-primary' onClick={() => setPage(page - 1)}>Preview Page</button>
+        {hasta > 25 ? (
+          <button className = 'btn btn-primary next-page-button' onClick={() => {
+            setDesde(desde - 25)
+            setHasta(hasta - 25)
+          }}>Preview Page</button>
         ) : null}
-        {products.length >= 20 ? (
+        {products.length >= 25 ? (
           <button
-            className = 'btn btn-primary'
+            className = 'btn btn-primary next-page-button'
             onClick={() => {
-              setPage(page + 1);
+              setDesde(desde + 25);
+              setHasta(hasta + 25)
             }}
           >
             Next Page

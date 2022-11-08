@@ -1,0 +1,40 @@
+.options-nav-bar{
+    border:1px solid;
+    height:100vh;
+    width:3rem;
+    transition:all .5s;
+    border-radius:5px;
+    padding-left:1px;
+    float:left;
+    position:absolute;
+    background-color:gray;
+}
+.options-nav-bar-expanded{
+    border:1px solid;
+    height:91vh;
+    width:20rem;
+    transition:all .5s;
+    padding-left:.5rem;
+    border-radius:5px;
+    float:left;
+    position:absolute;
+    background-color:gray;
+}
+.button-expand{
+    width:2.5rem;
+    transition:all .5s;
+    float:right;
+    margin-top:5px;
+    margin-right: 3px;
+}
+.button-show-info{
+    margin-top:1rem;
+    width:2.7rem;
+    transition:all .5s;
+}
+
+.button-show-info-expanded{
+    width:18.5rem;
+    margin-top:1rem;
+    transition:all .5s;
+}

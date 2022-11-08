@@ -29,15 +29,17 @@ export default function Card({id, name, precio, foto}){
     setLocation(`/detail/${id}/`)
   }
     return(
-       <div className="ProductCard card "  >
-       <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={"imagen"}/>
-       <div className="card-body" onClick={() => handleClick()}>
-         <h5 className="card-title">{name}</h5>
-         <p className="card-text">${precio}</p>
-       </div>
-       <div className = 'card-footer CardFooter'>
-        <button onClick={addToCart} className="btn btn-primary">{productAdded?'In Cart':'Add to cart'}</button>
+      
+       <div className="ProductCard"  >
+        <div className = 'image-container'>
+          <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={"imagen"}/>
+        </div>
+       <div className="body">
+         <h5 className="card-title" onClick={() => handleClick()}>{name}</h5>
+         <p className="card-text" onClick={() => handleClick()}>${precio}</p>
+         <div onClick={addToCart} className="add-to-cart-button ">{productAdded?<img className = 'cart-product-added' src = 'icons/cart-product-added.png'></img>:<img className = 'CartIcon' src = 'icons/add-to-cart-logo.png'></img>}</div>
        </div>
      </div>
+
     )
 }
