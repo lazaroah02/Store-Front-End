@@ -62,18 +62,6 @@ export default function OptionsNavBar(){
           :
             <div className = 'options-nav-bar'>
               <button className = 'btn button-expand' onClick={() => setExpanded(true)}><img src = 'icons/right-arrow-alt-regular-24.png'/></button>
-              <button className = 'btn button-show-info' onClick = {() => setComponent('info-user')}><img src = 'icons/LogoProfile.png'/></button>
-              {infoUser != undefined && infoUser[0].is_seller === true?
-                <div>
-                  <button className = 'btn button-show-info' onClick = {() => setComponent('your-products')}><img src = 'icons/dashboard-solid-24.png'/></button>
-                  <button className = 'btn button-show-info' onClick = {() => setComponent('products-sold')}><img src = 'icons/bar-chart-alt-2-solid-24.png'/></button>
-                  <button className = 'btn button-show-info' onClick = {() => setComponent('list-of-orders')}><img src = 'icons/spreadsheet-regular-24.png'/></button>
-                  <button className = 'btn button-show-info' onClick = {() => handleQuitUserSeller()}><img src = 'icons/spreadsheet-regular-24.png'/></button>
-                </div>
-              :
-              <button className = 'btn button-show-info' onClick = {() => handleMakeUserSeller}><img src = 'icons/LogoProfile.png'/></button>
-
-              }
             </div>
           }
             

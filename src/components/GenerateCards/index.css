@@ -3,6 +3,7 @@
     margin-left:0.2rem;  
     padding-bottom: 3rem;
     min-height:100vh;
+    transition:all 1s;
 }
 
 .next-page-button-container{
@@ -21,3 +22,9 @@
 .next-page-button{
     margin-bottom: 2rem;
 }
+.button-scroll-top{
+    position:fixed;
+    bottom:2rem;
+    right:2rem;
+}
+

@@ -30,7 +30,7 @@ export default function Card({id, name, precio, foto}){
   }
     return(
       
-       <div className="ProductCard"  >
+       <div className="ProductCard" id = {id} >
         <div className = 'image-container'>
           <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={"imagen"}/>
         </div>

@@ -31,7 +31,7 @@ export default function GenerateCard({updateProducts}){
       <div className=" SellerProductsContainer">
         {products[0] === "Not Found" || products.length === 0 || products === undefined || products === null || products.detail === 'Invalid token.'
           ? <div className = 'NotFoundMessage'><strong>No tienes porductos</strong></div>
-          : products.map((product) => <Suspense fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
+          : products.map((product) => <Suspense key={product.id} fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
       </div>
       <div className = 'next-page-button-container'>
         {hasta > 25 ? (

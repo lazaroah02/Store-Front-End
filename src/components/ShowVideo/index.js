@@ -15,10 +15,10 @@ export default function ShowVideo(){
         } ) 
     },[])
     return(
-        <div class = "container VideoContainer ">
+        <div className = "container VideoContainer ">
             {loading?<ProgresGif/>:
             video.map(vid  => 
-            <video className = "Video-video align-top " controls = "true" preload = 'false'>
+            <video className = "Video-video align-top " controls = "true" preload = 'true'>
                 <source 
                 className = "Video"
                 src = {`${BASE_URL}${vid.video}`} 

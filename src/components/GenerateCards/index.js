@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Suspense } from "react";
+import React, { useEffect, useState, useContext, Suspense, useRef } from "react";
 import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
 import Chargincards from '../CharginCards'
@@ -6,6 +6,7 @@ import CategoriesContext from "../../context/CategoriesContext";
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
+import ButtonGoTop from "../ButtonGoTop";
 
 export default function GenerateCard() {
   const Card = React.lazy(() => import('../Card'))
@@ -15,7 +16,9 @@ export default function GenerateCard() {
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
   const [desde, setDesde] = useState(0);
   const [hasta, setHasta] = useState(25);
+  const startRef = useRef()
 
+  //get all products of the store and then put on the state
   useEffect(() => {
     setLoading(true);
     GetProducts(category, desde, hasta).then((data) => {
@@ -24,13 +27,15 @@ export default function GenerateCard() {
     });
   }, [category, desde]);
 
+  //search the product that the user input on search field
   useEffect(() => {
     setProduct(infoSearchedProduct);
   }, [infoSearchedProduct]);
 
   return (
     <div>
-      <p id = 'start'></p>
+      <p ref = {startRef}></p>
+       <ButtonGoTop reference = {startRef}/>
       {loading ? (
         <div className="cargando">
           <ProgresGif />
@@ -39,7 +44,7 @@ export default function GenerateCard() {
       <div className=" ProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0
           ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
-          : products.map((product) => <Suspense fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
+          : products.map((product) => <Suspense key={product.id} fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
       </div>
       <div className = 'next-page-button-container'>
         {hasta > 25 ? (

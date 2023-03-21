@@ -20,7 +20,7 @@ export default function ProductDetail({params}) {
         <div className = "App">
             <NavBar/>
             {loading?<div className ="cargando"><ProgresGif/></div>:null }
-            <div>{product.map(el => <ShowProductDetail {...el}/>)}</div>
+            <div>{product.map(el => <ShowProductDetail key = {el} {...el}/>)}</div>
         </div>
     )
 }

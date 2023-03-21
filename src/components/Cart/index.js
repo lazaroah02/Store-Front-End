@@ -25,7 +25,7 @@ export default function Cart(){
                 <Modal.Title>
                     Cart
                 </Modal.Title>
-                <button class = "CloseModalButton btn btn-danger" onClick={() => setShowModal(false)}>X</button>
+                <button className = "CloseModalButton btn btn-danger" onClick={() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body>
                  <CartContent />

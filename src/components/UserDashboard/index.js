@@ -5,6 +5,7 @@ import InfoUser from './components/InfoUser'
 import YourProducts from './components/YourProducts'
 import ProductsSold from './components/ProductsSold'
 import ListOfOrders from './components/ListOfOrders'
+import ProductSellerDetail from './components/ProductSellerDetail'
 import ActualComponentContext from './context/actualComponentContext'
 
 export default function UserDashboard(){
@@ -22,6 +23,7 @@ export default function UserDashboard(){
             {component === 'your-products'?<YourProducts/>:null}
             {component === 'products-sold'?<ProductsSold/>:null}
             {component === 'list-of-orders'?<ListOfOrders/>:null}
+            {component === 'product-seller-detail'?<ProductSellerDetail/>:null}
         </div>
     )
 }

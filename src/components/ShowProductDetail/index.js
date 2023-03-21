@@ -1,8 +1,10 @@
 import React, {useContext, useState} from 'react';
 import './index.css';
-import PhotoProductDetail from './PhotoProductDetail'
 import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
+import {BASE_URL} from '../../settings'
+import rightArrow from '../../assets/right-arrow-alt-regular-24.png'
+import leftArrow from '../../assets/left-arrow-alt-regular-24.png'
 
 export default function ShowProductDetail(params){
     const {token} = useContext(UserTokenContext)
@@ -24,17 +26,54 @@ export default function ShowProductDetail(params){
               }
         }
       }
+
+    //handle next image   
+    let contador = -1
+    function seeNextImage(){
+        if(contador < 2 && contador >= -1){
+            if(contador === -1){
+                contador += 2
+            }else{
+                contador += 1
+            }
+            let img = document.getElementById(params.fotos[contador])
+            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+        }  
+    }
+    //handle previous image
+    function seePreviousImage(){
+        if(contador <= 3 && contador > 0){
+            contador -= 1
+            let img = document.getElementById(params.fotos[contador])
+            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+        }  
+    }
     return(
         <div>
             <section className = "PhotosDetailContainer ">
-                {params.fotos.map(foto => <PhotoProductDetail foto = {foto}/>)}
+                {params.fotos.map(foto => <img 
+                    key = {foto}
+                    className = "PhotoProduct"
+                    id = {foto}
+                    src={`${BASE_URL}${foto}`} 
+                    alt = {params.name}
+                    />)}
             </section>
-                <h3 className = 'points-container'>. . .</h3>
-            <p className = "ProductPrice">
+
+            <div>
+                <button className = "boton-next-image2 btn" onClick={() => seeNextImage()}>
+                    <img src = {rightArrow}/>
+                </button>
+                <button  className = "boton-previous-image2 btn" onClick={() => seePreviousImage()}>
+                    <img src = {leftArrow}/>  
+                </button> 
+             </div> 
+
+            <div className = "ProductPrice">
                 <h3>${params.precio}</h3>
-                <button onClick={() => addToCart()} class = "btn btn-primary">{productAdded?'In Cart':'Add to cart'}</button>
-                </p>
-            <p className = "ProductName container">
+                <button onClick={() => addToCart()} className = "btn btn-primary">{productAdded?'In Cart':'Add to cart'}</button>
+                </div>
+            <div className = "ProductName container">
                 <h3>{params.name}</h3>
                 <br/>
                 <h5>Description:</h5>
@@ -43,7 +82,7 @@ export default function ShowProductDetail(params){
                 <br/>
                 <h5>About the product:</h5>
                 {params.about}
-            </p>
+            </div>
         </div>
     )
 }

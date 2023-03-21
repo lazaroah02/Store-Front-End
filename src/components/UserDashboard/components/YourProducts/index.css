@@ -1,5 +1,5 @@
 .your-products{
-    width:86vw;
+    width:100vw;
     height:90vh;
     float:right;
 }
@@ -19,6 +19,7 @@
 .div-container-button{
     text-align:center;
     margin-top:1rem;
+    margin-bottom:1rem;
 }
 .btn-add-category{
     margin-bottom: 10px;

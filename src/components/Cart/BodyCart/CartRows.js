@@ -30,6 +30,9 @@ export default function CartRows() {
     if (productsCart.length > 0) {
       realizarPedido(productsCart)
     }
+    else{
+      alert("Your cart is empty!");
+    }
   }
 
   return (
@@ -74,12 +77,12 @@ export default function CartRows() {
         </tr>
       ))}
       <tr>
-        <th colspan="4" className="Total">
+        <th colSpan="4" className="Total">
           Total:${sumaTotal}
         </th>
       </tr>
       <tr>
-        <td colspan="4" className="tableFooter">
+        <td colSpan="4" className="tableFooter">
           <button className="btn btn-primary" onClick={() => procesarPago()}>
             Procesar Pago
           </button>
