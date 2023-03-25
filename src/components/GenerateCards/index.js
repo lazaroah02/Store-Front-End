@@ -6,7 +6,6 @@ import CategoriesContext from "../../context/CategoriesContext";
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
-import ButtonGoTop from "../ButtonGoTop";
 
 export default function GenerateCard() {
   const Card = React.lazy(() => import('../Card'))
@@ -16,7 +15,6 @@ export default function GenerateCard() {
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
   const [desde, setDesde] = useState(0);
   const [hasta, setHasta] = useState(25);
-  const startRef = useRef()
 
   //get all products of the store and then put on the state
   useEffect(() => {
@@ -34,8 +32,6 @@ export default function GenerateCard() {
 
   return (
     <div>
-      <p ref = {startRef}></p>
-       <ButtonGoTop reference = {startRef}/>
       {loading ? (
         <div className="cargando">
           <ProgresGif />

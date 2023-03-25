@@ -7,7 +7,8 @@ export default function Category({id, name}){
     const {setCategory} = categoryContext
     return(
         <button 
-            className = "Category" 
+            className = "Category"
+            id = {`category${id}`} 
             onClick ={() => setCategory(id)}
             >
             {name}
