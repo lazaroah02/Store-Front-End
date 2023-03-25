@@ -9,13 +9,16 @@ export default function ProductsRecomended(){
         {id:1, name:"Perro", precio: "$100", foto: ""},
         {id:2, name:"Perro", precio: "$100", foto: ""},
         {id:3, name:"Perro", precio: "$100", foto: ""},
+        {id:4, name:"Perro", precio: "$100", foto: ""},
+        {id:5, name:"Perro", precio: "$100", foto: ""},
+        {id:6, name:"Perro", precio: "$100", foto: ""},
     ]
 
     //handle next item   
     let contador = -1
     console.log("a")
     function seeNextImage(){
-        if(contador < 2 && contador >= -1){
+        if(contador < items.length-1 && contador >= -1){
             if(contador === -1){
                 contador += 2
             }else{
@@ -27,16 +30,16 @@ export default function ProductsRecomended(){
     }
     //handle previous image
     function seePreviousImage(){
-        if(contador <= 3 && contador > 0){
+        if(contador <= items.length && contador > 0){
             contador -= 1
             let item = document.getElementById(items[contador].id)
             item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }    
     return(
-        <div class = "items-container">
-            <p class = "title">Productos Recomendados</p>
-            <section className = "PhotosDetailContainer ">
+        <div>
+            <h5 class = "title">Productos Recomendados</h5>
+            <section className = "ProductsRecomendedContainer">
                 {items.map((item) => <Card {...item}/>)}
             </section>
 
