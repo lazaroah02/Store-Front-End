@@ -6,36 +6,39 @@ import leftArrow from '../../assets/left-arrow-alt-regular-24.png'
 
 export default function ProductsRecomended(){
     const items = [
-        {id:1, name:"Perro", precio: "$100", foto: ""},
-        {id:2, name:"Perro", precio: "$100", foto: ""},
-        {id:3, name:"Perro", precio: "$100", foto: ""},
-        {id:4, name:"Perro", precio: "$100", foto: ""},
-        {id:5, name:"Perro", precio: "$100", foto: ""},
-        {id:6, name:"Perro", precio: "$100", foto: ""},
+        {id:1, name:"Primero", precio: "100", foto: ""},
+        {id:2, name:"Segundo", precio: "100", foto: ""},
+        {id:3, name:"Tercero", precio: "100", foto: ""},
+        {id:4, name:"Cuarto", precio: "100", foto: ""},
+        {id:5, name:"Quinto", precio: "100", foto: ""},
+        {id:6, name:"Ultimo", precio: "100", foto: ""},
     ]
 
+    let cont = 0
+    //handle previous item
+    function seePreviousProduct(){
+        if(cont == 0){   //compruebo si se encuentra en el primer item y lo redirigo al ultimo
+            cont = items.length
+            return seePreviousProduct()
+        }
+        if(cont > 0){
+            cont -= 1
+            let item = document.getElementById(items[cont].id)
+            item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+        }  
+    }   
     //handle next item   
-    let contador = -1
-    console.log("a")
-    function seeNextImage(){
-        if(contador < items.length-1 && contador >= -1){
-            if(contador === -1){
-                contador += 2
-            }else{
-                contador += 1
-            }
-            let item = document.getElementById(items[contador].id)
+    function seeNextProduct(){
+        if(cont == items.length-1){  //compruebo si se encuentra en el ultimo item y lo redirigo al primero
+            cont = -1
+            return seeNextProduct()
+        }
+        if(cont < items.length-1){
+            cont += 1
+            let item = document.getElementById(items[cont].id)
             item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }
-    //handle previous image
-    function seePreviousImage(){
-        if(contador <= items.length && contador > 0){
-            contador -= 1
-            let item = document.getElementById(items[contador].id)
-            item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
-        }  
-    }    
     return(
         <div>
             <h5 class = "title">Productos Recomendados</h5>
@@ -44,10 +47,10 @@ export default function ProductsRecomended(){
             </section>
 
             <div>
-                <button className = "boton-next-image2 btn" onClick={() => seeNextImage()}>
+                <button className = "boton-next-Product2 btn" onClick={() => seeNextProduct()}>
                     <img src = {rightArrow}/>
                 </button>
-                <button  className = "boton-previous-image2 btn" onClick={() => seePreviousImage()}>
+                <button  className = "boton-previous-Product2 btn" onClick={() => seePreviousProduct()}>
                     <img src = {leftArrow}/>  
                 </button> 
              </div>

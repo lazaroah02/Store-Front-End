@@ -27,7 +27,7 @@
     background:transparent;
 }
 
-.boton-next-image2{
+.boton-next-Product2{
     float:right;
     border-radius:25px;
     width:50px;
@@ -38,7 +38,7 @@
     margin-right: 1rem;
     opacity: 0.8;
 }
-.boton-previous-image2{
+.boton-previous-Product2{
     float:left;
     border-radius:25px;
     width:50px;
