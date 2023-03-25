@@ -6,7 +6,7 @@ import realizarPedido from '../../../services/realizarPedido'
 import "./index.css";
 
 export default function CartRows() {
-  const { productsCart } = useContext(ProductsCartContext);
+  const { productsCart, setProductCart} = useContext(ProductsCartContext);
   const [state, setState] = useState([]);
   const [sumaTotal, setSumaTotal] = useState(0);
   const [, add] = addProduct();
@@ -34,7 +34,12 @@ export default function CartRows() {
       alert("Your cart is empty!");
     }
   }
-
+  function vaciarCarrito(){
+    if(productsCart.length > 0){
+      setProductCart([])
+      window.location.reload()
+    }
+  }
   return (
     <>
       {state.map((element) => (
@@ -82,9 +87,14 @@ export default function CartRows() {
         </th>
       </tr>
       <tr>
-        <td colSpan="4" className="tableFooter">
+        <td colSpan="2" className="tableFooter">
           <button className="btn btn-primary" onClick={() => procesarPago()}>
             Procesar Pago
+          </button>
+        </td>
+        <td colSpan="2" className="tableFooter">
+          <button className="btn btn-primary" onClick={() => vaciarCarrito()}>
+            Vaciar Carrito
           </button>
         </td>
       </tr>
