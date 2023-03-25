@@ -15,6 +15,7 @@ export default function ProductsRecomended(){
     ]
 
     let cont = 0
+    setTimeout(() => seeNextProduct(), 10000)
     //handle previous item
     function seePreviousProduct(){
         if(cont == 0){   //compruebo si se encuentra en el primer item y lo redirigo al ultimo
@@ -25,6 +26,7 @@ export default function ProductsRecomended(){
             cont -= 1
             let item = document.getElementById(items[cont].id)
             item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+            setTimeout(() => seeNextProduct(), 10000)
         }  
     }   
     //handle next item   
@@ -37,7 +39,8 @@ export default function ProductsRecomended(){
             cont += 1
             let item = document.getElementById(items[cont].id)
             item.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
-        }  
+            setTimeout(() => seeNextProduct(), 10000)  
+        }
     }
     return(
         <div>
