@@ -14,7 +14,7 @@ export default function login(email, password){
           password:password,
         }),
       }).then(response => {
-        if(response.status != 200){
+        if(response.status !== 200){
           throw new Error('Have ocurred an error, please try again later')
         }
         return response.json();

@@ -7,7 +7,7 @@ import InfoUserContext from '../../context/InfoUserContext'
 
 export default function ShowLinks(){
     const {token, setToken} = useContext(UserTokenContext)
-    const {infoUser, setInfoUser} = useContext(InfoUserContext)
+    const {setInfoUser} = useContext(InfoUserContext)
     const [islogged, setLogged] = useState()
 
     useEffect(() =>{

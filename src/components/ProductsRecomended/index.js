@@ -22,7 +22,6 @@ export default function ProductsRecomended(){
     let cont = 0
     if(scrollRef.current != undefined){
         setTimeout(() => seeNextProduct(), 10000)
-        console.log('a')
     }
     //handle previous item
     function seePreviousProduct(){
@@ -60,9 +59,9 @@ export default function ProductsRecomended(){
     }
     return(
         <div>
-            <h5 class = "title">Productos Recomendados</h5>
+            <h5 className = "title">Productos Recomendados</h5>
             <section className = "ProductsRecomendedContainer" ref = {scrollRef}>
-                {items.map((item) => <Card {...item}/>)}
+                {items.map((item) => <Card key = {item.id} {...item}/>)}
             </section>
 
             <div>

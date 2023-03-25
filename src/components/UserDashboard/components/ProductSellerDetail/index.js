@@ -10,7 +10,7 @@ export default function ShowProductDetail(){
     
     const EditProductModal = React.lazy(() => import('../EditProductModal')) 
 
-    const {actualProduct, setActualProduct} = useContext(ProductOfSellerDetail)
+    const {actualProduct, } = useContext(ProductOfSellerDetail)
     const [infoProduct, setInfoProduct] = useState(undefined)
     const {updateProductDetail} = useContext(UpdateProductDetailContext)
 

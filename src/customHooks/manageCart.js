@@ -7,7 +7,7 @@ export function addProduct(){
     
     useEffect(() => {
         let flag = 0 //identify if the product is added for the first time or not
-        if(product != undefined){
+        if(product !== undefined){
             productsCart.map(element => {
                 if(element.id === product.id){
                     element.cantidad += 1
@@ -35,7 +35,7 @@ export function deleteProduct(){
     const [product, rest] = useState(undefined)
 
     useEffect(() => {
-        if(product != undefined){
+        if(product !== undefined){
             productsCart.map(element => {
                 if(element.id === product.id){
                     if(element.cantidad > 0){

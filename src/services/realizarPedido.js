@@ -16,7 +16,7 @@ export default function realizarPedido(listaPedido){
             },
         })
         .then(response => {
-            if(response.status != 201){
+            if(response.status !== 201){
                 alert('Error al procesar el pedido')
             }
             else{
