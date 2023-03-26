@@ -52,8 +52,8 @@ export default function ShowProductDetail(){
             </Suspense>
 
             <div className = "PhotosDetailContainer ">
-                {infoProduct === undefined?null:infoProduct.fotos.map(foto => <img 
-                    key = {foto}
+                {infoProduct === undefined?null:infoProduct.fotos.map((foto, index) => <img 
+                    key = {index}
                     id = {foto}
                     className = "PhotoProduct"
                     src={`${BASE_URL}${foto}`} 

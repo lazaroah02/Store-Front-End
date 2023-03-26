@@ -39,13 +39,12 @@ export default function (){
           description: e.target[1].value,
           about: e.target[2].value,
           precio: e.target[3].value,
-          categoria_id: document.getElementById(e.target[5].value).value,
+          categoria_id: e.target[5].value,
           img1: document.getElementById("img1").files[0],
           img2: document.getElementById("img2").files[0],
           img3: document.getElementById("img3").files[0],
         };
         
-        console.log(typeof(info.precio))
         //validacion del formulario
         if (info.name === "") {
             setShowEmptyName(false)
@@ -114,13 +113,11 @@ export default function (){
                     {categories.length === 0
                         ? null
                         : categories.map((category) => (
-                            <option key = {category.id}>
+                            <option 
+                            key = {category.id}
+                            value = {category.id}
+                            >
                             {category.name}
-                            <input
-                                id={category.name}
-                                hidden="true"
-                                value={category.id}
-                            ></input>
                             </option>
                         ))}
                     </select>

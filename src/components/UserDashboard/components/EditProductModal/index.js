@@ -61,7 +61,7 @@ export default function EditProductModal(infoProduct){
           description: productDescription,
           about: productAbout,
           precio: productPrice,
-          categoria_id: document.getElementById(e.target[5].value).value,
+          categoria_id: e.target[5].value,
           img1: document.getElementById("img1").files[0],
           img2: document.getElementById("img2").files[0],
           img3: document.getElementById("img3").files[0],
@@ -145,13 +145,8 @@ export default function EditProductModal(infoProduct){
                         : categories.map((category) => (
                             <option 
                             key = {category.id}
-                            id = {category.id}>
+                            value={category.id}>
                             {category.name}
-                            <input
-                                id={category.name}
-                                hidden={true}
-                                value={category.id}
-                            ></input>
                             </option>
                         ))}
                     </select>
