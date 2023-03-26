@@ -7,7 +7,6 @@ import leftArrow from '../../assets/left-arrow-alt-regular-24.png'
 export default function ProductsRecomended(){
     const [items, setItems] = useState([])
     const scrollRef = useRef()
-
     useEffect(() => {
         setItems ([
             {id:1, name:"Primero", precio: "100", foto: ""},
@@ -18,11 +17,14 @@ export default function ProductsRecomended(){
             {id:6, name:"Ultimo", precio: "100", foto: ""},
         ])
     },[])
+
+    //useEffect to control the interval of scrolling the recomended products
+    useEffect(() => {
+        let interval = setInterval(() => seeNextProduct(), 10000)
+        return () => clearInterval(interval)
+    },[items])
     
     let cont = 0
-    if(scrollRef.current != undefined){
-        setTimeout(() => seeNextProduct(), 10000)
-    }
     //handle previous item
     function seePreviousProduct(){
         let increment = scrollRef.current.scrollWidth / items.length
@@ -36,8 +38,7 @@ export default function ProductsRecomended(){
                 left:cont*increment, 
                 top:0, 
                 behavior:"smooth"
-              })
-            setTimeout(() => seeNextProduct(), 10000)
+            })
         }  
     }   
     //handle next item   
@@ -53,8 +54,7 @@ export default function ProductsRecomended(){
                 left:cont*increment, 
                 top:0, 
                 behavior:"smooth"
-              })
-            setTimeout(() => seeNextProduct(), 10000)  
+            }) 
         }
     }
     return(

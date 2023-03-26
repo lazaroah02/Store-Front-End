@@ -1,6 +1,7 @@
 .title{
     text-align:center;
 }
+
 .ProductsRecomendedContainer{
    white-space:nowrap;
    overflow-x: auto;
@@ -14,12 +15,13 @@
 }
 
 .ProductsRecomendedContainer > div{
-    margin:1rem 1rem 1rem 1rem;
     display: inline-block;
     width: 320px;
     border-radius: 1rem;
     scroll-snap-align: center;
+
 }
+
 
 .ProductsRecomendedContainer::-webkit-scrollbar{
     width:0px;
