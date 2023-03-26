@@ -16,8 +16,10 @@ export default function CreateCategoryModal(){
         createNewCategory(categoryName).then((res) => {
             if(res.status === 200){
                 setUpdateCategories(updateCategories + 1);
+            }else if(res.status === 500){
+                alert("The category already exists")
             }else{
-                alert("Create category error")
+                alert("Error creating the category")
             }
         });
       }

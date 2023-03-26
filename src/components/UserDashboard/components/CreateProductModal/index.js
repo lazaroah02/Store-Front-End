@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, Suspense} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import getCategories from '../../../../services/getCategories'
 import ShowCreateProductModalContext from '../../context/showCreateProductModalContext'
@@ -7,11 +7,9 @@ import UpdateListOfCategoriesContext from '../../context/updateListOfCategories'
 import createNewProduct from '../../../../services/createNewProduct'
 import UpdateProductsList from '../../context/updateProductsList'
 import ProgresGif from '../../../ProgresGif'
+import CreateCategoryModal from '../CreateCategoryModal'
 
 export default function (){
-
-    const CreateCategoryModal = React.lazy(() => import('../CreateCategoryModal'))
-
     const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([])
     const {showCreateProductModal, setShowCreateProductModal} = useContext(ShowCreateProductModalContext)
@@ -71,9 +69,7 @@ export default function (){
 
     return(
         <div>
-            <Suspense>
-                <CreateCategoryModal/>
-            </Suspense>
+            <CreateCategoryModal/>
             <Modal show={showCreateProductModal}>
             <Modal.Header>
                 Add new product
