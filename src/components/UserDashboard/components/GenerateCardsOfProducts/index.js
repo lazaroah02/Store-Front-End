@@ -28,7 +28,7 @@ export default function GenerateCard({updateProducts}){
           <ProgresGif />
         </div>
       ) : null}
-      <div className=" SellerProductsContainer">
+      <div className=" SellerProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0 || products === undefined || products === null || products.detail === 'Invalid token.'
           ? <div className = 'NotFoundMessage'><strong>No tienes porductos</strong></div>
           : products.map((product) => <Suspense key={product.id} fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}

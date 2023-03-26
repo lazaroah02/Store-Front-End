@@ -50,8 +50,7 @@ export default function ShowProductDetail(params){
     return(
         <div>
             <section className = "PhotosDetailContainer ">
-                {params.fotos.map((foto, index) => 
-                    <img 
+                {params.fotos.map((foto, index) => <img 
                     key = {index}
                     className = "PhotoProduct"
                     id = {foto}
