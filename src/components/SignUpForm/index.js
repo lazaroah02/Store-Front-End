@@ -54,7 +54,7 @@ export default function SignInForm() {
   return (
     <div>
       <div className="card FormContainer container">
-        <div class="card-body">
+        <div className="card-body">
           <div className="SignUpTitle">
             <h4>Sign up to Store</h4>
           </div>
