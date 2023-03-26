@@ -15,7 +15,7 @@ function Home() {
         <ButtonGoTop reference = {startRef}/>
         <ProductsRecomended/>
         <CategoriesNavBar/>
-        <GenerateCards />
+        <GenerateCards startRef = {startRef}/>
     </div>
   
   )

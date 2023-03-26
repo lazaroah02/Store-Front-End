@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Suspense, useRef} from "react";
+import React, { useEffect, useState, useContext, Suspense} from "react";
 import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
 import Chargincards from '../CharginCards'
@@ -7,7 +7,7 @@ import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
 
-export default function GenerateCard() {
+export default function GenerateCard({startRef}) {
   const Card = React.lazy(() => import('../Card'))
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,14 +15,13 @@ export default function GenerateCard() {
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
   const [desde, setDesde] = useState(0);
   const [hasta, setHasta] = useState(25);
-  const startRef = useRef()
   //get all products of the store and then put on the state
   useEffect(() => {
     setLoading(true);
     GetProducts(category, desde, hasta).then((data) => {
       setProduct(data);
       setLoading(false);
-      startRef.current.scrollIntoView({behavior:"smooth", block:'center',inline:"center"});
+      startRef.current.scrollIntoView({block:'center',inline:"center"});
     });
   }, [category, desde]);
 
@@ -38,7 +37,6 @@ export default function GenerateCard() {
           <ProgresGif />
         </div>
       ) : null}
-      <p ref = {startRef}></p>
       <div className=" ProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0
           ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
