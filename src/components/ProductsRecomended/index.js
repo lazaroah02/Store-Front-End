@@ -28,7 +28,7 @@ export default function ProductsRecomended(){
     //handle previous item
     function seePreviousProduct(){
         let increment = scrollRef.current.scrollWidth / items.length
-        if(cont == 0){   //compruebo si se encuentra en el primer item y lo redirigo al ultimo
+        if(cont === 0){   //compruebo si se encuentra en el primer item y lo redirigo al ultimo
             cont = items.length
             return seePreviousProduct()
         }
@@ -44,7 +44,7 @@ export default function ProductsRecomended(){
     //handle next item   
     function seeNextProduct(){
         let increment = scrollRef.current.scrollWidth / items.length
-        if(cont == items.length-1){  //compruebo si se encuentra en el ultimo item y lo redirigo al primero
+        if(cont === items.length-1){  //compruebo si se encuentra en el ultimo item y lo redirigo al primero
             cont = -1
             return seeNextProduct()
         }
@@ -66,10 +66,10 @@ export default function ProductsRecomended(){
 
             <div>
                 <button className = "boton-next-Product2 btn" onClick={() => seeNextProduct()}>
-                    <img src = {rightArrow}/>
+                    <img alt = "right-arrow" src = {rightArrow}/>
                 </button>
                 <button  className = "boton-previous-Product2 btn" onClick={() => seePreviousProduct()}>
-                    <img src = {leftArrow}/>  
+                    <img alt = "left-arrow" src = {leftArrow}/>  
                 </button> 
              </div>
         </div>

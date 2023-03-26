@@ -31,7 +31,7 @@ export default function SignInForm() {
       sendEmail({email:email, topic:topic, message:message})
       .then(data => {
         setLoading(false)
-        if(data.status != 200){
+        if(data.status !== 200){
           if(idioma === 'es' || idioma === 'undefined' || idioma === 'null'){
            alert('Error al enviar el correo. Si el error persiste, use los links de el pie de la página')
            }

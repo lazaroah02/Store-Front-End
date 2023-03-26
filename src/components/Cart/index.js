@@ -10,12 +10,8 @@ export default function Cart(){
     const {productsCart} = useContext(ProductsCartContext)
     
     useEffect(() => {
-        let cont = 0
-        productsCart.map(element => {
-            cont ++
-        })
-        setContador(cont)
-    })
+        setContador(productsCart.length)
+    },)
     return(
         <div className = 'logoCart'>
             <div className = 'A' onClick = {() => setShowModal(true)}></div>

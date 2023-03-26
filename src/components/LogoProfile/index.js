@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import {Link} from 'wouter'
 import "./index.css";
 import Cart from "../Cart";

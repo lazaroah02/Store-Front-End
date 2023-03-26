@@ -13,7 +13,7 @@ import {UserTokenContextProvider} from './context/UserTokenContext'
 import {InfoSearchedProduct} from './context/InfoSearchedProduct'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
 import "./vendor/bootstrap/css/bootstrap.min.css";
-import bootstrap from 'bootstrap'
+import 'bootstrap'
 
 export default function App() {
   return(

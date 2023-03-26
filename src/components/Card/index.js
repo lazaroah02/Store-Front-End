@@ -32,12 +32,12 @@ export default function Card({id, name, precio, foto}){
       
        <div className="ProductCard" id = {id} >
         <div className = 'image-container'>
-          <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={"imagen"}/>
+          <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={name}/>
         </div>
        <div className="body">
          <h5 className="card-title" onClick={() => handleClick()}>{name}</h5>
          <p className="card-text" onClick={() => handleClick()}>${precio}</p>
-         <div onClick={addToCart} className="add-to-cart-button ">{productAdded?<img className = 'cart-product-added' src = 'icons/cart-product-added.png'></img>:<img className = 'CartIcon' src = 'icons/add-to-cart-logo.png'></img>}</div>
+         <div onClick={addToCart} className="add-to-cart-button ">{productAdded?<img alt = "product-added" className = 'cart-product-added' src = 'icons/cart-product-added.png'></img>:<img alt = "add-to-cart-icon" className = 'CartIcon' src = 'icons/add-to-cart-logo.png'></img>}</div>
        </div>
      </div>
 

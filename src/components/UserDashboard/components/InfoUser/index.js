@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react'
+import React, {useEffect, useContext} from 'react'
 import getInfoUser from '../../../../services/getInfoUser'
 import UserTokenContext from '../../../../context/UserTokenContext'
 import InfoUserContext from '../../../../context/InfoUserContext'

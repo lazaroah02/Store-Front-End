@@ -46,10 +46,10 @@ export default function CategoriesNavBar() {
         ))}
         </div>
         <button className = "button-go-left btn" onClick = {() => goLeft()}>
-          <img src = {leftArrow}/>
+          <img alt = "left-arrow" src = {leftArrow}/>
         </button>
         <button className = "button-go-right btn" onClick = {() => goRight()}>
-          <img src = {rightArrow}/>
+          <img alt = "right-arrow" src = {rightArrow}/>
         </button>
     </div>
 

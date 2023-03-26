@@ -33,35 +33,35 @@ export default function OptionsNavBar(){
         <div>
           {expanded?
             <div className = 'options-nav-bar-expanded'>
-              <button className = 'btn button-expand' onClick={() => setExpanded(false)}><img src = 'icons/left-arrow-alt-regular-24.png'/></button>
+              <button className = 'btn button-expand' onClick={() => setExpanded(false)}><img alt = "icon" src = 'icons/left-arrow-alt-regular-24.png'/></button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('info-user')
                 setExpanded(false)
-                }}><img src = 'icons/LogoProfile.png'/>Your Info</button>
+                }}><img alt = "icon" src = 'icons/LogoProfile.png'/>Your Info</button>
               
-              {infoUser != undefined && infoUser[0].is_seller === true?
+              {infoUser !== undefined && infoUser[0].is_seller === true?
               <div>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('your-products')
                 setExpanded(false)
-                }}><img src = 'icons/dashboard-solid-24.png'/>Your Products</button>
+                }}><img alt = "icon" src = 'icons/dashboard-solid-24.png'/>Your Products</button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('products-sold')
                 setExpanded(false)
-                }}><img src = 'icons/bar-chart-alt-2-solid-24.png'/>Sold products</button>
+                }}><img alt = "icon" src = 'icons/bar-chart-alt-2-solid-24.png'/>Sold products</button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('list-of-orders')
                 setExpanded(false)
-                }}><img src = 'icons/spreadsheet-regular-24.png'/>List of orders</button>
-              <button className = 'btn button-show-info-expanded' onClick = {() => handleQuitUserSeller()}><img src = 'icons/spreadsheet-regular-24.png'/>Dejar de ser vendedor</button>
+                }}><img alt = "icon" src = 'icons/spreadsheet-regular-24.png'/>List of orders</button>
+              <button className = 'btn button-show-info-expanded' onClick = {() => handleQuitUserSeller()}><img alt = "icon" src = 'icons/spreadsheet-regular-24.png'/>Dejar de ser vendedor</button>
               </div>
               :
-              <button className = 'btn button-show-info-expanded' onClick = {() => handleMakeUserSeller()}><img src = 'icons/LogoProfile.png'/>Make you seller</button>
+              <button className = 'btn button-show-info-expanded' onClick = {() => handleMakeUserSeller()}><img alt = "icon" src = 'icons/LogoProfile.png'/>Make you seller</button>
               }
             </div>
           :
             <div className = 'options-nav-bar'>
-              <button className = 'btn button-expand' onClick={() => setExpanded(true)}><img src = 'icons/right-arrow-alt-regular-24.png'/></button>
+              <button className = 'btn button-expand' onClick={() => setExpanded(true)}><img alt = "icon" src = 'icons/right-arrow-alt-regular-24.png'/></button>
             </div>
           }
             

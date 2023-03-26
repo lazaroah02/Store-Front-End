@@ -49,7 +49,7 @@ export default function (){
         //validacion del formulario
         if (info.name === "") {
             setShowEmptyName(false)
-        }else if(info.precio === "" || (info.precio.replace(/[^0-9]/g,"")).length != info.precio.length){
+        }else if(info.precio === "" || (info.precio.replace(/[^0-9]/g,"")).length !== info.precio.length){
             setShowErrorPrice(false)
         }else if(info.img1 === undefined){
             setShowImg1(false)

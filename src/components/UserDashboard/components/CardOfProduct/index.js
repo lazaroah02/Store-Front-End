@@ -24,16 +24,16 @@ export default function Card({id, name, precio, foto}){
     return(
        <div className="SellerProductCard" ref = {ref} >
         <div className = 'image-container'>
-          <img src={`${BASE_URL}${foto}`} className="card-img-top " alt={"imagen"}/>
+          <img src={`${BASE_URL}${foto}`} className="card-img-top " alt={name}/>
         </div>
        <div className="seller-card-body">
          <h5 className="card-title" >{name.length > 20?`${name.substr(0,20)}...`:name}</h5>
          <p className="card-title" >${precio}</p>
-         <button className="btn btn-danger delete-product-button" onClick={() => handleDeleteAnProduct()}><img src = 'icons/trash-regular-24.png'/></button>
+         <button className="btn btn-danger delete-product-button" onClick={() => handleDeleteAnProduct()}><img alt = "icon" src = 'icons/trash-regular-24.png'/></button>
          <button className="btn btn-primary update-product-button" onClick={() => {
           setActualProduct({id:id})
           setComponent('product-seller-detail')
-          }}><img src = 'icons/edit-alt-regular-24.png' /></button>
+          }}><img src = 'icons/edit-alt-regular-24.png' alt = "icon"/></button>
        </div>
      </div>
 

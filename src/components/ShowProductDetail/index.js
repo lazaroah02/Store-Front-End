@@ -62,10 +62,10 @@ export default function ShowProductDetail(params){
 
             <div>
                 <button className = "boton-next-image2 btn" onClick={() => seeNextImage()}>
-                    <img src = {rightArrow}/>
+                    <img alt = "right-arrow" src = {rightArrow}/>
                 </button>
                 <button  className = "boton-previous-image2 btn" onClick={() => seePreviousImage()}>
-                    <img src = {leftArrow}/>  
+                    <img alt = "left-arrow" src = {leftArrow}/>  
                 </button> 
              </div> 
 

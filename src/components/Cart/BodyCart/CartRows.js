@@ -43,7 +43,7 @@ export default function CartRows() {
   return (
     <>
       {state.map((element) => (
-        <tr>
+        <tr key = {element.id}>
           <td>{element.name}</td>
           <td>${element.price}</td>
           <td>

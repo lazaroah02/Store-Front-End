@@ -8,13 +8,14 @@ export function addProduct(){
     useEffect(() => {
         let flag = 0 //identify if the product is added for the first time or not
         if(product !== undefined){
-            productsCart.map(element => {
+            productsCart.map((element) => {
                 if(element.id === product.id){
                     element.cantidad += 1
                     element.subtotal = element.cantidad * element.price
-                    setProductCart(productsCart)
                     flag = 1
+                    return setProductCart(productsCart)
                 }
+                return null
             })
             if(flag === 0){
                 product['subtotal'] = product.price 
@@ -41,12 +42,13 @@ export function deleteProduct(){
                     if(element.cantidad > 0){
                         element.cantidad -= 1
                         element.subtotal = element.cantidad * element.price
-                        setProductCart(productsCart)
+                        return setProductCart(productsCart)
                     }
                     else{
                         productsCart.splice(element, 1)
                     }
                 }
+                return null
             })
         }    
     },[product])

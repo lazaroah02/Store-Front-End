@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Suspense, useRef } from "react";
+import React, { useEffect, useState, useContext, Suspense} from "react";
 import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
 import Chargincards from '../CharginCards'

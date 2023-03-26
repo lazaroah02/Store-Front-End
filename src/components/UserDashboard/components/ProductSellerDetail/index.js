@@ -17,7 +17,7 @@ export default function ShowProductDetail(){
     const {setShowEditProductModal} = useContext(ShowEditProductModalContext)
 
     useEffect(() => {
-        if(actualProduct != undefined){
+        if(actualProduct !== undefined){
             getProductDetail(actualProduct.id)
             .then(data => setInfoProduct(data[0]))
         }
@@ -63,10 +63,10 @@ export default function ShowProductDetail(){
 
              <div>
                 <button className = "boton-next-image btn" onClick={() => seeNextImage()}>
-                    <img src = 'icons/right-arrow-alt-regular-24.png'/>
+                    <img alt = "right-arrow" src = 'icons/right-arrow-alt-regular-24.png'/>
                 </button>
                 <button  className = "boton-previous-image btn" onClick={() => seePreviousImage()}>
-                    <img src = 'icons/left-arrow-alt-regular-24.png'/>    
+                    <img alt = "left-arrow" src = 'icons/left-arrow-alt-regular-24.png'/>    
                 </button> 
              </div>       
             

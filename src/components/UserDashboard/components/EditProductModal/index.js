@@ -46,7 +46,7 @@ export default function EditProductModal(infoProduct){
         
         //obtengo el option que tiene la misma categoria del producto y lo selecciono
         let option = document.getElementById(productCategory)
-        if(option != null && option != undefined){
+        if(option !== null && option !== undefined){
             option.setAttribute("selected",true)
         }
     },[infoProduct])  
@@ -70,7 +70,7 @@ export default function EditProductModal(infoProduct){
         //validacion del formulario
         if (info.name === "") {
             setShowEmptyName(false)
-        }else if(info.precio === "" || ((String(info.precio)).replace(/[^0-9]/g,"")).length != info.precio.length){
+        }else if(info.precio === "" || ((String(info.precio)).replace(/[^0-9]/g,"")).length !== info.precio.length){
             setShowErrorPrice(false)
         }else if(info.img1 === undefined){
             setShowImg1(false)
