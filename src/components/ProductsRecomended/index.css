@@ -23,7 +23,15 @@
 
 }
 
-
+.no-products-recommended{
+    border-radius: 1rem;
+    background-color:white;
+    text-align: center;
+    width:360px;
+    height:230px;
+    padding-top: 100px;
+}
+    
 .ProductsRecomendedContainer::-webkit-scrollbar{
     width:0px;
     height:0px;
