@@ -39,6 +39,10 @@ export default function SearchProductForm(){
             })
         } 
     }
+    function goTop(){
+        let start = document.getElementById('start')
+        start.scrollIntoView({behavior:"smooth", block:'center',inline:"center"})
+    }
     return(
         <div>
             <div onClick = {() => setShowModal(true)}>
@@ -54,7 +58,10 @@ export default function SearchProductForm(){
                 <Modal.Body>
                     <form className="d-flex SearchForm" onSubmit = {(e) => handleSearchSubmit(e)}>
                         <input className="form-control me-2" placeholder="Search a product" />
-                        <button className="btn btn-success" onClick = {() => setShowModal(false)}>{loading?'Cargando...':'Search'}</button>
+                        <button className="btn btn-success" onClick = {() => 
+                            {setShowModal(false) 
+                            goTop()}}>
+                                {loading?'Cargando...':'Search'}</button>
                     </form>
                 </Modal.Body>
             </Modal> 

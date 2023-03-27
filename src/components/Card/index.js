@@ -4,6 +4,7 @@ import {useLocation} from 'wouter'
 import {BASE_URL} from '../../settings'
 import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
+import addToCartIcon from '../../assets/cart-add-regular-24.png'
 
 export default function Card({id, name, precio, foto}){
   const {token} = useContext(UserTokenContext)
@@ -37,7 +38,14 @@ export default function Card({id, name, precio, foto}){
        <div className="body">
          <h5 className="card-title" onClick={() => handleClick()}>{name}</h5>
          <p className="card-text" onClick={() => handleClick()}>${precio}</p>
-         <div onClick={addToCart} className="add-to-cart-button ">{productAdded?<img alt = "product-added" className = 'cart-product-added' src = 'icons/cart-product-added.png'></img>:<img alt = "add-to-cart-icon" className = 'CartIcon' src = 'icons/add-to-cart-logo.png'></img>}</div>
+         <div onClick={addToCart} className="add-to-cart-button ">
+            {productAdded
+            ?
+            <img alt = "product-added" className = 'cart-product-added' src = 'icons/cart-product-added.png'/>
+            :
+            <img alt = "add-to-cart-icon" className = 'CartIcon' src = {addToCartIcon}/>
+            }
+          </div>
        </div>
      </div>
 

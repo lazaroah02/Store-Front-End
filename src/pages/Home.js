@@ -11,7 +11,7 @@ function Home() {
   return(
     <div className = "Home">
         <NavBar/>
-        <p ref = {startRef}></p>
+        <p ref = {startRef} id = "start"></p>
         <ButtonGoTop reference = {startRef}/>
         <ProductsRecomended/>
         <CategoriesNavBar/>

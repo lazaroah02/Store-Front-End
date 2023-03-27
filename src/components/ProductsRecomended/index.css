@@ -17,7 +17,7 @@
 
 .ProductsRecomendedContainer > div{
     display: inline-block;
-    width: 320px;
+    width: 350px;
     border-radius: 1rem;
     scroll-snap-align: center;
 

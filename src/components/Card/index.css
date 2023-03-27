@@ -9,13 +9,10 @@
     display:inline-block;
 }
 .cart-product-added{
-    width: 80%;
-    height:80%;
+    width: 60%;
+    height:60%;
 }
-.CartIcon{
-    width: 80%;
-    height:80% ;
-}
+
 .add-to-cart-button{
     width:50px;
     position:relative;
