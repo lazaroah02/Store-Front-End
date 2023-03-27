@@ -17,7 +17,7 @@ import 'bootstrap'
 
 export default function App() {
   return(
-    <div>
+    <div className = "App">
       <UserTokenContextProvider>
       <ProductsCartContextProvider>
       <CategoryContextProvider>

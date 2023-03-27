@@ -9,7 +9,7 @@ import '../App.css';
 function Home() {
   const startRef = useRef()
   return(
-    <div className = "App">
+    <div className = "Home">
         <NavBar/>
         <p ref = {startRef}></p>
         <ButtonGoTop reference = {startRef}/>

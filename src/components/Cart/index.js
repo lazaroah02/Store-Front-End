@@ -1,27 +1,21 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import CartContent from './BodyCart/CartContent'
-import ProductsCartContext from '../../context/ProductsCartContext'
 import './index.css'
+import carttIcon from '../../assets/navBarIcons/cart-regular-24.png'
 
 export default function Cart(){
     const [showModal, setShowModal] = useState(false)
-    const [contadorItemsCart, setContador] = useState(0)
-    const {productsCart} = useContext(ProductsCartContext)
     
-    useEffect(() => {
-        setContador(productsCart.length)
-    },)
     return(
         <div className = 'logoCart'>
-            <div className = 'A' onClick = {() => setShowModal(true)}></div>
-            {contadorItemsCart > 0 ?<div className = 'contador-cart'>{contadorItemsCart}</div>:null}
+            <div onClick = {() => setShowModal(true)}><img alt = "cart" src = {carttIcon}></img></div>
             <Modal show = {showModal}>
             <Modal.Header>
                 <Modal.Title>
                     Cart
                 </Modal.Title>
-                <button className = "CloseModalButton btn btn-danger" onClick={() => setShowModal(false)}>X</button>
+                <button className = "btn btn-danger" onClick={() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body>
                  <CartContent />

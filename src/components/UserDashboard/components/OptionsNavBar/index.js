@@ -3,6 +3,7 @@ import ActualComponentContext from '../../context/actualComponentContext'
 import InfoUserContext from '../../../../context/InfoUserContext'
 import makeUserSeller from '../../../../services/makeUserSeller'
 import quitUserSeller from '../../../../services/quitUserSeller'
+import LogoutLink from '../../../LogoutLink'
 import './index.css'
 
 export default function OptionsNavBar(){
@@ -33,7 +34,8 @@ export default function OptionsNavBar(){
         <div>
           {expanded?
             <div className = 'options-nav-bar-expanded'>
-              <button className = 'btn button-expand' onClick={() => setExpanded(false)}><img alt = "icon" src = 'icons/left-arrow-alt-regular-24.png'/></button>
+              <LogoutLink/> 
+              <button className = 'btn button-expanded' onClick={() => setExpanded(false)}><img alt = "icon" src = 'icons/left-arrow-alt-regular-24.png'/></button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('info-user')
                 setExpanded(false)
@@ -57,14 +59,13 @@ export default function OptionsNavBar(){
               </div>
               :
               <button className = 'btn button-show-info-expanded' onClick = {() => handleMakeUserSeller()}><img alt = "icon" src = 'icons/LogoProfile.png'/>Make you seller</button>
-              }
+              } 
             </div>
           :
             <div className = 'options-nav-bar'>
               <button className = 'btn button-expand' onClick={() => setExpanded(true)}><img alt = "icon" src = 'icons/right-arrow-alt-regular-24.png'/></button>
             </div>
           }
-            
         </div>
     )
 }

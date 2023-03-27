@@ -1,11 +1,7 @@
-.ccc{
-  background-image: url('assets/background-img.jpeg');
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center center;
-  background-attachment:fixed;}
-
-.App {
+.App{
+  margin-top:50px;
+}
+.Home {
   background-color:aliceblue;
   min-height:100vh;
 }

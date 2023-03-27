@@ -1,14 +1,15 @@
 import './index.css'
 import React, {useContext, useState, useEffect} from 'react'
-import LogoProfile from '../LogoProfile'
-import {Link} from 'wouter'
 import UserTokenContext from '../../context/UserTokenContext'
 import InfoUserContext from '../../context/InfoUserContext'
+import {useLocation} from 'wouter'
+import logoutIcon from "../../assets/log-out-regular-24.png"
 
 export default function ShowLinks(){
     const {token, setToken} = useContext(UserTokenContext)
     const {setInfoUser} = useContext(InfoUserContext)
-    const [islogged, setLogged] = useState()
+    const [, setLogged] = useState()
+    const [, setLocation] = useLocation()
 
     useEffect(() =>{
         token == null?setLogged(false):setLogged(true)
@@ -19,19 +20,16 @@ export default function ShowLinks(){
         setLogged(false)
         setToken(null)
         setInfoUser(null)
+        setLocation("/")
     }
     return(
-        <div className = "ItemsContainer">
-            <LogoProfile/>
-            {islogged?
-            <button className = "LogoutButton btn btn-primary" onClick={() => handleLogout()}>Logout</button>:
-            <div>
-            <Link className = "LoginLink" to = "/login">Sing in</Link>
-            <div className = "card Border">
-              <Link className = "SignUpLink" to = "/register"> Sing up</Link>
-            </div>
-            </div>
-            }
+        <div className = "button-container">
+            <button className = "LogoutButton btn " onClick={() => handleLogout()}>
+                <div>
+                    <img alt = "log-out" src = {logoutIcon}/>
+                    Cerrar Sesion
+                </div>
+            </button>
         </div>    
     )
 }

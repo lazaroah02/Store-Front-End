@@ -51,7 +51,7 @@ export default function SignInForm() {
           </form>
           <div className="card LoginFet">
             <p>
-              <span className="align-center">Dont have an account?</span>
+              <span className="align-center">Don't have an account?</span>
               <Link className="SignUpLink align-center" to="/register">
                 Sign up here
               </Link>

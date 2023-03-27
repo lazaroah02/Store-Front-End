@@ -3,10 +3,13 @@ import {useLocation} from 'wouter'
 import searchAnProduct from '../../services/searchAnProduct'
 import InfoSearchedProduct from '../../context/InfoSearchedProduct'
 import CategoriesContext from '../../context/CategoriesContext'
+import Modal from 'react-bootstrap/Modal'
 import './index.css'
+import { ModalHeader } from 'react-bootstrap';
+import searchIcon from '../../assets/navBarIcons/search-regular-24.png'
 
 export default function SearchProductForm(){
-
+    const [showModal, setShowModal] = useState(false)
     const {setInfoSearchedProduct} = useContext(InfoSearchedProduct)
     const {setCategory} = useContext(CategoriesContext)
     const [location, setLocation] = useLocation()
@@ -15,7 +18,6 @@ export default function SearchProductForm(){
     function handleSearchSubmit(e){
         e.preventDefault()
         let nameProduct = e.target[0].value
-        console.log(nameProduct)
         if(nameProduct === ''){
             if(location === '/About_us' || location === '/login' || location === '/register'){
                 setLocation('/')
@@ -38,9 +40,24 @@ export default function SearchProductForm(){
         } 
     }
     return(
-        <form className="d-flex SearchForm" onSubmit = {(e) => handleSearchSubmit(e)}>
-        <input className="form-control me-2" placeholder="Search a product" />
-        <button className="btn btn-success" >{loading?'Cargando...':'Search'}</button>
-      </form>
+        <div>
+            <div onClick = {() => setShowModal(true)}>
+                <img alt = "buscar" src = {searchIcon}/>
+            </div>
+            <Modal show = {showModal}>
+                <ModalHeader>
+                    <Modal.Title>
+                        Search
+                    </Modal.Title>
+                    <button className = "CloseModalButton btn btn-danger" onClick={() => setShowModal(false)}>X</button>
+                </ModalHeader>
+                <Modal.Body>
+                    <form className="d-flex SearchForm" onSubmit = {(e) => handleSearchSubmit(e)}>
+                        <input className="form-control me-2" placeholder="Search a product" />
+                        <button className="btn btn-success" onClick = {() => setShowModal(false)}>{loading?'Cargando...':'Search'}</button>
+                    </form>
+                </Modal.Body>
+            </Modal> 
+      </div>
     )
 }
