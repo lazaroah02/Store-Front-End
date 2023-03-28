@@ -33,6 +33,7 @@
 .category:hover{
     background-color:rgb(214, 230, 244);
     margin-left:1px;
+    cursor: pointer;
 }
 ul{
     list-style: none;
