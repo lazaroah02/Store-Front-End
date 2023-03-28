@@ -1,36 +1,39 @@
-import getCategories from "../../../services/getCategories";
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useContext} from "react";
 import Modal from 'react-bootstrap/modal'
 import "./index.css";
 import { ModalBody, ModalTitle } from "react-bootstrap";
-import CategoriesContext from '../../../context/CategoriesContext'
+import PriceFilterContext from '../../../context/PriceFilterContext'
 
 export default function CategoriesFilter() {
-  const [categories, setCategories] = useState([]);
+  const [prices,] = useState(["0-100","100-300","300-500","500-1000","1000-2000",">2000"]);
   const [showModal, setShowModal] = useState(false)
-  const {setCategory} = useContext(CategoriesContext)
-  useEffect(() => {
-    getCategories().then((data) => {
-      setCategories(data);
-    });
-  }, []);
+  const {setPrice} = useContext(PriceFilterContext)
 
+  function handleSetPrice(price){
+    if(price === ">2000"){
+      return setPrice([2000, 0])
+    }
+    else{
+      let minMaxPrice = price.split("-")
+      return setPrice([minMaxPrice[0], minMaxPrice[1]])
+    }
+  }
   return (
     <div className = "price-container">
        <button className = "PriceFilter" onClick = {() => setShowModal(true)}>Price</button>
        <Modal show = {showModal}>
           <Modal.Header>
-              <ModalTitle>Categories</ModalTitle>
+              <ModalTitle>Prices</ModalTitle>
               <button className = "btn btn-danger" onClick = {() => setShowModal(false)}>X</button>
           </Modal.Header>
           <ModalBody>
             <ul>
-              {categories.map(category => 
-              <li key = {category.id} className = "price" onClick = {() => {
-                setCategory(category.id)
+              {prices.map(price => 
+              <li key = {price} className = "price" onClick = {() => {
+                handleSetPrice(price)
                 setShowModal(false)
                 }}>
-                {category.name}
+                {price}
               </li>)}
             </ul>
           </ModalBody>

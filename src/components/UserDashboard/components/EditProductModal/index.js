@@ -1,21 +1,16 @@
-import React, {useState, useEffect, useContext, Suspense} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import getCategories from "../../../../services/getCategories";
 import UpdateListOfCategoriesContext from '../../context/updateListOfCategories'
 import updateProduct from '../../../../services/updateProduct'
 import ShowEditProductModalContext from '../../context/showEditProductModalContext'
-import ShowCreateCategoryModalContext from '../../context/showCreateCategoryModalContext'
 import UpdateProductDetailContext from '../../context/updateProductDetail'
 import Modal from 'react-bootstrap/Modal'
 import './index.css'
 import ProgresGif from '../../../ProgresGif'
 
 export default function EditProductModal(infoProduct){
-
-    const CreateCategoryModal = React.lazy(() => import('../CreateCategoryModal'))
-
     const {updateCategories} = useContext(UpdateListOfCategoriesContext)
     const {showEditProductModal, setShowEditProductModal} = useContext(ShowEditProductModalContext)
-    const {setShowCreateCategoryModal} = useContext(ShowCreateCategoryModalContext)
     const {updateProductDetail, setUpdateProductDetail} = useContext(UpdateProductDetailContext)
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -94,10 +89,6 @@ export default function EditProductModal(infoProduct){
 
     return(
         <div>
-            <Suspense>
-                <CreateCategoryModal/>
-            </Suspense>
-
             <Modal show={showEditProductModal}>
                 <Modal.Header>
                 Edit product
@@ -131,13 +122,6 @@ export default function EditProductModal(infoProduct){
                     <br />
                     <br />
                     <label>Categoria</label>
-                    <button
-                    className="btn btn-success btn-add-category"
-                    onClick={() => setShowCreateCategoryModal(true)}
-                    type="button"
-                    >
-                    +
-                    </button>
                     <br />
                     <select>
                     {categories.length === 0

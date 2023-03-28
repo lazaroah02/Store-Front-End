@@ -1,28 +1,61 @@
 import React, { useEffect, useState, useContext} from "react";
-import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
 import CategoriesContext from "../../context/CategoriesContext";
+import PriceFilterContext from "../../context/PriceFilterContext";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
 import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
+//import all filters services
+import getAllProducts from '../../services/Filters/getAllProducts'
+import getProductsByCategory from '../../services/Filters/getProductsByCategory'
+import getProductsByPrice from '../../services/Filters/getProductsByPrice'
 
 export default function GenerateCard({startRef}) {
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useContext(CategoriesContext);
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
+  const {price} = useContext(PriceFilterContext);
   const [desde, setDesde] = useState(0);
   const [hasta, setHasta] = useState(25);
-  //get all products of the store and then put on the state
+
+  //get all products
   useEffect(() => {
-    setLoading(true);
-    GetProducts(category, desde, hasta).then((data) => {
-      setProduct(data);
-      setLoading(false);
-      startRef.current.scrollIntoView({block:'center',inline:"center"});
-    });
+    if(category === null || category === 0){
+      setLoading(true);
+      getAllProducts(desde, hasta).then((data) => {
+        setProduct(data);
+        setLoading(false);
+        startRef.current.scrollIntoView({block:'center',inline:"center"});
+      });
+    }
   }, [category, desde]);
+
+   //get the products by category
+   useEffect(() => {
+    if(category !== null && category !== 0){
+    setLoading(true);
+      getProductsByCategory(category, desde, hasta).then((data) => {
+        setProduct(data);
+        setLoading(false);
+        startRef.current.scrollIntoView({block:'center',inline:"center"});
+      })
+    }
+  },[category, desde]);
+
+  //get the products by price
+  useEffect(() => {
+    if(price !== null){
+      setLoading(true);
+        getProductsByPrice(price, desde, hasta).then((data) => {
+          setProduct(data);
+          setLoading(false);
+          startRef.current.scrollIntoView({block:'center',inline:"center"});
+        })
+    }
+  },[price, desde]);
+
 
   //search the product that the user input on search field
   useEffect(() => {

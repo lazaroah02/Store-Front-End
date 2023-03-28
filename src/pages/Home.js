@@ -14,8 +14,8 @@ function Home() {
         <p id = "top"></p>
         <ButtonGoTop/>
         <ProductsRecomended/>
-        <FiltersNavBar/>
         <p ref = {startRef} id = "start"></p>
+        <FiltersNavBar/>
         <GenerateCards startRef = {startRef}/>
     </div>
   

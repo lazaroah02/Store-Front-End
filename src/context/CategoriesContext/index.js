@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 const Context = React.createContext({})
 
 export function CategoryContextProvider({children}){
-    const [category, setCategory] = useState([0])
+    const [category, setCategory] = useState(null)
     return (<Context.Provider value = {{category, setCategory}}>
         {children}
         </Context.Provider>)

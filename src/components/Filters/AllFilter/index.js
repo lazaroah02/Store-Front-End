@@ -3,10 +3,20 @@ import "./index.css";
 import CategoriesContext from '../../../context/CategoriesContext'
 
 export default function AllFilter() {
-  const {setCategory} = useContext(CategoriesContext)
+  const {category, setCategory} = useContext(CategoriesContext)
+
+  function handleSetCategory(){
+    if(category === null){
+      setCategory(0)
+    }
+    else{
+      setCategory(null)
+    }
+  }
+
   return (
     <div className = "all-container">
-       <button className = "AllFilter" onClick = {() => setCategory(0)}>All</button>
+       <button className = "AllFilter" onClick = {() => handleSetCategory(0)}>All</button>
     </div>
   );
 }

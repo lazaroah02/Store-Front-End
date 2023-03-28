@@ -2,18 +2,15 @@ import React, {useState, useEffect, useContext} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import getCategories from '../../../../services/getCategories'
 import ShowCreateProductModalContext from '../../context/showCreateProductModalContext'
-import ShowCreateCategoryModalContext from '../../context/showCreateCategoryModalContext'
 import UpdateListOfCategoriesContext from '../../context/updateListOfCategories'
 import createNewProduct from '../../../../services/createNewProduct'
 import UpdateProductsList from '../../context/updateProductsList'
 import ProgresGif from '../../../ProgresGif'
-import CreateCategoryModal from '../CreateCategoryModal'
 
 export default function (){
     const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([])
     const {showCreateProductModal, setShowCreateProductModal} = useContext(ShowCreateProductModalContext)
-    const {setShowCreateCategoryModal} = useContext(ShowCreateCategoryModalContext)
     const {updateCategories} = useContext(UpdateListOfCategoriesContext)
     const {updateProductsList, setUpdateProductList} = useContext(UpdateProductsList)
 
@@ -69,7 +66,6 @@ export default function (){
 
     return(
         <div>
-            <CreateCategoryModal/>
             <Modal show={showCreateProductModal}>
             <Modal.Header>
                 Add new product
@@ -97,13 +93,6 @@ export default function (){
                     <br />
                     <br />
                     <label>Categoria</label>
-                    <button
-                    className="btn btn-success btn-add-category"
-                    onClick={() => setShowCreateCategoryModal(true)}
-                    type="button"
-                    >
-                    +
-                    </button>
                     <br />
                     <select>
                     {categories.length === 0

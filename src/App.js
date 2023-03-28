@@ -12,6 +12,7 @@ import {InfoUserContextProvider} from './context/InfoUserContext'
 import {UserTokenContextProvider} from './context/UserTokenContext'
 import {InfoSearchedProduct} from './context/InfoSearchedProduct'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
+import {PriceFilterContextProvider} from './context/PriceFilterContext'
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import 'bootstrap'
 
@@ -20,6 +21,7 @@ export default function App() {
     <div className = "App">
       <UserTokenContextProvider>
       <ProductsCartContextProvider>
+        <PriceFilterContextProvider>
       <CategoryContextProvider>
         <InfoUserContextProvider>
           <InfoSearchedProduct>
@@ -33,6 +35,7 @@ export default function App() {
           </InfoSearchedProduct>
         </InfoUserContextProvider>
       </CategoryContextProvider>
+      </PriceFilterContextProvider>
       </ProductsCartContextProvider>
       </UserTokenContextProvider>
     </div>

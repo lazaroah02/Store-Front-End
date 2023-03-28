@@ -1,5 +1,4 @@
 .options-nav-bar{
-    border:1px solid;
     height:3.5rem;
     width:3rem;
     transition:all .5s;
@@ -28,6 +27,7 @@
     float:right;
     margin-top:5px;
     margin-right: 3px;
+    border:1px solid;
 }
 .button-expanded{
     width:2.5rem;
