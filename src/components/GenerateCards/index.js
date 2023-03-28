@@ -1,14 +1,13 @@
-import React, { useEffect, useState, useContext, Suspense} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import GetProducts from "../../services/getProducts";
 import ProgresGif from "../ProgresGif";
-import Chargincards from '../CharginCards'
 import CategoriesContext from "../../context/CategoriesContext";
+import InfoSearchedProduct from "../../context/InfoSearchedProduct";
+import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
-import InfoSearchedProduct from "../../context/InfoSearchedProduct";
 
 export default function GenerateCard({startRef}) {
-  const Card = React.lazy(() => import('../Card'))
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useContext(CategoriesContext);
@@ -40,7 +39,7 @@ export default function GenerateCard({startRef}) {
       <div className=" ProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0
           ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
-          : products.map((product) => <Suspense key={product.id} fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
+          : products.map((product) => <Card key={product.id} {...product} />)}
       </div>
       <div className = 'next-page-button-container'>
         {hasta > 25 ? (

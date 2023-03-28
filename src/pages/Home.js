@@ -11,10 +11,11 @@ function Home() {
   return(
     <div className = "Home">
         <NavBar/>
-        <p ref = {startRef} id = "start"></p>
-        <ButtonGoTop reference = {startRef}/>
+        <p id = "top"></p>
+        <ButtonGoTop/>
         <ProductsRecomended/>
         <CategoriesNavBar/>
+        <p ref = {startRef} id = "start"></p>
         <GenerateCards startRef = {startRef}/>
     </div>
   

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 
-export default function ButtonGoTop({reference}){
+export default function ButtonGoTop(){
     const [showButtonScrollTop, setShowButtonScrollTop] = useState(false)
 
     //function that focus on the start of the page
     function goTop(){
-        reference.current.scrollIntoView({behavior:"smooth", block:'center',inline:"center"})
+        let reference = document.getElementById("top")
+        reference.scrollIntoView({behavior:"smooth", block:'center',inline:"center"})
     }
     //function that detect when scroll is higher than x and show the button go top
     window.onscroll = function(){

@@ -1,11 +1,10 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState} from "react";
 import GetProductsOfSeller from "../../../../services/getProductsOfSeller";
 import ProgresGif from "../../../ProgresGif";
-import Chargincards from '../../../CharginCards'
+import Card from '../CardOfProduct'
 import "./index.css";
 
 export default function GenerateCard({updateProducts}){
-  const Card = React.lazy(() => import('../CardOfProduct'))
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [desde, setDesde] = useState(0);
@@ -31,7 +30,7 @@ export default function GenerateCard({updateProducts}){
       <div className=" SellerProductsContainer row justify-content-center">
         {products[0] === "Not Found" || products.length === 0 || products === undefined || products === null || products.detail === 'Invalid token.'
           ? <div className = 'NotFoundMessage'><strong>No tienes porductos</strong></div>
-          : products.map((product) => <Suspense key={product.id} fallback = {<Chargincards/>}><Card key={product.id} {...product} /></Suspense>)}
+          : products.map((product) =><Card key={product.id} {...product} />)}
       </div>
       <div className = 'next-page-button-container'>
         {hasta > 25 ? (
