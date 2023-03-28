@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import NavBar from '../components/NavBar'
-import CategoriesNavBar from '../components/CategoriesNavBar'
+import FiltersNavBar from '../components/FiltersNavBar'
 import GenerateCards from '../components/GenerateCards'
 import ProductsRecomended from '../components/ProductsRecomended'
 import ButtonGoTop from "../components/ButtonGoTop";
@@ -14,7 +14,7 @@ function Home() {
         <p id = "top"></p>
         <ButtonGoTop/>
         <ProductsRecomended/>
-        <CategoriesNavBar/>
+        <FiltersNavBar/>
         <p ref = {startRef} id = "start"></p>
         <GenerateCards startRef = {startRef}/>
     </div>

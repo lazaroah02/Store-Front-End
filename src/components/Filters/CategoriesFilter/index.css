@@ -1,0 +1,40 @@
+.CategoriesFilter{
+    resize:horizontal;
+    background-color:white;
+    border-radius: 10px;
+    border:1px solid gray;
+    display: inline-block;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding:0.5rem 0.5rem 0.5rem;
+    min-width: 100px;
+}
+.CategoriesFilter:hover{
+    background-color:azure;
+    box-shadow: 3px 3px 3px 3px aliceblue;
+    cursor: pointer;
+}
+.category-container{
+    display: inline-block;
+    min-width: 100px;
+    
+    scroll-snap-align: center;
+}
+.category{
+    border:1px solid;
+    border-radius: .5rem;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    margin-top:.5rem;
+    margin-left: -1rem;
+}
+.category:hover{
+    background-color:rgb(214, 230, 244);
+    margin-left:1px;
+}
+ul{
+    list-style: none;
+}
+
