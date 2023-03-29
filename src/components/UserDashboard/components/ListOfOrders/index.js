@@ -1,18 +1,43 @@
 import React, {useEffect, useState} from 'react'
 import getPedidosOfSeller from "../../../../services/getPedidosOfSeller"
+import setPedidosFinalizados from '../../../../services/setPedidosFinalizados'
+import ProgresGif from '../../../ProgresGif'
 import './index.css'
 
 export default function InfoUser(){
     const [orders, setOrders] = useState([])
     const [pedidosHechos, setPedidosHechos] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [pedirOrders, setPedirOrders] = useState(0)
+
     useEffect(() => {
+        setLoading(true)
        getPedidosOfSeller()
        .then(data => {
-        setOrders(data)})
-    },[])
+        setOrders(data)
+        setLoading(false)
+    })
+    },[pedirOrders])
 
     function handleSendPedidosHechos(){
-        console.log(pedidosHechos)
+        if(pedidosHechos.length > 0){
+            setLoading(true)
+            setPedidosFinalizados(pedidosHechos)
+            .then(res => {
+                if(res.status === 200){
+                    alert("Operacion Exitosa")
+                    setLoading(false)                    
+                    setPedidosHechos([])
+                    setPedirOrders(pedirOrders + 1)
+                }
+                else{
+                    alert("Error al realizar la operacion")
+                }
+            })
+        }
+        else{
+            alert("Debes seleccionar algun pedido")
+        }
     }
 
     function handleAddPedidoHecho(e){
@@ -28,10 +53,10 @@ export default function InfoUser(){
             setPedidosHechos(arr3)
         }
     }
-    console.log(pedidosHechos)
     return(
         <div>
             <div className = 'list-of-orders'>
+                {loading?<ProgresGif/>:null}
                 <table className = "table tabla-orders">
                     <thead>
                         <tr>
