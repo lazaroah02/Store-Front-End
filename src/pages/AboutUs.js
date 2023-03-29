@@ -1,12 +1,10 @@
 import React from 'react';
-import ShowVideo from '../components/ShowVideo'
 import NavBar from '../components/NavBar'
 
 export default function AboutUs(){
     return(
         <div>
             <NavBar/>
-            <ShowVideo/>
             <div className = "container">
                 <h3>About us</h3>
                 <p>Somos una empresa de produccion de piezas de goma y caucho para todo tipo de necesidades</p>

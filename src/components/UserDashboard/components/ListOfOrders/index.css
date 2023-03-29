@@ -1,5 +1,14 @@
 .list-of-orders{
-    width:100vw;
-    height:100vh;
-    float:right;
+    max-width:100%;
+    padding-top: 4rem;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
 }
+.tabla-orders{
+    max-width: 100%;
+    border: 1px solid rgb(180, 175, 175);
+}
+.button-marcar-como-hecho-container{
+    text-align: center;
+    width: 100%;
+}    
