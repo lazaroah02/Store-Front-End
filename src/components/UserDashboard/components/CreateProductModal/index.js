@@ -34,7 +34,7 @@ export default function (){
           description: e.target[1].value,
           about: e.target[2].value,
           precio: e.target[3].value,
-          categoria_id: e.target[5].value,
+          categoria_id: e.target[4].value,
           img1: document.getElementById("img1").files[0],
           img2: document.getElementById("img2").files[0],
           img3: document.getElementById("img3").files[0],

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext} from "react";
 import ProgresGif from "../ProgresGif";
 import CategoriesContext from "../../context/CategoriesContext";
 import PriceFilterContext from "../../context/PriceFilterContext";
+import GetAllProductsContext from "../../context/GetAllProductsContext";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
 import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
@@ -14,31 +15,36 @@ import getProductsByPrice from '../../services/Filters/getProductsByPrice'
 export default function GenerateCard({startRef}) {
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { category } = useContext(CategoriesContext);
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
-  const {price} = useContext(PriceFilterContext);
+  const {category, setCategory } = useContext(CategoriesContext);
+  const {price, setPrice} = useContext(PriceFilterContext);
+  const {getAll, setGetAll} = useContext(GetAllProductsContext);
   const [desde, setDesde] = useState(0);
   const [hasta, setHasta] = useState(25);
 
   //get all products
   useEffect(() => {
-    if(category === null || category === 0){
+    if(getAll){
       setLoading(true);
       getAllProducts(desde, hasta).then((data) => {
         setProduct(data);
         setLoading(false);
+        setPrice(null)
+        setCategory(null)
         startRef.current.scrollIntoView({block:'center',inline:"center"});
       });
     }
-  }, [category, desde]);
+  }, [getAll, desde]);
 
    //get the products by category
    useEffect(() => {
-    if(category !== null && category !== 0){
+    if(category !== null){
     setLoading(true);
       getProductsByCategory(category, desde, hasta).then((data) => {
         setProduct(data);
         setLoading(false);
+        setPrice(null)
+        setGetAll(false)
         startRef.current.scrollIntoView({block:'center',inline:"center"});
       })
     }
@@ -51,11 +57,12 @@ export default function GenerateCard({startRef}) {
         getProductsByPrice(price, desde, hasta).then((data) => {
           setProduct(data);
           setLoading(false);
+          setCategory(null)
+          setGetAll(false)
           startRef.current.scrollIntoView({block:'center',inline:"center"});
         })
     }
   },[price, desde]);
-
 
   //search the product that the user input on search field
   useEffect(() => {

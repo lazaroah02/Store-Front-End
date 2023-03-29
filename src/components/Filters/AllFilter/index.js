@@ -1,22 +1,12 @@
 import React, {useContext} from "react";
 import "./index.css";
-import CategoriesContext from '../../../context/CategoriesContext'
+import GetAllProductsContext from '../../../context/GetAllProductsContext'
 
 export default function AllFilter() {
-  const {category, setCategory} = useContext(CategoriesContext)
-
-  function handleSetCategory(){
-    if(category === null){
-      setCategory(0)
-    }
-    else{
-      setCategory(null)
-    }
-  }
-
+  const {setGetAll} = useContext(GetAllProductsContext)
   return (
     <div className = "all-container">
-       <button className = "AllFilter" onClick = {() => handleSetCategory(0)}>All</button>
+       <button className = "AllFilter" onClick = {() => setGetAll(true)}>All</button>
     </div>
   );
 }
