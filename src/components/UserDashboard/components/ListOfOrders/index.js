@@ -66,6 +66,7 @@ export default function InfoUser(){
                             <th scope="col">Precio</th>
                             <th scope="col">Total</th>
                             <th scope="col">Usuario</th>
+                            <th scope="col">Fecha</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +84,7 @@ export default function InfoUser(){
                         <td>${order.precio_producto}</td>
                         <td>${order.total}</td>
                         <td>{order.user}</td>
+                        <td>{order.created_at.substr(0,10)}</td>
                     </tr>)
                     }
                     </tbody>

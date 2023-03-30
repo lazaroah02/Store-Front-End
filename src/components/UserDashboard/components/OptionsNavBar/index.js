@@ -9,7 +9,7 @@ import './index.css'
 export default function OptionsNavBar(){
     const {setComponent} = useContext(ActualComponentContext)
     const [expanded, setExpanded] = useState(false)
-    const {infoUser, } = useContext(InfoUserContext)
+    const {infoUser} = useContext(InfoUserContext)
 
     function handleMakeUserSeller(){
       makeUserSeller()
@@ -41,7 +41,7 @@ export default function OptionsNavBar(){
                 setExpanded(false)
                 }}><img alt = "icon" src = 'icons/LogoProfile.png'/>Your Info</button>
               
-              {infoUser !== undefined && infoUser[0].is_seller === true?
+              {infoUser !== undefined && infoUser.is_seller === true?
               <div>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
                 setComponent('your-products')
