@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, Suspense} from 'react';
+import React, {useContext, useState, useEffect, Suspense, useRef} from 'react';
 import './index.css';
 import ProductOfSellerDetail from '../../context/productOfSellerDetail'
 import getProductDetail from '../../../../services/getProductDetail'
@@ -7,41 +7,43 @@ import ShowEditProductModalContext from '../../context/showEditProductModalConte
 import UpdateProductDetailContext from '../../context/updateProductDetail'
 
 export default function ShowProductDetail(){
-    
     const EditProductModal = React.lazy(() => import('../EditProductModal')) 
-
     const {actualProduct, } = useContext(ProductOfSellerDetail)
-    const [infoProduct, setInfoProduct] = useState(undefined)
+    const [infoProduct, setInfoProduct] = useState({})
     const {updateProductDetail} = useContext(UpdateProductDetailContext)
-
     const {setShowEditProductModal} = useContext(ShowEditProductModalContext)
+
+    //images references
+    const refImg1 = useRef()
+    const refImg2 = useRef()
+    const refImg3 = useRef()
 
     useEffect(() => {
         if(actualProduct !== undefined){
             getProductDetail(actualProduct.id)
-            .then(data => setInfoProduct(data[0]))
+            .then(data => setInfoProduct(data))
         }
     },[actualProduct, updateProductDetail])
 
     let contador = -1
     //handle see the next image 
     function seeNextImage(){
+        let images = [refImg1.current, refImg2.current, refImg3.current]
         if(contador < 2 && contador >= -1){
             if(contador === -1){
                 contador += 2
             }else{
                 contador += 1
             }
-            let img = document.getElementById(infoProduct.fotos[contador])
-            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }
     //handle see the previous image
     function seePreviousImage(){
+        let images = [refImg1.current, refImg2.current, refImg3.current]
         if(contador <= 3 && contador > 0){
             contador -= 1
-            let img = document.getElementById(infoProduct.fotos[contador])
-            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }
 
@@ -52,13 +54,27 @@ export default function ShowProductDetail(){
             </Suspense>
 
             <div className = "PhotosDetailContainer ">
-                {infoProduct === undefined?null:infoProduct.fotos.map((foto, index) => <img 
-                    key = {index}
-                    id = {foto}
+                <img 
+                    key = {0}
+                    ref = {refImg1}
                     className = "PhotoProduct"
-                    src={`${BASE_URL}${foto}`} 
-                    alt = {"imagen"}
-                    />)}   
+                    src={`${BASE_URL}${infoProduct.product_img1}`} 
+                    alt = {infoProduct.product_name}
+                    />  
+                <img 
+                    key = {1}
+                    ref = {refImg2}
+                    className = "PhotoProduct"
+                    src={`${BASE_URL}${infoProduct.product_img2}`} 
+                    alt = {infoProduct.product_name}
+                    />  
+                <img 
+                    key = {2}
+                    ref = {refImg3}
+                    className = "PhotoProduct"
+                    src={`${BASE_URL}${infoProduct.product_img3}`} 
+                    alt = {infoProduct.product_name}
+                    />  
             </div>
 
              <div>
@@ -79,10 +95,10 @@ export default function ShowProductDetail(){
             </div>
 
             <div className = "ProductName container">
-                <h3>{infoProduct === undefined?null:infoProduct.name}</h3>
+                <h3>{infoProduct === undefined?null:infoProduct.product_name}</h3>
                 <br/>
                 <h5>Description:</h5>
-                {infoProduct === undefined?null:infoProduct.description}
+                {infoProduct === undefined?null:infoProduct.product_description}
                 <br/>
                 <br/>
                 <h5>About the product:</h5>

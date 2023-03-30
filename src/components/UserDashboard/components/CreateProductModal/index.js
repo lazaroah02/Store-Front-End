@@ -102,7 +102,7 @@ export default function (){
                             key = {category.id}
                             value = {category.id}
                             >
-                            {category.name}
+                            {category.nombre}
                             </option>
                         ))}
                     </select>

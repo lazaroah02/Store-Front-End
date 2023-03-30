@@ -12,10 +12,15 @@ export default function createNewCategory(info){
     formData.append('about', info.about)
     formData.append('precio', info.precio)
     formData.append('categoria', info.categoria_id)
-    formData.append('product_img1', info.img1)
-    formData.append('product_img2', info.img2)
-    formData.append('product_img3', info.img3)
-    
+    if(info.img1 !== undefined){
+        formData.append('product_img1', info.img1)
+    }
+    if(info.img2 !== undefined){
+        formData.append('product_img2', info.img2)
+    }
+    if(info.img3 !== undefined){
+        formData.append('product_img3', info.img3)
+    }    
     return(
         fetch(URL_PRODUCTS_OF_SELLER,{
             method: 'PUT',

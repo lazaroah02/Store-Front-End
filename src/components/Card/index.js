@@ -6,7 +6,7 @@ import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
 import addToCartIcon from '../../assets/cart-add-regular-24.png'
 
-export default function Card({id, name, precio, foto}){
+export default function Card({id, product_name, precio, product_img1}){
   const {token} = useContext(UserTokenContext)
   const [, setLocation] = useLocation()
   const [,add] = addProduct()
@@ -19,7 +19,7 @@ export default function Card({id, name, precio, foto}){
     else{
         add({
           id:id,
-          name:name,
+          name:product_name,
           price:precio,
           cantidad:1})
         setProductAdded(true)
@@ -33,10 +33,10 @@ export default function Card({id, name, precio, foto}){
       
        <div className="ProductCard" id = {id} >
         <div className = 'image-container'>
-          <img onClick={() => handleClick()} src={`${BASE_URL}${foto}`} className="card-img-top " alt={name}/>
+          <img onClick={() => handleClick()} src={`${BASE_URL}${product_img1}`} className="card-img-top " alt={product_name}/>
         </div>
        <div className="body">
-         <h5 className="card-title" onClick={() => handleClick()}>{name}</h5>
+         <h5 className="card-title" onClick={() => handleClick()}>{product_name}</h5>
          <p className="card-text" onClick={() => handleClick()}>${precio}</p>
          <div onClick={addToCart} className="add-to-cart-button ">
             {productAdded

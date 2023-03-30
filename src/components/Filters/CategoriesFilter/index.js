@@ -30,7 +30,7 @@ export default function CategoriesFilter() {
                 setCategory(category.id)
                 setShowModal(false)
                 }}>
-                {category.name}
+                {category.nombre}
               </li>)}
             </ul>
           </ModalBody>

@@ -8,7 +8,7 @@ export default function GenerateCard({updateProducts}){
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [desde, setDesde] = useState(0);
-  const [hasta, setHasta] = useState(25);
+  const [hasta, setHasta] = useState(24);
 
   useEffect(() => {
     if(updateProducts === true){
@@ -33,18 +33,18 @@ export default function GenerateCard({updateProducts}){
           : products.map((product) =><Card key={product.id} {...product} />)}
       </div>
       <div className = 'next-page-button-container'>
-        {hasta > 25 ? (
+        {hasta > 24 ? (
           <button className = 'btn btn-primary' onClick={() => {
-            setDesde(desde - 25)
-            setHasta(hasta - 25)
+            setDesde(desde - 24)
+            setHasta(hasta - 24)
           }}>Preview Page</button>
         ) : null}
-        {products.length >= 25 ? (
+        {products.length >= 24 ? (
           <button
             className = 'btn btn-primary'
             onClick={() => {
-              setDesde(desde + 25);
-              setHasta(hasta + 25)
+              setDesde(desde + 24);
+              setHasta(hasta + 24)
             }}
           >
             Next Page

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useRef} from 'react';
 import './index.css';
 import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
@@ -10,6 +10,11 @@ export default function ShowProductDetail(params){
     const {token} = useContext(UserTokenContext)
     const [productAdded, setProductAdded] = useState(false)
     const [,add] = addProduct()
+
+    //images references
+    const refImg1 = useRef()
+    const refImg2 = useRef()
+    const refImg3 = useRef()
 
     function addToCart(){
         if(token == null){
@@ -29,34 +34,48 @@ export default function ShowProductDetail(params){
     //handle next image   
     let contador = -1
     function seeNextImage(){
+        let images = [refImg1.current, refImg2.current, refImg3.current]
         if(contador < 2 && contador >= -1){
             if(contador === -1){
                 contador += 2
             }else{
                 contador += 1
             }
-            let img = document.getElementById(params.fotos[contador])
-            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
+            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }
     //handle previous image
     function seePreviousImage(){
+        let images = [refImg1.current, refImg2.current, refImg3.current]
         if(contador <= 3 && contador > 0){
             contador -= 1
-            let img = document.getElementById(params.fotos[contador])
-            img.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
+        images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
     }
     return(
         <div>
             <section className = "PhotosDetailContainer ">
-                {params.fotos.map((foto, index) => <img 
-                    key = {index}
+                <img 
+                    key = {0}
+                    ref = {refImg1}
                     className = "PhotoProduct"
-                    id = {foto}
-                    src={`${BASE_URL}${foto}`} 
+                    src={`${BASE_URL}${params.product_img1}`} 
                     alt = {params.name}
-                    />)}
+                    />
+                <img 
+                    key = {1}
+                    ref = {refImg2}
+                    className = "PhotoProduct"
+                    src={`${BASE_URL}${params.product_img2}`} 
+                    alt = {params.name}
+                    />
+                <img 
+                    key = {2}
+                    ref = {refImg3}
+                    className = "PhotoProduct"
+                    src={`${BASE_URL}${params.product_img3}`} 
+                    alt = {params.name}
+                    />
             </section>
 
             <div>
@@ -73,10 +92,10 @@ export default function ShowProductDetail(params){
                 <button onClick={() => addToCart()} className = "btn btn-primary">{productAdded?'In Cart':'Add to cart'}</button>
                 </div>
             <div className = "ProductName container">
-                <h3>{params.name}</h3>
+                <h3>{params.product_name}</h3>
                 <br/>
                 <h5>Description:</h5>
-                {params.description}
+                {params.product_description}
                 <br/>
                 <br/>
                 <h5>About the product:</h5>

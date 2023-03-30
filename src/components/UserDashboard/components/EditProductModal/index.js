@@ -16,15 +16,14 @@ export default function EditProductModal(infoProduct){
     const [loading, setLoading] = useState(false);
 
     //Info of the form
-    const [productName, setProductName] = useState(infoProduct.name);
-    const [productDescription, setProductDescription] = useState(infoProduct.description);
+    const [productName, setProductName] = useState(infoProduct.product_name);
+    const [productDescription, setProductDescription] = useState(infoProduct.product_description);
     const [productAbout, setProductAbout] = useState(infoProduct.about);
     const [productPrice, setProductPrice] = useState(infoProduct.precio);
-    const [productCategory, setProductCategory] = useState(infoProduct.category_id);
+    const [productCategory, setProductCategory] = useState(infoProduct.categoria);
     //error messages
     const [showEmptyName, setShowEmptyName] = useState(true);
     const [showErrorPrice, setShowErrorPrice] = useState(true);
-    const [showErrorImg1, setShowImg1] = useState(true);
 
     useEffect(() => {
         getCategories().then((data) => {
@@ -33,11 +32,11 @@ export default function EditProductModal(infoProduct){
       }, [updateCategories]);
 
     useEffect(() => {
-        setProductName(infoProduct.name)
-        setProductDescription(infoProduct.description)
+        setProductName(infoProduct.product_name)
+        setProductDescription(infoProduct.product_description)
         setProductAbout(infoProduct.about)
         setProductPrice(String(infoProduct.precio))
-        setProductCategory(infoProduct.category_id)
+        setProductCategory(infoProduct.categoria)
         
         //obtengo el option que tiene la misma categoria del producto y lo selecciono
         let option = document.getElementById(productCategory)
@@ -67,8 +66,6 @@ export default function EditProductModal(infoProduct){
             setShowEmptyName(false)
         }else if(info.precio === "" || ((String(info.precio)).replace(/[^0-9]/g,"")).length !== info.precio.length){
             setShowErrorPrice(false)
-        }else if(info.img1 === undefined){
-            setShowImg1(false)
         }
         else{
             setLoading(true)
@@ -127,17 +124,28 @@ export default function EditProductModal(infoProduct){
                     {categories.length === 0
                         ? null
                         : categories.map((category) => (
+                            category.id === productCategory
+                            ?
                             <option 
                             key = {category.id}
-                            value={category.id}>
-                            {category.name}
+                            value={category.id}
+                            selected = "selected"
+                            >
+                            {category.nombre}
                             </option>
+                            :
+                            <option 
+                            key = {category.id}
+                            value={category.id}
+                            >
+                            {category.nombre}
+                            </option>   
                         ))}
+                        aa
                     </select>
                     <br />
                     <br />
-                    <input id="img1" type="file" accept=".png, .jpg" onChange={() => setShowImg1(true)}></input>
-                    <p className = 'error-message' hidden={showErrorImg1}>Debes ingresar una imagen</p>
+                    <input id="img1" type="file" accept=".png, .jpg"></input>
                     <br />
                     <br />
                     <input id="img2" type="file" accept=".png, .jpg" ></input>

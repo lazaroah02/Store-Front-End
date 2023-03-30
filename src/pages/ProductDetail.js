@@ -6,7 +6,7 @@ import ProgresGif from '../components/ProgresGif'
 
 export default function ProductDetail({params}) {
     const {keyword} = params
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true)
     
     useEffect(function(){
@@ -20,7 +20,7 @@ export default function ProductDetail({params}) {
         <div className = "App">
             <NavBar/>
             {loading?<div className ="cargando"><ProgresGif/></div>:null }
-            <div>{product.map(el => <ShowProductDetail key = {el} {...el}/>)}</div>
+            <div><ShowProductDetail key = {product.id} {...product}/></div>
         </div>
     )
 }
