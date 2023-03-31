@@ -1,7 +1,7 @@
 .new-navbar{
     position:fixed;
     top: 1px;
-    width: 100%;
+    width: 100vw;
     height: 50px;
     background-color: #fff;
     z-index: 100;
@@ -10,7 +10,7 @@
 
 .new-navbar > div{
     display: inline-block;
-    width: 19%;
+    width: 20%;
     height: 100%;
     text-align: center;
     padding-top: 10px;

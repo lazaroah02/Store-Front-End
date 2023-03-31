@@ -1,14 +1,13 @@
-.list-of-orders{
-    max-width:100%;
-    padding-top: 4rem;
-    scroll-snap-type: x mandatory;
-    overflow-x: auto;
+.Orders-Container{
+    overflow-y: hidden;
 }
-.tabla-orders{
-    max-width: 100%;
-    border: 1px solid rgb(180, 175, 175);
-}
-.button-marcar-como-hecho-container{
+.mensaje-debes-ser-vendedor{
     text-align: center;
-    width: 100%;
-}    
+    margin-top: 40vh;
+    height: 50px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border:1px solid;
+    border-radius: 1rem;
+    padding-top: 10px;
+}

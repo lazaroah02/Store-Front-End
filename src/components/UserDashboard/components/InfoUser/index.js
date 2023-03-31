@@ -2,6 +2,9 @@ import React, {useEffect, useContext, useState} from 'react'
 import getInfoUser from '../../../../services/getInfoUser'
 import UserTokenContext from '../../../../context/UserTokenContext'
 import InfoUserContext from '../../../../context/InfoUserContext'
+import EditInfoUserForm from '../EditInfoUserForm'
+import NavBar from '../../../NavBar'
+import OptionsNavBar from '../OptionsNavBar'
 import './index.css'
 
 export default function InfoUser(){
@@ -16,20 +19,14 @@ export default function InfoUser(){
             setInfo(data)
         })
     },[token])
+
     return(
-        <div className = 'info-user '>
-            {info === null?null:
-            <div className = 'info-user-container'>
-                <p>{info.email}</p>
-                <p>{info.username}</p>
-                <p>{info.name}</p>
-                <p>{info.last_name}</p>
-                <p>{info.state}</p>
-                <p>{info.zip_code}</p>
-                <p>{info.phone}</p>
-                <p>{info.country}</p>
-                <p>{info.address}</p>
-                <button className = "btn btn-primary">Edit Info</button>
+        <div className = 'info-user'>
+            <NavBar/>
+            <OptionsNavBar/>
+            {info === null || info === undefined?null:
+            <div>
+                <EditInfoUserForm/>
             </div>
             }
         </div>

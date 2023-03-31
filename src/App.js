@@ -7,6 +7,8 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Contact from './pages/Contact'
 import UserProfile from './pages/UserProfile'
+import InfoUser from './components/UserDashboard/components/InfoUser'
+import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
 import {CategoryContextProvider} from './context/CategoriesContext/index'
 import {InfoUserContextProvider} from './context/InfoUserContext'
 import {UserTokenContextProvider} from './context/UserTokenContext'
@@ -34,6 +36,8 @@ export default function App() {
             <Route component = {SignUp} path = '/register'/>
             <Route component = {Contact} path = '/contact'/>
             <Route component = {UserProfile} path = '/user-profile'/>
+            <Route component = {InfoUser} path = '/user-profile/info'/>
+            <Route component = {LisfOfOrders} path = '/user-profile/list-of-orders'/>
           </InfoSearchedProduct>
         </InfoUserContextProvider>
       </CategoryContextProvider>

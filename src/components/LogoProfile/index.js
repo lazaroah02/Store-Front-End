@@ -10,7 +10,7 @@ export default function LogoProfile(){
         <div>
             {token !== undefined && token !== null
             ?
-            <Link to = "/user-profile">
+            <Link to = "/user-profile/info">
                 <div>
                     <img alt = "user-profile" src = {userIcon}></img>
                 </div>
