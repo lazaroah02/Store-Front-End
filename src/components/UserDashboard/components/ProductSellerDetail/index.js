@@ -1,29 +1,48 @@
 import React, {useContext, useState, useEffect, Suspense, useRef} from 'react';
 import './index.css';
-import ProductOfSellerDetail from '../../context/productOfSellerDetail'
-import getProductDetail from '../../../../services/getProductDetail'
+import getProductOfSellerDetail from '../../../../services/getProductOfSellerDetail'
 import {BASE_URL} from '../../../../settings'
 import ShowEditProductModalContext from '../../context/showEditProductModalContext'
 import UpdateProductDetailContext from '../../context/updateProductDetail'
+import NavBar from "../../../NavBar"
+import OptionsNavBar from '../OptionsNavBar'
+import UserTokenContext from '../../../../context/UserTokenContext'
+import InfoUserContext from '../../../../context/InfoUserContext'
+import getInfoUser from '../../../../services/getInfoUser'
 
-export default function ShowProductDetail(){
+//icons import
+import RightArrow from '../../../../assets/right-arrow-alt-regular-24.png'
+import LeftArrow from '../../../../assets/left-arrow-alt-regular-24.png'
+
+
+export default function ShowProductDetail({params}){
     const EditProductModal = React.lazy(() => import('../EditProductModal')) 
-    const {actualProduct, } = useContext(ProductOfSellerDetail)
     const [infoProduct, setInfoProduct] = useState({})
     const {updateProductDetail} = useContext(UpdateProductDetailContext)
     const {setShowEditProductModal} = useContext(ShowEditProductModalContext)
+    const {keyword} = params
 
     //images references
     const refImg1 = useRef()
     const refImg2 = useRef()
     const refImg3 = useRef()
 
+    const {token} = useContext(UserTokenContext)
+    const {setInfoUser} = useContext(InfoUserContext)
+    const [info, setInfo] = useState(null)
+  
+      useEffect(() => {
+          getInfoUser(token)
+          .then(data => {
+              setInfoUser(data)
+              setInfo(data)
+          })
+      },[token])
+
     useEffect(() => {
-        if(actualProduct !== undefined){
-            getProductDetail(actualProduct.id)
-            .then(data => setInfoProduct(data))
-        }
-    },[actualProduct, updateProductDetail])
+        getProductOfSellerDetail(keyword)
+        .then((data )=> setInfoProduct(data))                
+    },[updateProductDetail])
 
     let contador = -1
     //handle see the next image 
@@ -49,6 +68,8 @@ export default function ShowProductDetail(){
 
     return(
         <div className = 'div-container-product-detail'>
+            <NavBar/>
+            {info !== null? <OptionsNavBar is_seller = {info.is_seller}/>:null}
             <Suspense>
                 <EditProductModal {...infoProduct}/>
             </Suspense>
@@ -79,10 +100,10 @@ export default function ShowProductDetail(){
 
              <div>
                 <button className = "boton-next-image btn" onClick={() => seeNextImage()}>
-                    <img alt = "right-arrow" src = 'icons/right-arrow-alt-regular-24.png'/>
+                    <img alt = "right-arrow" src = {RightArrow}/>
                 </button>
                 <button  className = "boton-previous-image btn" onClick={() => seePreviousImage()}>
-                    <img alt = "left-arrow" src = 'icons/left-arrow-alt-regular-24.png'/>    
+                    <img alt = "left-arrow" src = {LeftArrow}/>    
                 </button> 
              </div>       
             

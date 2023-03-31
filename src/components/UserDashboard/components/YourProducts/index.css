@@ -1,7 +1,6 @@
 .your-products{
     width:100vw;
-    height:90vh;
-    float:right;
+    min-height:100vh;
 }
 
 .AddProductForm input{
@@ -18,7 +17,7 @@
 }
 .div-container-button{
     text-align:center;
-    margin-top:1rem;
+    margin-top:5rem;
     margin-bottom:1rem;
 }
 .btn-add-category{

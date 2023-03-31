@@ -1,14 +1,16 @@
-import React, {useRef, useContext} from 'react'
+import React, {useRef} from 'react'
 import {BASE_URL} from '../../../../settings'
 import deleteAnProduct from '../../../../services/deleteAnProduct'
-import ActualComponentContext from '../../context/actualComponentContext'
-import ProductOfSellerDetail from '../../context/productOfSellerDetail'
 import './index.css'
+import {useLocation} from 'wouter'
+
+//icons import
+import EditButtonIcon from '../../../../assets/edit-alt-regular-24.png'
+import DeleteButtonIcon from '../../../../assets/trash-regular-24.png'
 
 export default function Card({id, product_name, precio, product_img1}){
   const ref = useRef()
-  const {setComponent} = useContext(ActualComponentContext)
-  const {setActualProduct} = useContext(ProductOfSellerDetail)
+  const [,setLocation] = useLocation()
 
   function handleDeleteAnProduct(){
     let selection = window.confirm("Are you sure you want to delete")
@@ -29,11 +31,10 @@ export default function Card({id, product_name, precio, product_img1}){
        <div className="seller-card-body">
          <h5 className="card-title" >{product_name.length > 20?`${product_name.substr(0,20)}...`:product_name}</h5>
          <p className="card-title" >${precio}</p>
-         <button className="btn btn-danger delete-product-button" onClick={() => handleDeleteAnProduct()}><img alt = "icon" src = 'icons/trash-regular-24.png'/></button>
+         <button className="btn btn-danger delete-product-button" onClick={() => handleDeleteAnProduct()}><img alt = "icon" src = {DeleteButtonIcon}/></button>
          <button className="btn btn-primary update-product-button" onClick={() => {
-          setActualProduct({id:id})
-          setComponent('product-seller-detail')
-          }}><img src = 'icons/edit-alt-regular-24.png' alt = "icon"/></button>
+          setLocation(`/user-profile/your-products/product/${id}`)
+          }}><img src = {EditButtonIcon} alt = "icon"/></button>
        </div>
      </div>
 

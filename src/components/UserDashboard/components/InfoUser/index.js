@@ -23,7 +23,7 @@ export default function InfoUser(){
     return(
         <div className = 'info-user'>
             <NavBar/>
-            <OptionsNavBar/>
+            {info !== null? <OptionsNavBar is_seller = {info.is_seller}/>:null}
             {info === null || info === undefined?null:
             <div>
                 <EditInfoUserForm/>

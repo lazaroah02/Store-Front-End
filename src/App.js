@@ -6,9 +6,10 @@ import AboutUs from './pages/AboutUs'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Contact from './pages/Contact'
-import UserProfile from './pages/UserProfile'
 import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
+import YourProducts from './components/UserDashboard/components/YourProducts'
+import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
 import {CategoryContextProvider} from './context/CategoriesContext/index'
 import {InfoUserContextProvider} from './context/InfoUserContext'
 import {UserTokenContextProvider} from './context/UserTokenContext'
@@ -18,6 +19,13 @@ import {PriceFilterContextProvider} from './context/PriceFilterContext'
 import {GetAllProductsContextProvider} from './context/GetAllProductsContext'
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import 'bootstrap'
+//import of context of user dasboard
+import { ShowCreateProductModalContextProvider } from './components/UserDashboard/context/showCreateProductModalContext'
+import { ShowEditProductModalContextProvider } from './components/UserDashboard/context/showEditProductModalContext'
+import { UpdateListOfCategoriesProvider } from './components/UserDashboard/context/updateListOfCategories'
+import { UpdateProductDetailProvider } from './components/UserDashboard/context/updateProductDetail'
+import { UpdateProductsListProvider } from './components/UserDashboard/context/updateProductsList'
+
 
 export default function App() {
   return(
@@ -35,9 +43,22 @@ export default function App() {
             <Route component = {SignIn} path = '/login'/>
             <Route component = {SignUp} path = '/register'/>
             <Route component = {Contact} path = '/contact'/>
-            <Route component = {UserProfile} path = '/user-profile'/>
-            <Route component = {InfoUser} path = '/user-profile/info'/>
-            <Route component = {LisfOfOrders} path = '/user-profile/list-of-orders'/>
+
+            <ShowEditProductModalContextProvider>
+            <ShowCreateProductModalContextProvider>
+            <UpdateListOfCategoriesProvider>
+            <UpdateProductDetailProvider>
+            <UpdateProductsListProvider>
+              <Route component = {InfoUser} path = '/user-profile/info'/>
+              <Route component = {LisfOfOrders} path = '/user-profile/list-of-orders'/>
+              <Route component = {YourProducts} path = '/user-profile/your-products'/>
+              <Route component = {ProductSellerDetail} path = '/user-profile/your-products/product/:keyword'/>
+            </UpdateProductsListProvider>    
+            </UpdateProductDetailProvider>    
+            </UpdateListOfCategoriesProvider>  
+            </ShowCreateProductModalContextProvider>
+            </ShowEditProductModalContextProvider>
+
           </InfoSearchedProduct>
         </InfoUserContextProvider>
       </CategoryContextProvider>

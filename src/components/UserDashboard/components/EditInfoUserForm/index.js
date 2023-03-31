@@ -40,7 +40,7 @@ export default function EditInfoUser(){
                 </p>
               </div>
           <div className="card FormInfoContainer container">
-            <div class="card-body">
+            <div className="card-body">
               <div className="FormInfoTitle">
                 <h4>Info User</h4>
               </div>

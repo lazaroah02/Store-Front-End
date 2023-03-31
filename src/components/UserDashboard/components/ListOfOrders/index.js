@@ -22,7 +22,7 @@ export default function ListOfOrders(){
     return(
         <div className = "Orders-Container">
             <NavBar/>
-            <OptionsNavBar/>
+            {info !== null? <OptionsNavBar is_seller = {info.is_seller}/>:null}
             {info !== null && info !== undefined
             ?
             <div>

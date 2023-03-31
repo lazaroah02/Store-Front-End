@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-import ActualComponentContext from '../../context/actualComponentContext'
-import InfoUserContext from '../../../../context/InfoUserContext'
+import React, {useState} from 'react';
 import makeUserSeller from '../../../../services/makeUserSeller'
 import quitUserSeller from '../../../../services/quitUserSeller'
 import LogoutLink from '../../../LogoutLink'
@@ -17,10 +15,8 @@ import ProductsSoldIcon from '../../../../assets/bar-chart-alt-2-solid-24.png'
 import MakeYouSellerIcon from '../../../../assets/navBarIcons/LogoProfile.png' 
 import DejarDeSerVendedorIcon from '../../../../assets/spreadsheet-regular-24.png' 
 
-export default function OptionsNavBar(){
-    const {setComponent} = useContext(ActualComponentContext)
+export default function OptionsNavBar({is_seller = null}){
     const [expanded, setExpanded] = useState(false)
-    const {infoUser} = useContext(InfoUserContext)
     const [,setLocation] = useLocation()
 
     function handleMakeUserSeller(){
@@ -53,14 +49,14 @@ export default function OptionsNavBar(){
                 setExpanded(false)
                 }}><img alt = "icon" src = {LogoProfile}/>Your Info</button>
               
-              {infoUser !== undefined && infoUser.is_seller === true?
+              {is_seller === true?
               <div>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
-                setComponent('your-products')
+                setLocation('/user-profile/your-products')
                 setExpanded(false)
                 }}><img alt = "icon" src = {YourProductsIcon}/>Your Products</button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
-                setComponent('products-sold')
+                setLocation('/user-profile/your-products')
                 setExpanded(false)
                 }}><img alt = "icon" src = {ProductsSoldIcon}/>Sold products</button>
               <button className = 'btn button-show-info-expanded' onClick = {() => {
