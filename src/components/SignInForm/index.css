@@ -1,6 +1,8 @@
+.LoginContainer{
+    padding-top:5rem;
+}
 .FormContainer{
     width: 20rem;
-    margin-top: 13rem;
     border-radius:1rem;
 }
 

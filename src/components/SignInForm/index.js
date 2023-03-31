@@ -25,7 +25,7 @@ export default function SignInForm() {
   }
 
   return (
-    <div>
+    <div className = "LoginContainer">
       <div className="card FormContainer container">
         <div className="card-body">
           <div className="SignTitle">

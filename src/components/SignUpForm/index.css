@@ -1,6 +1,8 @@
+.RegisterContainer{
+    padding-top: 5rem;
+}
 .FormContainer{
     width: 20rem;
-    margin-top: 7rem;
     border-radius:1rem;
 }
 

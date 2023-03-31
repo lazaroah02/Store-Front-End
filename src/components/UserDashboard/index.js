@@ -8,12 +8,14 @@ import ListOfOrders from './components/ListOfOrders'
 import ProductSellerDetail from './components/ProductSellerDetail'
 import ActualComponentContext from './context/actualComponentContext'
 import UserTokenContext from '../../context/UserTokenContext';
+import {useLocation} from 'wouter'
 import './index.css'
 
 export default function UserDashboard(){
     const {actualComponent,} = useContext(ActualComponentContext)
     const [component, setComponent] = useState(actualComponent)
     const {token} = useContext(UserTokenContext)
+    const [,setLocation] = useLocation()
 
     useEffect(() => {
         setComponent(actualComponent)
@@ -32,7 +34,11 @@ export default function UserDashboard(){
                 {component === 'product-seller-detail'?<ProductSellerDetail/>:null}
             </div>
             :
-            null
+            <div className = "button-login-logout-container">
+                <h5>No estas autenticad@</h5>
+                <button className = "btn btn-primary" onClick={() => setLocation("/login")}>Login here</button>
+                <button className = "btn btn-primary" onClick={() => setLocation("/register")}>Register here </button>
+            </div>
             }
             
         </div>

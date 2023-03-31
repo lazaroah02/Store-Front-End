@@ -52,7 +52,7 @@ export default function SignInForm() {
     }
   }
   return (
-    <div>
+    <div className = "RegisterContainer">
       <div className="card FormContainer container">
         <div className="card-body">
           <div className="SignUpTitle">
@@ -112,7 +112,7 @@ export default function SignInForm() {
             <p>
               <span className="align-center">Have already an account?</span>
               <Link className="SignInLink align-center" to="/login">
-                Sign in here
+                Sign in
               </Link>
             </p>
           </div>

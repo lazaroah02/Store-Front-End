@@ -5,7 +5,7 @@ import InfoUserContext from '../../../../context/InfoUserContext'
 import './index.css'
 
 export default function InfoUser(){
-    const {token,} = useContext(UserTokenContext)
+    const {token} = useContext(UserTokenContext)
     const {setInfoUser} = useContext(InfoUserContext)
     const [info, setInfo] = useState(null)
 
@@ -29,6 +29,7 @@ export default function InfoUser(){
                 <p>{info.phone}</p>
                 <p>{info.country}</p>
                 <p>{info.address}</p>
+                <button className = "btn btn-primary">Edit Info</button>
             </div>
             }
         </div>
