@@ -1,0 +1,9 @@
+.history-card-container{
+    width: 100px;
+    height: 60px;
+    background-color: aliceblue;
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid;
+    border-radius: .5rem;
+}

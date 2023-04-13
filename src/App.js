@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Contact from './pages/Contact'
+import Chat from './pages/Chat'
 import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
 import YourProducts from './components/UserDashboard/components/YourProducts'
@@ -43,6 +44,7 @@ export default function App() {
             <Route component = {SignIn} path = '/login'/>
             <Route component = {SignUp} path = '/register'/>
             <Route component = {Contact} path = '/contact'/>
+            <Route component = {Chat} path = '/chat'/>
 
             <ShowEditProductModalContextProvider>
             <ShowCreateProductModalContextProvider>
