@@ -17,7 +17,7 @@ export default function NavBar(){
   
   //function that detect when the user make scroll and hide the top part of the nav bar
   document.onscroll = function(){
-    if(window.scrollY >= 10){
+    if(window.scrollY >= 100){
       setExpandNavBar(false)
     }
     else{

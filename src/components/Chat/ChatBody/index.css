@@ -1,6 +1,6 @@
 .chat-body{
     min-width: 100vw;
-    min-height: 100vh;
+    max-height: 100vh;
 }
 
 .chat-history{

@@ -5,16 +5,24 @@
 }
 
 .input-message{
-    width:70vw;
-    margin-right: 1rem;
+    width:68vw;
+    margin-right: 10px;
 }
 
 .chat-form{
     float:right;
-    margin-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .user-info{
     width:100px;
     text-align:center;
+    margin-left:-25px ;
+}
+
+.messages-container{
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
 }

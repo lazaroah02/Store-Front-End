@@ -1,0 +1,22 @@
+.box-container{
+    width: 100%;
+    display:flex;
+}
+
+.box{
+    max-width: 50%;
+    resize: both;
+    border:1px solid;
+    text-align:start;
+    padding:10px;
+    border-radius:5px;
+    margin-top: 1rem;
+}
+
+.box-float-right{
+    justify-content: end;
+}
+
+.box-float-left{
+   justify-content: start;
+}
