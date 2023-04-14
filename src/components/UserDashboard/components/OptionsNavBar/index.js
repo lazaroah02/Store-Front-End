@@ -6,14 +6,14 @@ import {useLocation} from 'wouter'
 import './index.css'
 
 //icons import
-import LeftArrow from '../../../../assets/left-arrow-alt-regular-24.png' 
-import RightArrow from '../../../../assets/right-arrow-alt-regular-24.png' 
-import LogoProfile from '../../../../assets/navBarIcons/LogoProfile.png' 
-import YourProductsIcon from '../../../../assets/dashboard-solid-24.png' 
-import ListOfOrdersIcon from '../../../../assets/bar-chart-alt-2-solid-24.png' 
-import ProductsSoldIcon from '../../../../assets/bar-chart-alt-2-solid-24.png' 
+import LeftArrow from '../../../../assets/left-arrow-icon.svg' 
+import RightArrow from '../../../../assets/right-arrow-icon.svg' 
+import LogoProfile from '../../../../assets/navBarIcons/logo-profile.svg' 
+import YourProductsIcon from '../../../../assets/products-of-seller-icon.svg' 
+import ListOfOrdersIcon from '../../../../assets/list-of-orders-icon.svg' 
+import ProductsSoldIcon from '../../../../assets/products-sold-icon.svg' 
 import MakeYouSellerIcon from '../../../../assets/navBarIcons/LogoProfile.png' 
-import DejarDeSerVendedorIcon from '../../../../assets/spreadsheet-regular-24.png' 
+import DejarDeSerVendedorIcon from '../../../../assets/dejar-de-ser-vendedor-icon.svg' 
 
 export default function OptionsNavBar({is_seller = null}){
     const [expanded, setExpanded] = useState(false)

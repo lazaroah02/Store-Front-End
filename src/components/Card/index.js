@@ -4,7 +4,7 @@ import {useLocation} from 'wouter'
 import {BASE_URL} from '../../settings'
 import UserTokenContext from '../../context/UserTokenContext'
 import {addProduct} from '../../customHooks/manageCart'
-import addToCartIcon from '../../assets/cart-add-regular-24.png'
+import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 
 export default function Card({id, product_name, precio, product_img1}){
   const {token} = useContext(UserTokenContext)

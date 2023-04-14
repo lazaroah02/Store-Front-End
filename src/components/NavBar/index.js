@@ -6,8 +6,8 @@ import Cart from "../Cart";
 import LogoProfile from "../LogoProfile"
 
 //images import
-import homeIcon from '../../assets/navBarIcons/home-regular-24.png'
-import contactIcon from '../../assets/navBarIcons/envelope-regular-24.png'
+import homeIcon from '../../assets/navBarIcons/home-icon.svg'
+import contactIcon from '../../assets/navBarIcons/mail-icon.svg'
 import LogoChat from '../../assets/navBarIcons/chat-icon.svg'
 
 

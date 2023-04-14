@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {Link} from 'wouter'
 import UserTokenContext from '../../context/UserTokenContext'
-import userIcon from '../../assets/navBarIcons/LogoProfile.png'
-import loginIcon from '../../assets/navBarIcons/log-in-regular-24.png'
+import userIcon from '../../assets/navBarIcons/logo-profile.svg'
+import loginIcon from '../../assets/navBarIcons/log-in-icon.svg'
 
 export default function LogoProfile(){
     const {token} = useContext(UserTokenContext)

@@ -11,8 +11,8 @@ import InfoUserContext from '../../../../context/InfoUserContext'
 import getInfoUser from '../../../../services/getInfoUser'
 
 //icons import
-import RightArrow from '../../../../assets/right-arrow-alt-regular-24.png'
-import LeftArrow from '../../../../assets/left-arrow-alt-regular-24.png'
+import RightArrow from '../../../../assets/right-arrow-icon.svg'
+import LeftArrow from '../../../../assets/left-arrow-icon.svg'
 
 
 export default function ShowProductDetail({params}){

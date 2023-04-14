@@ -3,7 +3,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import UserTokenContext from '../../context/UserTokenContext'
 import InfoUserContext from '../../context/InfoUserContext'
 import {useLocation} from 'wouter'
-import logoutIcon from "../../assets/log-out-regular-24.png"
+import logoutIcon from "../../assets/log-out-icon.svg"
 
 export default function ShowLinks(){
     const {token, setToken} = useContext(UserTokenContext)

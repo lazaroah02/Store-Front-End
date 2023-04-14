@@ -6,7 +6,7 @@ import CategoriesContext from '../../context/CategoriesContext'
 import Modal from 'react-bootstrap/Modal'
 import './index.css'
 import { ModalHeader } from 'react-bootstrap';
-import searchIcon from '../../assets/navBarIcons/search-regular-24.png'
+import searchIcon from '../../assets/navBarIcons/search-icon.svg'
 
 export default function SearchProductForm(){
     const [showModal, setShowModal] = useState(false)

@@ -1,8 +1,8 @@
 import React, {useRef, useState, useEffect} from 'react';
 import "./index.css";
 import Card from '../Card';
-import rightArrow from '../../assets/right-arrow-alt-regular-24.png'
-import leftArrow from '../../assets/left-arrow-alt-regular-24.png'
+import rightArrow from '../../assets/right-arrow-icon.svg'
+import leftArrow from '../../assets/left-arrow-icon.svg'
 import getRecommendedProducts from '../../services/getRecommendedProducts'
 
 export default function ProductsRecomended(){

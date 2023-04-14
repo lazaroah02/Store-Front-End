@@ -28,6 +28,7 @@
     margin-top:5px;
     margin-right: 3px;
     border:1px solid;
+    text-align: center;
 }
 .button-expanded{
     width:2.5rem;
@@ -35,6 +36,7 @@
     float:right;
     margin-right: 15px;
     margin-top: -20px;
+    text-align: center;
 }
 
 .button-show-info-expanded{

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-import ProfileLogo from "../../../assets/navBarIcons/LogoProfile.png"
+import ProfileLogo from "../../../assets/navBarIcons/logo-profile.svg"
 
 export default function ChatHistoryCard({id, username}){
     return(
