@@ -11,6 +11,11 @@ export default function GenerateCard({updateProducts}){
   const [hasta, setHasta] = useState(24);
 
   useEffect(() => {
+    setDesde(0)
+    setHasta(24)
+  },[])
+
+  useEffect(() => {
     if(updateProducts === true){
       setLoading(true);
       GetProductsOfSeller(desde, hasta).then((data) => {

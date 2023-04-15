@@ -18,6 +18,7 @@ import {InfoSearchedProduct} from './context/InfoSearchedProduct'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
 import {PriceFilterContextProvider} from './context/PriceFilterContext'
 import {GetAllProductsContextProvider} from './context/GetAllProductsContext'
+import {PaginationContextProvider} from './context/PaginationContext'
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import 'bootstrap'
 //import of context of user dasboard
@@ -33,6 +34,7 @@ export default function App() {
     <div className = "App">
       <UserTokenContextProvider>
       <ProductsCartContextProvider>
+        <PaginationContextProvider>
       <PriceFilterContextProvider>
         <GetAllProductsContextProvider>
       <CategoryContextProvider>
@@ -66,6 +68,7 @@ export default function App() {
       </CategoryContextProvider>
       </GetAllProductsContextProvider>
       </PriceFilterContextProvider>
+      </PaginationContextProvider>
       </ProductsCartContextProvider>
       </UserTokenContextProvider>
     </div>

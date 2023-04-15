@@ -3,11 +3,13 @@ import Modal from 'react-bootstrap/modal'
 import "./index.css";
 import { ModalBody, ModalTitle } from "react-bootstrap";
 import PriceFilterContext from '../../../context/PriceFilterContext'
+import PaginationContext from "../../../context/PaginationContext"
 
 export default function CategoriesFilter() {
   const [prices,] = useState(["0-100","100-300","300-500","500-1000","1000-2000",">2000"]);
   const [showModal, setShowModal] = useState(false)
   const {setPrice} = useContext(PriceFilterContext)
+  const {setDesde, setHasta} = useContext(PaginationContext)
 
   function handleSetPrice(price){
     if(price === ">2000"){
@@ -30,6 +32,8 @@ export default function CategoriesFilter() {
             <ul>
               {prices.map(price => 
               <li key = {price} className = "price" onClick = {() => {
+                setDesde(0)
+                setHasta(24)
                 handleSetPrice(price)
                 setShowModal(false)
                 }}>

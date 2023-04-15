@@ -8,7 +8,7 @@ export function useInfoUser(){
 
     useEffect(() => {
         if(token !== undefined && token !== null){
-            const {info} = Promise.all([
+            Promise.all([
                 getInfoUser(token),
             ]
             ).then((data) => {

@@ -4,30 +4,48 @@ import CategoriesContext from "../../context/CategoriesContext";
 import PriceFilterContext from "../../context/PriceFilterContext";
 import GetAllProductsContext from "../../context/GetAllProductsContext";
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
+import PaginationContext from "../../context/PaginationContext";
 import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
+import {useIsNear } from "../../customHooks/useIsNear";
+
 //import all filters services
 import getAllProducts from '../../services/Filters/getAllProducts'
 import getProductsByCategory from '../../services/Filters/getProductsByCategory'
 import getProductsByPrice from '../../services/Filters/getProductsByPrice'
 
-export default function GenerateCard({startRef}) {
+export default function GenerateCard() {
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
   const {category, setCategory } = useContext(CategoriesContext);
   const {price, setPrice} = useContext(PriceFilterContext);
   const {getAll, setGetAll} = useContext(GetAllProductsContext);
-  const [desde, setDesde] = useState(0);
-  const [hasta, setHasta] = useState(24);
+  const {desde, hasta, setDesde, setHasta} = useContext(PaginationContext)
+  const [isNear, reference, setStopObserving] = useIsNear()
+  const [noMoreProducts, setNoMoreProducts] = useState(false)
 
   //get all products
   useEffect(() => {
     if(getAll){
       setLoading(true);
       getAllProducts(desde, hasta).then((data) => {
-        setProduct(products.concat(data));
+        if(desde === 0)setStopObserving(false)
+        if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
+          setProduct([])
+          setStopObserving(true)  
+        }
+        if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
+            setNoMoreProducts(true)
+            setStopObserving(true)
+        }
+        if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y no hay productos
+          setProduct(products.concat(data))
+        }
+        if(desde === 0 && data.length > 0){  //si estamos en la primera pagina y hay productos
+          setProduct(data)
+        }
         setLoading(false);
         setPrice(null)
         setCategory(null)
@@ -40,7 +58,21 @@ export default function GenerateCard({startRef}) {
     if(category !== null){
     setLoading(true);
       getProductsByCategory(category, desde, hasta).then((data) => {
-        setProduct(products.concat(data));
+        if(desde === 0)setStopObserving(false)
+        if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
+          setProduct([])
+          setStopObserving(true)  
+        }
+        if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
+            setNoMoreProducts(true)
+            setStopObserving(true)
+        }
+        if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y hay productos
+          setProduct(products.concat(data))
+        }
+        if(desde === 0 && data.length > 0){ //si estamos en la primera pagina y hay productos
+          setProduct(data)
+        }
         setLoading(false);
         setPrice(null)
         setGetAll(false)
@@ -53,7 +85,21 @@ export default function GenerateCard({startRef}) {
     if(price !== null){
       setLoading(true);
         getProductsByPrice(price, desde, hasta).then((data) => {
-          setProduct(data);
+          if(desde === 0)setStopObserving(false)
+          if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
+            setProduct([])
+            setStopObserving(true)  
+          }
+          if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
+              setNoMoreProducts(true)
+              setStopObserving(true)
+          }
+          if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y hay productos
+            setProduct(products.concat(data))
+          }
+          if(desde === 0 && data.length > 0){ 
+            setProduct(data)
+          }
           setLoading(false);
           setCategory(null)
           setGetAll(false)
@@ -66,10 +112,17 @@ export default function GenerateCard({startRef}) {
     setProduct(infoSearchedProduct);
   }, [infoSearchedProduct]);
 
+  useEffect(() => {
+    if(isNear){
+      handleNextPage()
+    }
+  },[isNear])
+
   function handleNextPage(){
     setDesde(desde + 24)
     setHasta(hasta + 24)
   }
+
   return (
     <div>
       {loading ? (
@@ -82,25 +135,13 @@ export default function GenerateCard({startRef}) {
           ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
           : products.map((product) => <Card key={product.id} {...product} />)}
       </div>
-      <div className = 'next-page-button-container'>
-        {hasta > 24 ? (
-          <button className = 'next-page-button' onClick={() => {
-            setDesde(desde - 24)
-            setHasta(hasta - 24)
-          }}>Preview Page</button>
-        ) : null}
-        {products.length >= 24 ? (
-          <button
-            className = 'next-page-button'
-            onClick={() => {
-              setDesde(desde + 24);
-              setHasta(hasta + 24)
-            }}
-          >
-            Next Page
-          </button>
-        ) : null}
-      </div>
+      {loading ? (
+        <div className="cargando">
+          <ProgresGif />
+        </div>
+      ) : null}
+      {noMoreProducts?<div className = "no-more-products">No more Products</div>:null}
+      <div ref = {reference}>.</div>
     </div>
   );
 }
