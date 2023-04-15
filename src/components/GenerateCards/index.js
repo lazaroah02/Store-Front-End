@@ -27,11 +27,10 @@ export default function GenerateCard({startRef}) {
     if(getAll){
       setLoading(true);
       getAllProducts(desde, hasta).then((data) => {
-        setProduct(data);
+        setProduct(products.concat(data));
         setLoading(false);
         setPrice(null)
         setCategory(null)
-        startRef.current.scrollIntoView({block:'center',inline:"center"});
       });
     }
   }, [getAll, desde]);
@@ -41,11 +40,10 @@ export default function GenerateCard({startRef}) {
     if(category !== null){
     setLoading(true);
       getProductsByCategory(category, desde, hasta).then((data) => {
-        setProduct(data);
+        setProduct(products.concat(data));
         setLoading(false);
         setPrice(null)
         setGetAll(false)
-        startRef.current.scrollIntoView({block:'center',inline:"center"});
       })
     }
   },[category, desde]);
@@ -59,7 +57,6 @@ export default function GenerateCard({startRef}) {
           setLoading(false);
           setCategory(null)
           setGetAll(false)
-          startRef.current.scrollIntoView({block:'center',inline:"center"});
         })
     }
   },[price, desde]);
@@ -69,6 +66,10 @@ export default function GenerateCard({startRef}) {
     setProduct(infoSearchedProduct);
   }, [infoSearchedProduct]);
 
+  function handleNextPage(){
+    setDesde(desde + 24)
+    setHasta(hasta + 24)
+  }
   return (
     <div>
       {loading ? (
@@ -83,14 +84,14 @@ export default function GenerateCard({startRef}) {
       </div>
       <div className = 'next-page-button-container'>
         {hasta > 24 ? (
-          <button className = 'btn btn-primary next-page-button' onClick={() => {
+          <button className = 'next-page-button' onClick={() => {
             setDesde(desde - 24)
             setHasta(hasta - 24)
           }}>Preview Page</button>
         ) : null}
         {products.length >= 24 ? (
           <button
-            className = 'btn btn-primary next-page-button'
+            className = 'next-page-button'
             onClick={() => {
               setDesde(desde + 24);
               setHasta(hasta + 24)

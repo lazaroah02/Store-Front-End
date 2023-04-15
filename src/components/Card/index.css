@@ -1,47 +1,60 @@
 .ProductCard{
-    background-color:whitesmoke;
-    border:1px 1px 1px 1px solid;
-    border-radius: 1rem!important;
     margin:1rem 1rem 0rem 1rem;
-    text-align: center;
-    width:23rem;
-    height:200px;
     display:inline-block;
-}
-.cart-product-added{
-    width: 60%;
-    height:60%;
-}
-
-.add-to-cart-button{
-    width:50px;
-    position:relative;
-    left:4rem;
-    border-radius:5px;
-}
-.add-to-cart-button:hover{
-    box-shadow:1px 1px 1px 1px gray
+    width: 252px;
+    height: 265px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+    transition: 0.2s ease-in-out;
+    
 }
 .ProductCard:hover{
     box-shadow:1px 1px 0px 0px gray;
     cursor: pointer;
 }
-.image-container{
-    float:left;
-    width:50%;
-    height:100%;
-    border-right: 1px solid white;
-}
-.image-container img{
+.img-container {
+    width: 100%;
+    height: 60%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+  }
+  
+.img-container img{
+    width: 100%;
+    transition: 0.2s ease-in-out;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+  }
+
+.add-to-cart-button{
     width:100%;
-    height:100%;
-    object-fit: contain;
-    border-radius:10px;
+    height: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: rgba(68, 68, 66, 0.095);
+    border-top: 1px solid;
 }
+
+.add-to-cart-button img:hover{
+    width: 30px;
+    cursor: pointer;
+}
+
 .body{
-    width:50%;
-    height:100%;
-    display: inline-block;
-    text-align: center center;
-    padding-top:3rem;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    text-align: center;
 }

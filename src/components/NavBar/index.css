@@ -5,7 +5,7 @@
     height: 100px;
     background-color: #fff;
     z-index: 100;
-    border-bottom: 1px solid;
+    box-shadow: 5px 5px 5px rgb(176, 174, 174);
 }
 .new-navbar-short{
     position:fixed;
@@ -15,6 +15,7 @@
     background-color: #fff;
     z-index: 100;
     border-bottom: 1px solid;
+    box-shadow: 5px 5px 5px rgb(176, 174, 174);
 }
 
 .top-navbar{
@@ -39,8 +40,8 @@
     text-align: center;
     padding-top: 10px;
 }
-.items-navbar > div:hover{
-    background-color: aliceblue;
+.items-navbar img:hover{
+    width: 30px;
     cursor: pointer;
 }
 
