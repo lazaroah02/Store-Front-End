@@ -3,14 +3,12 @@ import React, { useState, useEffect, useContext} from "react";
 import Modal from 'react-bootstrap/modal'
 import "./index.css";
 import { ModalBody, ModalTitle } from "react-bootstrap";
-import CategoriesContext from '../../../context/CategoriesContext'
-import PaginationContext from "../../../context/PaginationContext"
+import ActualFilterContext from "../../../context/ActualFilterContext"
 
 export default function CategoriesFilter() {
   const [categories, setCategories] = useState([]);
   const [showModal, setShowModal] = useState(false)
-  const {setCategory} = useContext(CategoriesContext)
-  const {setDesde, setHasta} = useContext(PaginationContext)
+  const {setActualFilter} = useContext(ActualFilterContext)
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
@@ -29,9 +27,7 @@ export default function CategoriesFilter() {
             <ul>
               {categories.map(category => 
               <li key = {category.id} className = "category" onClick = {() => {
-                setDesde(0)
-                setHasta(24)
-                setCategory(category.id)
+                setActualFilter({filter:"category", value:category.id})
                 setShowModal(false)
                 }}>
                 {category.nombre}

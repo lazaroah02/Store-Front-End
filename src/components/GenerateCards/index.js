@@ -1,14 +1,11 @@
 import React, { useEffect, useState, useContext} from "react";
 import ProgresGif from "../ProgresGif";
-import CategoriesContext from "../../context/CategoriesContext";
-import PriceFilterContext from "../../context/PriceFilterContext";
-import GetAllProductsContext from "../../context/GetAllProductsContext";
+import ActualFilterContext from "../../context/ActualFilterContext"
 import InfoSearchedProduct from "../../context/InfoSearchedProduct";
-import PaginationContext from "../../context/PaginationContext";
 import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
-import {useIsNear } from "../../customHooks/useIsNear";
+import {useIsNear} from "../../customHooks/useIsNear";
 
 //import all filters services
 import getAllProducts from '../../services/Filters/getAllProducts'
@@ -19,109 +16,108 @@ export default function GenerateCard() {
   const [products, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const { infoSearchedProduct } = useContext(InfoSearchedProduct);
-  const {category, setCategory } = useContext(CategoriesContext);
-  const {price, setPrice} = useContext(PriceFilterContext);
-  const {getAll, setGetAll} = useContext(GetAllProductsContext);
-  const {desde, hasta, setDesde, setHasta} = useContext(PaginationContext)
+  const {actualFilter} = useContext(ActualFilterContext)
+  const [pagination, setPagination] = useState([0, 24]);
   const [isNear, reference, setStopObserving] = useIsNear()
   const [noMoreProducts, setNoMoreProducts] = useState(false)
 
-  //get all products
+  //effect to get the products without pagination(when the user active some filter, 
+  //we set pagination to the first page and start observing again for infinite scroll)
   useEffect(() => {
-    if(getAll){
-      setLoading(true);
-      getAllProducts(desde, hasta).then((data) => {
-        if(desde === 0)setStopObserving(false)
-        if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
-          setProduct([])
-          setStopObserving(true)  
-        }
-        if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
-            setNoMoreProducts(true)
-            setStopObserving(true)
-        }
-        if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y no hay productos
-          setProduct(products.concat(data))
-        }
-        if(desde === 0 && data.length > 0){  //si estamos en la primera pagina y hay productos
-          setProduct(data)
-        }
-        setLoading(false);
-        setPrice(null)
-        setCategory(null)
-      });
-    }
-  }, [getAll, desde]);
+    setLoading(true)
+    setStopObserving(false)
+    setNoMoreProducts(false)
+    setPagination([0, 24])
+    switch(actualFilter.filter){
+      case "category": //filtrado por categoria
+        Promise.resolve(getProductsByCategory(actualFilter.value))
+        .then(data => {
+        setProduct(data)
+        setLoading(false)
+        })  
+        break
 
-   //get the products by category
-   useEffect(() => {
-    if(category !== null){
-    setLoading(true);
-      getProductsByCategory(category, desde, hasta).then((data) => {
-        if(desde === 0)setStopObserving(false)
-        if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
-          setProduct([])
-          setStopObserving(true)  
-        }
-        if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
-            setNoMoreProducts(true)
-            setStopObserving(true)
-        }
-        if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y hay productos
-          setProduct(products.concat(data))
-        }
-        if(desde === 0 && data.length > 0){ //si estamos en la primera pagina y hay productos
-          setProduct(data)
-        }
-        setLoading(false);
-        setPrice(null)
-        setGetAll(false)
-      })
+      case "price": //filtrado es por precio
+        Promise.resolve(getProductsByPrice(actualFilter.value))
+        .then(data => {
+        setProduct(data)
+        setLoading(false)
+        })  
+        break
+        
+      default: //obtener todos los productos
+        Promise.resolve(getAllProducts())
+        .then(data => {
+        setProduct(data)
+        setLoading(false)})
     }
-  },[category, desde]);
+  },[actualFilter])
 
-  //get the products by price
+  /*effect to get the products with the pagination(when the user gets the end of the list of products, we get the next page of products.
+    If the array of data that we get from the server is empty ,means that there is'n more products to show 
+    and we stop observing for the next pagination)*/
   useEffect(() => {
-    if(price !== null){
-      setLoading(true);
-        getProductsByPrice(price, desde, hasta).then((data) => {
-          if(desde === 0)setStopObserving(false)
-          if(desde === 0 && data.length === 0){ //si estamos en la primera pagina y no hay productos
-            setProduct([])
-            setStopObserving(true)  
-          }
-          if(desde !== 0 && data.length === 0){ //si no estamos en la primera pagina y no hay productos
-              setNoMoreProducts(true)
+    if(pagination[0] !== 0){
+      setLoading(true)
+      switch(actualFilter.filter){
+        case "category": //filtrado por categoria
+          Promise.resolve(getProductsByCategory(actualFilter.value, pagination[0], pagination[1]))
+          .then(data => {
+            if(data.length === 0){
               setStopObserving(true)
-          }
-          if(desde !== 0 && data.length > 0){ //si no estamos en la primera pagina y hay productos
-            setProduct(products.concat(data))
-          }
-          if(desde === 0 && data.length > 0){ 
-            setProduct(data)
-          }
-          setLoading(false);
-          setCategory(null)
-          setGetAll(false)
+              setNoMoreProducts(true)
+              setLoading(false)
+            }
+            else{
+              setProduct(products.concat(data))
+              setLoading(false)
+            }
+          })  
+          break
+  
+        case "price": //filtrado es por precio
+          Promise.resolve(getProductsByPrice(actualFilter.value, pagination[0], pagination[1]))
+          .then(data => {
+            if(data.length === 0){
+              setStopObserving(true)
+              setNoMoreProducts(true)
+              setLoading(false)
+            }
+            else{
+              setProduct(products.concat(data))
+              setLoading(false)
+            }
+          })  
+          break
+          
+        default: //obtener todos los productos
+          Promise.resolve(getAllProducts(pagination[0], pagination[1]))
+          .then(data => {
+            if(data.length === 0){
+              setStopObserving(true)
+              setNoMoreProducts(true)
+              setLoading(false)
+            }
+            else{
+              setProduct(products.concat(data))
+              setLoading(false)
+            }
         })
+      }
     }
-  },[price, desde]);
+  },[pagination])
 
   //search the product that the user input on search field
   useEffect(() => {
     setProduct(infoSearchedProduct);
   }, [infoSearchedProduct]);
 
+  //efect to detect if isNear the point to get the next page of products
   useEffect(() => {
     if(isNear){
-      handleNextPage()
+      setPagination([pagination[1] + 1, pagination[1] + 24])
     }
   },[isNear])
-
-  function handleNextPage(){
-    setDesde(desde + 24)
-    setHasta(hasta + 24)
-  }
 
   return (
     <div>
@@ -131,9 +127,9 @@ export default function GenerateCard() {
         </div>
       ) : null}
       <div className=" ProductsContainer row justify-content-center">
-        {products[0] === "Not Found" || products.length === 0
-          ? <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>
-          : products.map((product) => <Card key={product.id} {...product} />)}
+        {products.length > 0?products.map((product) => <Card key={product.id} {...product} />)
+        :
+        <div className = 'NotFoundMessage'><strong>No hay productos</strong></div>}
       </div>
       {loading ? (
         <div className="cargando">

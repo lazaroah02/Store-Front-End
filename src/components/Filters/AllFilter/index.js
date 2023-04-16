@@ -1,18 +1,12 @@
 import React, {useContext} from "react";
 import "./index.css";
-import GetAllProductsContext from '../../../context/GetAllProductsContext'
-import PaginationContext from "../../../context/PaginationContext"
+import ActualFilterContext from "../../../context/ActualFilterContext"
 
 export default function AllFilter() {
-  const {setGetAll} = useContext(GetAllProductsContext)
-  const {setDesde, setHasta} = useContext(PaginationContext)
+  const {setActualFilter} = useContext(ActualFilterContext)
   return (
     <div className = "all-container">
-       <button className = "AllFilter" onClick = {() => {
-        setDesde(0)
-        setHasta(24)
-        setGetAll(true)}
-        }>All</button>
+       <button className = "AllFilter" onClick = {() => {setActualFilter({filter:null, value:null})}}>All</button>
     </div>
   );
 }

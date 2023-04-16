@@ -11,14 +11,11 @@ import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
 import YourProducts from './components/UserDashboard/components/YourProducts'
 import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
-import {CategoryContextProvider} from './context/CategoriesContext/index'
 import {InfoUserContextProvider} from './context/InfoUserContext'
 import {UserTokenContextProvider} from './context/UserTokenContext'
 import {InfoSearchedProduct} from './context/InfoSearchedProduct'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
-import {PriceFilterContextProvider} from './context/PriceFilterContext'
-import {GetAllProductsContextProvider} from './context/GetAllProductsContext'
-import {PaginationContextProvider} from './context/PaginationContext'
+import { ActualFilterContextProvider } from './context/ActualFilterContext'
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import 'bootstrap'
 //import of context of user dasboard
@@ -34,11 +31,8 @@ export default function App() {
     <div className = "App">
       <UserTokenContextProvider>
       <ProductsCartContextProvider>
-        <PaginationContextProvider>
-      <PriceFilterContextProvider>
-        <GetAllProductsContextProvider>
-      <CategoryContextProvider>
         <InfoUserContextProvider>
+          <ActualFilterContextProvider>
           <InfoSearchedProduct>
             <Route component = {ProductDetail} path = "/detail/:keyword"/>
             <Route component = {Home} path = "/"/>
@@ -64,11 +58,8 @@ export default function App() {
             </ShowEditProductModalContextProvider>
 
           </InfoSearchedProduct>
+          </ActualFilterContextProvider>
         </InfoUserContextProvider>
-      </CategoryContextProvider>
-      </GetAllProductsContextProvider>
-      </PriceFilterContextProvider>
-      </PaginationContextProvider>
       </ProductsCartContextProvider>
       </UserTokenContextProvider>
     </div>
