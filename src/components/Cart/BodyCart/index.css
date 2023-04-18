@@ -1,39 +1,29 @@
 .addButton{
-    width:30px;
-    height:30px;
     margin-left: 2.5px;
 }
 
 .restButton{
-    width:30px;
-    height:30px;
     margin-right: 2.5px;
+    width: 36px;
 }
 
-.restSimbol{
-    width:50%;
-    height:50%;
-    position:relative;
-    bottom:12px;
-    right: 3px;
-    font-size:1.5rem;
-}
-
-.sumSimbol{
-    width:50%;
-    height:50%;
-    position:relative;
-    bottom:11px;
-    right: 5px;
-    font-size:1.3rem;
-}
 .Total{
     text-align:center;
 }
 
+.td-cantidad{
+    display: flex;
+    flex-direction:column;
+}
 .CantidadContainer{
-    width:55px;
     text-align:center;
+    resize: horizontal;
+}
+.buttons-add-rest-container{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
 }
 .tableFooter{
     text-align:center;

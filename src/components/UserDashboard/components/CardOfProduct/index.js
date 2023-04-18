@@ -2,7 +2,7 @@ import React, {useRef} from 'react'
 import {BASE_URL} from '../../../../settings'
 import deleteAnProduct from '../../../../services/deleteAnProduct'
 import './index.css'
-import {useLocation} from 'wouter'
+import {useNavigate} from 'react-router-dom'
 
 //icons import
 import EditButtonIcon from '../../../../assets/edit-alt-regular-24.png'
@@ -10,7 +10,7 @@ import DeleteButtonIcon from '../../../../assets/trash-regular-24.png'
 
 export default function Card({id, product_name, precio, product_img1}){
   const ref = useRef()
-  const [,setLocation] = useLocation()
+  const navigate = useNavigate()
 
   function handleDeleteAnProduct(){
     let selection = window.confirm("Are you sure you want to delete")
@@ -33,7 +33,7 @@ export default function Card({id, product_name, precio, product_img1}){
          <p className="card-title" >${precio}</p>
          <button className="btn btn-danger delete-product-button" onClick={() => handleDeleteAnProduct()}><img alt = "icon" src = {DeleteButtonIcon}/></button>
          <button className="btn btn-primary update-product-button" onClick={() => {
-          setLocation(`/user-profile/your-products/product/${id}`)
+          navigate(`/user/seller/product/${id}`)
           }}><img src = {EditButtonIcon} alt = "icon"/></button>
        </div>
      </div>

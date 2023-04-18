@@ -46,35 +46,33 @@ export default function CartRows() {
         <tr key = {element.id}>
           <td>{element.name}</td>
           <td>${element.price}</td>
-          <td>
+          <td className = "td-cantidad">
             <div className="CantidadContainer">{element.cantidad}</div>
-            <div
-              className="btn btn-primary restButton"
-              onClick={() => {
-                rest({
-                  id: element.id,
-                  name: element.name,
-                  price: element.price,
-                  cantidad: 1,
-                });
-                setStateChange(timesStateChanged + 1);
-              }}
-            >
-              <div className="restSimbol">-</div>
-            </div>
-            <div
-              className="btn btn-primary addButton"
-              onClick={() => {
-                add({
-                  id: element.id,
-                  name: element.name,
-                  price: element.price,
-                  cantidad: 1,
-                });
-                setStateChange(timesStateChanged + 1);
-              }}
-            >
-              <div className="sumSimbol">+</div>
+            <div className = "buttons-add-rest-container">
+              <button
+                className="btn btn-primary restButton"
+                onClick={() => {
+                  rest({
+                    id: element.id,
+                    name: element.name,
+                    price: element.price,
+                    cantidad: 1,
+                  });
+                  setStateChange(timesStateChanged + 1);
+                }}
+              >-</button>
+              <button
+                className="btn btn-primary addButton"
+                onClick={() => {
+                  add({
+                    id: element.id,
+                    name: element.name,
+                    price: element.price,
+                    cantidad: 1,
+                  });
+                  setStateChange(timesStateChanged + 1);
+                }}
+              >+</button>
             </div>
           </td>
 

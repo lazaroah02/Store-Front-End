@@ -22,13 +22,6 @@ import { ActualFilterContextProvider } from './context/ActualFilterContext'
 //import ProtectedRoute from "./components/ProtectedRoute"
 import ProtectedRoute from "./components/ProtectedRoute"
 
-//import of context of user dasboard
-import { ShowCreateProductModalContextProvider } from './components/UserDashboard/context/showCreateProductModalContext'
-import { ShowEditProductModalContextProvider } from './components/UserDashboard/context/showEditProductModalContext'
-import { UpdateListOfCategoriesProvider } from './components/UserDashboard/context/updateListOfCategories'
-import { UpdateProductDetailProvider } from './components/UserDashboard/context/updateProductDetail'
-import { UpdateProductsListProvider } from './components/UserDashboard/context/updateProductsList'
-
 //others import
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import 'bootstrap'
@@ -40,11 +33,6 @@ export default function App() {
         <InfoUserContextProvider>
         <ProductsCartContextProvider>
           <ActualFilterContextProvider>
-          <ShowEditProductModalContextProvider>
-            <ShowCreateProductModalContextProvider>
-            <UpdateListOfCategoriesProvider>
-            <UpdateProductDetailProvider>
-            <UpdateProductsListProvider>
             <Routes>
               <Route path = "/" element = {<Home/>}/>
               <Route exact path = "/detail/:keyword" element = {<ProductDetail/>} />
@@ -54,20 +42,14 @@ export default function App() {
               <Route path = '/contact' element = {<ProtectedRoute><Contact/></ProtectedRoute>}/>
               <Route path = '/chat' element = {<ProtectedRoute><Chat/></ProtectedRoute>}/>
               <Route path = '/user/info' element = {<ProtectedRoute><InfoUser/></ProtectedRoute>} />
-              <Route path = '/user/seller/list-of-orders'element = {<LisfOfOrders/>} />
+              <Route path = '/user/seller/list-of-orders'element = {<ProtectedRoute><LisfOfOrders/></ProtectedRoute>} />
               <Route path = '/user/seller/products' element = {<ProtectedRoute><YourProducts/></ProtectedRoute>} />
               <Route path = '/user/seller/product/:keyword' element = {<ProtectedRoute><ProductSellerDetail/></ProtectedRoute>} />
             </Routes>
-            </UpdateProductsListProvider>    
-            </UpdateProductDetailProvider>    
-            </UpdateListOfCategoriesProvider>  
-            </ShowCreateProductModalContextProvider>
-            </ShowEditProductModalContextProvider>
-
           </ActualFilterContextProvider>
         </ProductsCartContextProvider>
         </InfoUserContextProvider>
-          </div>
+        </div>
       </Router>  
   )
 }

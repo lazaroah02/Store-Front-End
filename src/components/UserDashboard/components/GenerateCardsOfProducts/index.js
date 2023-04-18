@@ -16,13 +16,11 @@ export default function GenerateCard({updateProducts}){
   },[])
 
   useEffect(() => {
-    if(updateProducts === true){
       setLoading(true);
       GetProductsOfSeller(desde, hasta).then((data) => {
         setProduct(data);
         setLoading(false);
-      });
-    }   
+      });   
   }, [desde, updateProducts]);
 
   return (

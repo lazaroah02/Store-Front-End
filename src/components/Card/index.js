@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import './index.css'
-import {useLocation} from 'wouter'
+import {useNavigate} from 'react-router-dom'
 import {BASE_URL} from '../../settings'
 import InfoUserContext from '../../context/InfoUserContext'
 import {addProduct} from '../../customHooks/manageCart'
@@ -9,7 +9,7 @@ import inCartIcon from '../../assets/in-cart-icon.svg'
 
 export default function Card({id, product_name, precio, product_img1}){
   const {infoUser} = useContext(InfoUserContext)
-  const [, setLocation] = useLocation()
+  const navigate = useNavigate()
   const [,add] = addProduct()
   const [productAdded, setProductAdded] = useState(false)
 
@@ -28,7 +28,7 @@ export default function Card({id, product_name, precio, product_img1}){
   }
 
   function handleClick(){
-    setLocation(`/detail/${id}/`)
+    navigate(`/detail/${id}/`)
   }
     return(
        <div className="ProductCard" id = {id} >

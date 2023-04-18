@@ -1,6 +1,7 @@
 .your-products{
     width:100vw;
     min-height:100vh;
+    padding-top:1px;
 }
 
 .AddProductForm input{

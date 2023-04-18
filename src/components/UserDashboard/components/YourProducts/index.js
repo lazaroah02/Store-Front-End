@@ -1,37 +1,31 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState} from "react";
 import GenerateCardsOfProducts from "../GenerateCardsOfProducts";
-import ShowCreateProductModalContext from "../../context/showCreateProductModalContext";
-import UpdateProductsList from '../../context/updateProductsList'
 import CreateProductModal from "../CreateProductModal"
 import NavBar from '../../../NavBar'
 import OptionsNavBar from "../OptionsNavBar";
-import InfoUserContext from '../../../../context/InfoUserContext'
 
 import "./index.css";
 
 export default function InfoUser() {
-  const [updateProducts, setUpdateProducts] = useState(true);
-  const {setShowCreateProductModal} = useContext(ShowCreateProductModalContext)
-  const {updateProductsList} = useContext(UpdateProductsList)
-
-  const {infoUser} = useContext(InfoUserContext)
-
-  useEffect(() => {
-    setUpdateProducts(true)
-  },[updateProductsList])
+  const [updateProductList, setUpdateProductList] = useState(0)
+  const [showModal, setShowModal] = useState(false)
   
   return (
     <div className="your-products">
       <NavBar/>
-      <OptionsNavBar is_seller = {infoUser.is_seller}/>
+      <OptionsNavBar/>
         <div className = 'div-container-button'>
             <button className = 'btn btn-primary' onClick={() => {
-              setShowCreateProductModal(true)
-              setUpdateProducts(false)
+              setShowModal(true)
             }}>Add new product</button>
         </div>
-      <GenerateCardsOfProducts updateProducts = {updateProducts}/>
-      <CreateProductModal/>
+      <GenerateCardsOfProducts updateProducts = {updateProductList}/>
+      <CreateProductModal 
+        showModal = {showModal} 
+        setShowModal = {setShowModal}
+        updateProductList={updateProductList}
+        setUpdateProductList={setUpdateProductList}
+        />
     </div>
   );
 }

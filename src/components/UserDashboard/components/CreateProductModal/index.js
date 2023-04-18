@@ -1,18 +1,12 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import getCategories from '../../../../services/getCategories'
-import ShowCreateProductModalContext from '../../context/showCreateProductModalContext'
-import UpdateListOfCategoriesContext from '../../context/updateListOfCategories'
 import createNewProduct from '../../../../services/createNewProduct'
-import UpdateProductsList from '../../context/updateProductsList'
 import ProgresGif from '../../../ProgresGif'
 
-export default function (){
+export default function ({showModal, setShowModal, updateProductList, setUpdateProductList}){
     const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([])
-    const {showCreateProductModal, setShowCreateProductModal} = useContext(ShowCreateProductModalContext)
-    const {updateCategories} = useContext(UpdateListOfCategoriesContext)
-    const {updateProductsList, setUpdateProductList} = useContext(UpdateProductsList)
 
     //error messages
     const [showEmptyName, setShowEmptyName] = useState(true);
@@ -23,7 +17,7 @@ export default function (){
         getCategories().then((data) => {
           setCategories(data);
         });
-      }, [updateCategories]);
+      }, []);
 
     function handleAddProduct(e) {
         e.preventDefault();
@@ -54,8 +48,8 @@ export default function (){
             .then(res => {
                 if(res.status === 200){
                     setLoading(false)
-                    setUpdateProductList(updateProductsList + 1)
-                    setShowCreateProductModal(false)
+                    setUpdateProductList(updateProductList + 1)
+                    setShowModal(false)
                 }
                 else{
                     alert('Error al crear el producto')
@@ -66,10 +60,10 @@ export default function (){
 
     return(
         <div>
-            <Modal show={showCreateProductModal}>
+            <Modal show={showModal}>
             <Modal.Header>
                 Add new product
-                <button className="btn btn-danger" onClick={() => setShowCreateProductModal(false)}>
+                <button className="btn btn-danger" onClick={() => setShowModal(false)}>
                     X
                 </button>
             </Modal.Header>

@@ -1,17 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import getCategories from "../../../../services/getCategories";
-import UpdateListOfCategoriesContext from '../../context/updateListOfCategories'
 import updateProduct from '../../../../services/updateProduct'
-import ShowEditProductModalContext from '../../context/showEditProductModalContext'
-import UpdateProductDetailContext from '../../context/updateProductDetail'
 import Modal from 'react-bootstrap/Modal'
 import './index.css'
 import ProgresGif from '../../../ProgresGif'
 
-export default function EditProductModal(infoProduct){
-    const {updateCategories} = useContext(UpdateListOfCategoriesContext)
-    const {showEditProductModal, setShowEditProductModal} = useContext(ShowEditProductModalContext)
-    const {updateProductDetail, setUpdateProductDetail} = useContext(UpdateProductDetailContext)
+export default function EditProductModal({infoProduct, showModal, setShowModal, updateProductDetail, setUpdateProductDetail}){
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -29,7 +23,7 @@ export default function EditProductModal(infoProduct){
         getCategories().then((data) => {
           setCategories(data);
         });
-      }, [updateCategories]);
+      }, []);
 
     useEffect(() => {
         setProductName(infoProduct.product_name)
@@ -73,7 +67,7 @@ export default function EditProductModal(infoProduct){
             .then(res => {
                 if(res.status === 200){
                     setLoading(false)
-                    setShowEditProductModal(false)
+                    setShowModal(false)
                     setUpdateProductDetail(updateProductDetail + 1)
                     alert('Product updated successfully')
                 }
@@ -86,10 +80,10 @@ export default function EditProductModal(infoProduct){
 
     return(
         <div>
-            <Modal show={showEditProductModal}>
+            <Modal show={showModal}>
                 <Modal.Header>
                 Edit product
-                <button className="btn btn-danger" onClick={() => setShowEditProductModal(false)}>
+                <button className="btn btn-danger" onClick={() => setShowModal(false)}>
                     X
                 </button>
                 </Modal.Header>
@@ -120,28 +114,17 @@ export default function EditProductModal(infoProduct){
                     <br />
                     <label>Categoria</label>
                     <br />
-                    <select>
+                    <select defaultValue={productCategory}>
                     {categories.length === 0
                         ? null
-                        : categories.map((category) => (
-                            category.id === productCategory
-                            ?
-                            <option 
-                            key = {category.id}
-                            value={category.id}
-                            selected = "selected"
-                            >
-                            {category.nombre}
-                            </option>
-                            :
+                        : categories.map((category) => 
                             <option 
                             key = {category.id}
                             value={category.id}
                             >
                             {category.nombre}
                             </option>   
-                        ))}
-                        aa
+                        )}
                     </select>
                     <br />
                     <br />

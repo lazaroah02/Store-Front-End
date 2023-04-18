@@ -18,7 +18,9 @@ export default function Cart(){
                 <button className = "btn btn-danger" onClick={() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body>
-                 <CartContent />
+                <div className = "table-container">
+                    <CartContent />
+                </div>
             </Modal.Body>
         </Modal>
         </div>

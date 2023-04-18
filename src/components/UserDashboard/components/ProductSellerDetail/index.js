@@ -1,31 +1,27 @@
-import React, {useContext, useState, useEffect, Suspense, useRef} from 'react';
+import React, {useState, useEffect, Suspense, useRef} from 'react';
 import './index.css';
 import getProductOfSellerDetail from '../../../../services/getProductOfSellerDetail'
 import {BASE_URL} from '../../../../settings'
-import ShowEditProductModalContext from '../../context/showEditProductModalContext'
-import UpdateProductDetailContext from '../../context/updateProductDetail'
 import NavBar from "../../../NavBar"
 import OptionsNavBar from '../OptionsNavBar'
-import InfoUserContext from '../../../../context/InfoUserContext'
+import { useParams } from 'react-router-dom';
 
 //icons import
 import RightArrow from '../../../../assets/right-arrow-icon.svg'
 import LeftArrow from '../../../../assets/left-arrow-icon.svg'
 
 
-export default function ShowProductDetail({params}){
+export default function ShowProductDetail(){
     const EditProductModal = React.lazy(() => import('../EditProductModal')) 
     const [infoProduct, setInfoProduct] = useState({})
-    const {updateProductDetail} = useContext(UpdateProductDetailContext)
-    const {setShowEditProductModal} = useContext(ShowEditProductModalContext)
-    const {keyword} = params
+    const [updateProductDetail, setUpdateProductDetail] = useState(0)
+    const [showModal, setShowModal] =useState(false)
+    const {keyword} = useParams()
 
     //images references
     const refImg1 = useRef()
     const refImg2 = useRef()
     const refImg3 = useRef()
-
-    const {infoUser} = useContext(InfoUserContext)
   
     useEffect(() => {
         getProductOfSellerDetail(keyword)
@@ -57,9 +53,15 @@ export default function ShowProductDetail({params}){
     return(
         <div className = 'div-container-product-detail'>
             <NavBar/>
-            <OptionsNavBar is_seller = {infoUser.is_seller}/>
+            <OptionsNavBar />
             <Suspense>
-                <EditProductModal {...infoProduct}/>
+                <EditProductModal 
+                infoProduct = {infoProduct} 
+                showModal = {showModal} 
+                setShowModal = {setShowModal}
+                updateProductDetail={updateProductDetail}
+                setUpdateProductDetail={setUpdateProductDetail}
+                />
             </Suspense>
 
             <div className = "PhotosDetailContainer ">
@@ -96,7 +98,7 @@ export default function ShowProductDetail({params}){
              </div>       
             
             <div className = 'edit-button-container'>
-                <button className = 'btn btn-primary' onClick = {() => setShowEditProductModal(true)}>Edit</button>
+                <button className = 'btn btn-primary' onClick = {() => setShowModal(true)}>Edit</button>
             </div>
             
             <div className = "ProductPrice">
