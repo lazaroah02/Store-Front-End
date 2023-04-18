@@ -1,26 +1,23 @@
 import './index.css'
 import React, {useContext, useState, useEffect} from 'react'
-import UserTokenContext from '../../context/UserTokenContext'
 import InfoUserContext from '../../context/InfoUserContext'
-import {useLocation} from 'wouter'
+import {useNavigate} from 'react-router-dom'
 import logoutIcon from "../../assets/log-out-icon.svg"
 
 export default function ShowLinks(){
-    const {token, setToken} = useContext(UserTokenContext)
-    const {setInfoUser} = useContext(InfoUserContext)
+    const {infoUser, setInfoUser} = useContext(InfoUserContext)
     const [, setLogged] = useState()
-    const [, setLocation] = useLocation()
+    const setNavigate = useNavigate()
 
     useEffect(() =>{
-        token == null?setLogged(false):setLogged(true)
-    },[token])
+        infoUser === null?setLogged(false):setLogged(true)
+    },[infoUser])
     
     function handleLogout(){
         window.localStorage.removeItem('SessionToken')
         setLogged(false)
-        setToken(null)
         setInfoUser(null)
-        setLocation("/")
+        setNavigate("/")
     }
     return(
         <div className = "button-container">

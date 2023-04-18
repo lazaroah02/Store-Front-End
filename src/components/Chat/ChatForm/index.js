@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import "./index.css"
 import ChatHistoryCard from '../ChatHistoryCard';
 import useWebSocket, { ReadyState } from "react-use-websocket";
-import { useInfoUser } from '../../../customHooks/useInfoUser';
 import ShowMessageBox from '../ShowMessageBox';
 import {CHAT_URL} from '../../../settings'
-
+import InfoUserContext from '../../../context/InfoUserContext';
 export default function ChatForm(){
     const [message, setMessage] = useState("")
     const [messagesHistory, setMessagesHistory] = useState([])
-    const [infoUser,] = useInfoUser()
+    const {infoUser} = useContext(InfoUserContext)
 
     //chat
     const { readyState, sendJsonMessage } = useWebSocket(CHAT_URL, {

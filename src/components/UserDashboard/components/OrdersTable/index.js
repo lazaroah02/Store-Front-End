@@ -12,7 +12,7 @@ export default function OrdersTable(){
 
     useEffect(() => {
         setLoading(true)
-       getPedidosOfSeller()
+       Promise.resolve(getPedidosOfSeller())
        .then(data => {
         setOrders(data)
         setLoading(false)

@@ -1,13 +1,11 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./index.css";
-import { Link, useLocation } from "wouter";
+import {Link, useNavigate} from 'react-router-dom'
 import login from "../../services/login";
-import UserTokenContext from '../../context/UserTokenContext'
 
 
 export default function SignInForm() {
-  const [, setLocation] = useLocation();
-  const {setToken} = useContext(UserTokenContext)
+  const setNavigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -17,8 +15,7 @@ export default function SignInForm() {
     login(email, password)
     .then((key) => {
       window.localStorage.setItem('SessionToken',key.key)
-      setToken(key.key)
-      setLocation("/");
+      setNavigate("/");
       window.location.reload();
     })
     .catch(error => alert(error));

@@ -1,5 +1,5 @@
 import React, {useState ,useContext, useEffect} from 'react';
-import {Link} from 'wouter'
+import {Link} from 'react-router-dom'
 import InfoUserContext from '../../../../context/InfoUserContext'
 import Modal from 'react-bootstrap/Modal'
 import './index.css'
@@ -7,10 +7,9 @@ import editInfoUser from '../../../../services/editInfoUser'
 
 export default function EditInfoUser(){
     const {infoUser, setInfoUser} = useContext(InfoUserContext)
-    const [info, setInfo] = useState(undefined)
+    const [info, setInfo] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const [editingField, setEditing] = useState([])
-
     useEffect(() => {
       setInfo(infoUser)
     },[infoUser])
@@ -45,57 +44,57 @@ export default function EditInfoUser(){
                 <h4>Info User</h4>
               </div>
               <div className = 'infoContainer'>
-                <p>Username: {info !== undefined?info.username: ''}</p>
-                <p>Email: {info !== undefined?info.email: ''}</p>
+                <p>Username: {info !== null?info.username: ''}</p>
+                <p>Email: {info !== null?info.email: ''}</p>
                 <br/>
                 <strong>Information of Contact</strong>
                 <hr/>
-                <p>Name: {info !== undefined?info.name: ''} 
-                  {info !== undefined?
+                <p>Name: {info !== null?info.name: ''} 
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setEditing(['name',info.name])
                     setShowModal(true)
                   }}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Last name:  {info !== undefined?info.last_name: ''}
-                  {info !== undefined?
+                <p>Last name:  {info !== null?info.last_name: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['last_name',info.last_name])}}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Country:  {info !== undefined? info.country: ''}
-                  {info !== undefined?
+                <p>Country:  {info !== null? info.country: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['country',info.country])
                   }}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>State:  {info !== undefined?info.state: ''}
-                  {info !== undefined?
+                <p>State:  {info !== null?info.state: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['state',info.state])}}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Address: {info !== undefined?info.address: ''}
-                  {info !== undefined?
+                <p>Address: {info !== null?info.address: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['address',info.address])}}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Zip Code: {info !== undefined? info.zip_code: ''}
-                  {info !== undefined?
+                <p>Zip Code: {info !== null? info.zip_code: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['zip_code',info.zip_code])}}><span>Edit</span></button>
                   :null}
                 </p>
-                <p>Phone: {info !== undefined? info.phone: ''}
-                  {info !== undefined?
+                <p>Phone: {info !== null? info.phone: ''}
+                  {info !== null?
                   <button className = 'btn btn-primary' onClick = {() => {
                     setShowModal(true)
                     setEditing(['phone',info.phone])}}><span>Edit</span></button>

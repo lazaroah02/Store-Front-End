@@ -2,19 +2,19 @@ import React, {useContext, useState} from 'react'
 import './index.css'
 import {useLocation} from 'wouter'
 import {BASE_URL} from '../../settings'
-import UserTokenContext from '../../context/UserTokenContext'
+import InfoUserContext from '../../context/InfoUserContext'
 import {addProduct} from '../../customHooks/manageCart'
 import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 
 export default function Card({id, product_name, precio, product_img1}){
-  const {token} = useContext(UserTokenContext)
+  const {infoUser} = useContext(InfoUserContext)
   const [, setLocation] = useLocation()
   const [,add] = addProduct()
   const [productAdded, setProductAdded] = useState(false)
 
   function addToCart(){
-    if(token === null || token === undefined){
+    if(infoUser === null){
       alert('Login to use the Cart')
     }
     else{

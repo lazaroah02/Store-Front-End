@@ -1,16 +1,16 @@
 import React, {useContext} from 'react';
-import {Link} from 'wouter'
-import UserTokenContext from '../../context/UserTokenContext'
+import {Link} from 'react-router-dom'
+import InfoUserContext from '../../context/InfoUserContext'
 import userIcon from '../../assets/navBarIcons/logo-profile.svg'
 import loginIcon from '../../assets/navBarIcons/log-in-icon.svg'
 
 export default function LogoProfile(){
-    const {token} = useContext(UserTokenContext)
+    const {infoUser} = useContext(InfoUserContext)
     return(
         <div>
-            {token !== undefined && token !== null
+            {infoUser !== null
             ?
-            <Link to = "/user-profile/info">
+            <Link to = "/user/info">
                 <div>
                     <img alt = "user-profile" src = {userIcon}></img>
                 </div>

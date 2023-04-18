@@ -1,20 +1,16 @@
 import getInfoUser from '../services/getInfoUser'
-import {useState, useEffect, useContext} from 'react'
-import UserTokenContext from '../context/UserTokenContext'
+import {useState, useEffect} from 'react'
 
 export function useInfoUser(){
-    const [infoUser, setInfoUser] = useState()
-    const {token} = useContext(UserTokenContext)
+    const [info, setInfo] = useState(null)
+    const token = window.localStorage.getItem('SessionToken')
 
     useEffect(() => {
         if(token !== undefined && token !== null){
-            Promise.all([
-                getInfoUser(token),
-            ]
-            ).then((data) => {
-                setInfoUser(data[0])
+            Promise.resolve(getInfoUser(token))
+            .then((data) => {
+                setInfo(data)
             })
         }
     },[])
-    return([infoUser, setInfoUser])
-}
+    return([info, setInfo])}

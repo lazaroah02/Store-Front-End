@@ -1,12 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import "./index.css";
-import { Link, useLocation } from "wouter";
+import { Link, useNavigate } from "react-router-dom";
 import register from "../../services/register";
-import UserTokenContext from '../../context/UserTokenContext'
 
 export default function SignInForm() {
-  const [, setLocation] = useLocation();
-  const {setToken} = useContext(UserTokenContext)
+  const setNavigate = useNavigate();
 
   //error messages
   const [errorEmailExist, setErrorEmailExist] = useState(false)
@@ -45,8 +43,7 @@ export default function SignInForm() {
       register(email, password1, password2)
       .then((key) => {
         window.localStorage.setItem('SessionToken',key.key)
-        setToken(key.key) 
-        setLocation("/");
+        setNavigate("/");
       })
       .catch(error => setErrorEmailExist(true))
     }

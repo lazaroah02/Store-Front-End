@@ -1,13 +1,13 @@
 import React, {useContext, useState, useRef} from 'react';
 import './index.css';
-import UserTokenContext from '../../context/UserTokenContext'
+import InfoUserContext from '../../context/InfoUserContext';
 import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
 import rightArrow from '../../assets/right-arrow-icon.svg'
 import leftArrow from '../../assets/left-arrow-icon.svg'
 
 export default function ShowProductDetail(params){
-    const {token} = useContext(UserTokenContext)
+    const {infoUser} = useContext(InfoUserContext)
     const [productAdded, setProductAdded] = useState(false)
     const [,add] = addProduct()
 
@@ -17,7 +17,7 @@ export default function ShowProductDetail(params){
     const refImg3 = useRef()
 
     function addToCart(){
-        if(token == null){
+        if(infoUser === null){
           alert('Login to use the Cart')
         }
         else{

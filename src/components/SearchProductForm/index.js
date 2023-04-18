@@ -1,8 +1,6 @@
 import React, {useContext, useState} from 'react';
-import {useLocation} from 'wouter'
-import searchAnProduct from '../../services/searchAnProduct'
-import InfoSearchedProduct from '../../context/InfoSearchedProduct'
-import CategoriesContext from '../../context/CategoriesContext'
+import {useNavigate, useLocation} from 'react-router-dom'
+import ActualFilterContext from '../../context/ActualFilterContext'
 import Modal from 'react-bootstrap/Modal'
 import './index.css'
 import { ModalHeader } from 'react-bootstrap';
@@ -10,33 +8,25 @@ import searchIcon from '../../assets/navBarIcons/search-icon.svg'
 
 export default function SearchProductForm(){
     const [showModal, setShowModal] = useState(false)
-    const {setInfoSearchedProduct} = useContext(InfoSearchedProduct)
-    const {setCategory} = useContext(CategoriesContext)
-    const [location, setLocation] = useLocation()
-    const [loading, setLoading] = useState(false)
+    const {setActualFilter} = useContext(ActualFilterContext)
+    const navigate = useNavigate()
+    const location = useLocation()
     
     function handleSearchSubmit(e){
         e.preventDefault()
         let nameProduct = e.target[0].value
-        if(nameProduct === ''){
-            if(location === '/About_us' || location === '/login' || location === '/register'){
-                setLocation('/')
+        if(nameProduct === ""){
+            if(location.pathname === '/about-us' || location.pathname === '/contact' || location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/user'){
+                navigate('/')
             }
             else{
-                setCategory()
+                setActualFilter({filter:null, value:null})
+                goTop()
             }
         }
         else{
-            setLoading(true)
-            searchAnProduct(nameProduct)
-            .then(data => {
-                setInfoSearchedProduct(data)
-                setLoading(false)
-            })
-            .catch(err => {
-                setInfoSearchedProduct(['Not Found'])
-                setLoading(false)
-            })
+            setActualFilter({filter:"search", value: nameProduct})
+            goTop()
         } 
     }
     function goTop(){
@@ -57,11 +47,10 @@ export default function SearchProductForm(){
                 </ModalHeader>
                 <Modal.Body>
                     <form className="d-flex SearchForm" onSubmit = {(e) => handleSearchSubmit(e)}>
-                        <input className="form-control me-2" placeholder="Search a product" />
-                        <button className="btn btn-success" onClick = {() => 
-                            {setShowModal(false) 
-                            goTop()}}>
-                                {loading?'Cargando...':'Search'}</button>
+                        <input className="form-control me-2" placeholder="Search a product"/>
+                        <button className="btn btn-success" onClick = {() => {
+                            setShowModal(false) 
+                            }}>Search</button>
                     </form>
                 </Modal.Body>
             </Modal> 

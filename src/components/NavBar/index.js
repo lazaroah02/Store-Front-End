@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './index.css'
-import {Link} from 'wouter'
+import {redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import SearchProductForm from '../SearchProductForm'
 import Cart from "../Cart";
 import LogoProfile from "../LogoProfile"
@@ -27,17 +28,25 @@ export default function NavBar(){
   return(
     <div className = {styleNavBar}>
       <section className = "top-navbar">
-        <Link to = "/">
-          <div className = "home-link"><h4>Store</h4></div>
-        </Link>
-        <Link to = "/chat">
-          <div className = "chat-link"><img src = {LogoChat} alt = "Chat"/></div>
-        </Link>
+          <div className = "home-link" onClick={() => redirect("/")}><Link to = "/"><h4>Store</h4></Link></div>
+          <div className = "chat-link">
+            <Link to = "/chat">
+              <img src = {LogoChat} alt = "Chat"/>
+            </Link>
+          </div>
       </section>
       <section className = "items-navbar justify-content-center">
-        <Link to = "/"><div><img src = {homeIcon} alt = "home"></img></div></Link>
+        <div>
+          <Link to = "/">
+            <img src = {homeIcon} alt = "home"/>
+          </Link>
+        </div>
         <div><SearchProductForm/></div>
-        <Link to = "/contact"><div><img src = {contactIcon} alt = "home"></img></div></Link>
+        <div>
+          <Link to = "/contact">
+            <img src = {contactIcon} alt = "home"/>
+          </Link>
+        </div>
         <div><Cart/></div>
         <div><LogoProfile/></div>
       </section>

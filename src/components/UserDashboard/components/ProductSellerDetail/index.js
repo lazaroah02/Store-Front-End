@@ -6,9 +6,7 @@ import ShowEditProductModalContext from '../../context/showEditProductModalConte
 import UpdateProductDetailContext from '../../context/updateProductDetail'
 import NavBar from "../../../NavBar"
 import OptionsNavBar from '../OptionsNavBar'
-import UserTokenContext from '../../../../context/UserTokenContext'
 import InfoUserContext from '../../../../context/InfoUserContext'
-import getInfoUser from '../../../../services/getInfoUser'
 
 //icons import
 import RightArrow from '../../../../assets/right-arrow-icon.svg'
@@ -27,18 +25,8 @@ export default function ShowProductDetail({params}){
     const refImg2 = useRef()
     const refImg3 = useRef()
 
-    const {token} = useContext(UserTokenContext)
-    const {setInfoUser} = useContext(InfoUserContext)
-    const [info, setInfo] = useState(null)
+    const {infoUser} = useContext(InfoUserContext)
   
-      useEffect(() => {
-          getInfoUser(token)
-          .then(data => {
-              setInfoUser(data)
-              setInfo(data)
-          })
-      },[token])
-
     useEffect(() => {
         getProductOfSellerDetail(keyword)
         .then((data )=> setInfoProduct(data))                
@@ -69,7 +57,7 @@ export default function ShowProductDetail({params}){
     return(
         <div className = 'div-container-product-detail'>
             <NavBar/>
-            {info !== null? <OptionsNavBar is_seller = {info.is_seller}/>:null}
+            <OptionsNavBar is_seller = {infoUser.is_seller}/>
             <Suspense>
                 <EditProductModal {...infoProduct}/>
             </Suspense>

@@ -8,7 +8,10 @@ export function useIsNear(){
     useEffect(() => {
         const onChange = (entries, observer) => {
             const element = entries[0]
-            if(stopObserving)observer.disconnect()
+            if(stopObserving){
+                console.log("me detuve")
+                observer.disconnect()
+            }
             if(element.isIntersecting){
                 setIsNear(true)
             }
