@@ -1,7 +1,6 @@
 .send-message-form{
     height:70vh;
     max-width: 100vw;
-    margin-top: 1rem;
 }
 
 .input-message{
@@ -23,6 +22,15 @@
 }
 
 .messages-container{
-    overflow-x: auto;
+    overflow-y: auto;
     scroll-snap-type: y mandatory;
+}
+
+.messages-container-scrolled{
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+.messages-container>div:last-child {
+    scroll-snap-align: end;
 }

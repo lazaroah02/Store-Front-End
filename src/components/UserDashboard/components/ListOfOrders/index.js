@@ -10,7 +10,7 @@ export default function ListOfOrders() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser(infoUser);
+    setUser(infoUser.info);
   }, [infoUser]);
 
   return (
@@ -23,7 +23,7 @@ export default function ListOfOrders() {
         </p>
       ) : (
         <div>
-          {infoUser.is_seller ? (
+          {infoUser.info.is_seller ? (
             <OrdersTable />
           ) : (
             <p className="mensaje-debes-ser-vendedor">

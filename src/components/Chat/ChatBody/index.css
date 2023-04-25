@@ -9,8 +9,15 @@
     width: 100%;
     text-align: center;
     white-space:nowrap;
-    height: 80px;
+    height: 60px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-top: 1rem;
-}    
+} 
+
+.tus-mensajes-apareceran-aqui{
+    border:1px solid;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 30vh;
+    width:90%
+}

@@ -1,0 +1,33 @@
+.Home {
+    min-height:100vh;
+}
+
+@media (max-width:800px){
+    .Home{
+        padding-top:100px;
+    }
+}
+
+.promociones-container{
+    display: flex;
+    padding: 15px;
+    gap:15px
+}
+/*Mobile*/
+@media (max-width: 500px) {
+    .promociones-container{
+        flex-direction: column;
+    }
+}
+/*Tablet*/
+@media (min-width: 500px) and (max-width:800px){
+    .promociones-container{
+        flex-direction: column;
+    }
+}
+/*Desktop*/
+@media (min-width: 800px) {
+    .promociones-container{
+        flex-direction: row;
+    }
+}

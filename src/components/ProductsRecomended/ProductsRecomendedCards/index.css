@@ -1,0 +1,57 @@
+.product-recommended-card{
+    background-color: rgb(255, 231, 231);
+    border-radius: 10px;
+    border: 3px solid white;
+}
+.product-recommended-card img{
+    mix-blend-mode: multiply;
+    background-blend-mode: multiply;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.product-recommended-price{
+    text-align: end;
+    position: relative;
+    bottom:20px;
+    right: 5px;
+}
+
+/*Mobile*/
+@media (max-width: 500px){
+    .product-recommended-card{
+        width: 130px;
+        height: 130px;
+    }
+    .product-recommended-card img{
+        width: 120px;
+        height: 120px;
+    }
+    .product-recommended-price{
+        position: relative;
+        bottom:15px;
+    }
+}
+
+/*Tablet*/
+@media (min-width: 500px) and (max-width:800px){
+    .product-recommended-card{
+        width: 200px;
+        height: 200px;
+    }
+    .product-recommended-card img{
+        width: 190px;
+        height: 190px;
+    }
+}
+
+/*Desktop*/
+@media (min-width: 800px){
+    .product-recommended-card{
+        width: 300px;
+        height: 300px;
+    }
+    .product-recommended-card img{
+        width: 290px;
+        height: 290px;
+    }
+}

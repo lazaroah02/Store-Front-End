@@ -9,6 +9,7 @@
     border:1px solid;
     text-align:start;
     padding:10px;
+    padding-bottom:0;
     border-radius:5px;
     margin-top: 1rem;
 }
@@ -19,4 +20,10 @@
 
 .box-float-left{
    justify-content: start;
+}
+
+.timestamp{
+    font-size: 10px;
+    text-align: end;
+    margin-bottom: 0;
 }

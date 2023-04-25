@@ -5,7 +5,7 @@
    overflow-x: auto;
    text-align: center;
    scroll-snap-type: x mandatory;
-
+   padding-top: 10px;
 }
 .points-container{
     position: relative;

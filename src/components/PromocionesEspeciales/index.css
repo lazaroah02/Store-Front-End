@@ -1,0 +1,40 @@
+.special-promotions-container{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgb(65, 63, 63);
+}
+
+.special-promotions-container::-webkit-scrollbar{
+    display:none;
+}
+
+/*Buttons see next and previous promotion*/
+.flex-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*Mobile*/
+@media (max-width:500px){
+    .special-promotions-container{
+        width:93vw;
+    }
+}
+
+/*Tablet*/
+@media (min-width:500px) and (max-width:800px){
+    .special-promotions-container{
+        width:95vw;
+    }
+}
+
+/*Desktop*/
+@media (min-width:800px){
+    .special-promotions-container{
+        width: 60vw;
+    }
+}

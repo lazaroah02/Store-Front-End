@@ -10,8 +10,9 @@ export default function EditInfoUser(){
     const [info, setInfo] = useState(null)
     const [showModal, setShowModal] = useState(false)
     const [editingField, setEditing] = useState([])
+    
     useEffect(() => {
-      setInfo(infoUser)
+      setInfo(infoUser.info)
     },[infoUser])
 
     function saveInfo(){
@@ -22,7 +23,7 @@ export default function EditInfoUser(){
       .then(res => {
         if(res.status === 200){
           setInfo(temporalInfo)
-          setInfoUser(temporalInfo)
+          setInfoUser({info:temporalInfo, token:infoUser.token})
           setShowModal(false)
         }
       })

@@ -23,8 +23,9 @@ export default function OptionsNavBar() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser(infoUser);
+    setUser(infoUser.info);
   }, [infoUser]);
+
   function handleMakeUserSeller() {
     makeUserSeller().then((res) => {
       if (res.status === 200) {

@@ -1,0 +1,37 @@
+.promociones{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding-right: 10px;
+}
+.promociones::-webkit-scrollbar{
+    display: none;
+}
+
+/*Mobile*/
+@media (max-width: 500px){
+    .promociones{
+        width: 93vw;
+        height: 400px;
+        margin-top: 20px;
+    }
+}
+
+/*Tablet*/
+@media (min-width: 500px) and (max-width: 800px){
+    .promociones{
+        width: 96vw;
+        height: 200px;
+        flex-direction: row;
+        margin-top: 20px;
+    }
+}
+
+/*Desktop*/
+@media (min-width: 800px){
+    .promociones{
+        height: 400px;
+    }
+}

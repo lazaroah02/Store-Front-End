@@ -7,10 +7,10 @@ export function useInfoUser(){
 
     useEffect(() => {
         if(token !== undefined && token !== null){
-            Promise.resolve(getInfoUser(token))
+            getInfoUser(token)
             .then((data) => {
                 setInfo(data)
             })
         }
     },[])
-    return([info, setInfo])}
+    return({info, token})}

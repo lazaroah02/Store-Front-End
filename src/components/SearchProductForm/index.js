@@ -16,7 +16,7 @@ export default function SearchProductForm(){
         e.preventDefault()
         let nameProduct = e.target[0].value
         if(nameProduct === ""){
-            if(location.pathname === '/about-us' || location.pathname === '/contact' || location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/user'){
+            if(location.pathname !== ""){
                 navigate('/')
             }
             else{
@@ -25,8 +25,13 @@ export default function SearchProductForm(){
             }
         }
         else{
-            setActualFilter({filter:"search", value: nameProduct})
-            goTop()
+            if(location.pathname !== ""){
+                navigate('/')
+            }
+            else{
+                setActualFilter({filter:"search", value: nameProduct})
+                goTop()
+            }
         } 
     }
     function goTop(){

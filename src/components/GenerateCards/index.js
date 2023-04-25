@@ -17,7 +17,7 @@ export default function GenerateCard() {
   const [loading, setLoading] = useState(true);
   const {actualFilter} = useContext(ActualFilterContext)
   const [pagination, setPagination] = useState([0, 24]);
-  const [isNear, reference, setStopObserving] = useIsNear()
+  const {isNear, reference, setStopObserving} = useIsNear()
   const [noMoreProducts, setNoMoreProducts] = useState(false)
 
   //effect to get the products without pagination(when the user active some filter, 
@@ -29,7 +29,7 @@ export default function GenerateCard() {
     setPagination([0, 24])
     switch(actualFilter.filter){
       case "category": //filtrado por categoria
-        Promise.resolve(getProductsByCategory(actualFilter.value))
+        getProductsByCategory(actualFilter.value)
         .then(data => {
         setProduct(data)
         setLoading(false)
@@ -37,7 +37,7 @@ export default function GenerateCard() {
         break
 
       case "price": //filtrado es por precio
-        Promise.resolve(getProductsByPrice(actualFilter.value))
+        getProductsByPrice(actualFilter.value)
         .then(data => {
         setProduct(data)
         setLoading(false)
@@ -45,7 +45,7 @@ export default function GenerateCard() {
         break
       
       case "search": //filtrado es por busqueda
-        Promise.resolve(searchAndProduct(actualFilter.value))
+        searchAndProduct(actualFilter.value)
         .then(data => {
         setProduct(data)
         setLoading(false)
@@ -53,7 +53,7 @@ export default function GenerateCard() {
         break  
         
       default: //obtener todos los productos
-        Promise.resolve(getAllProducts())
+        getAllProducts()
         .then(data => {
         setProduct(data)
         setLoading(false)})
@@ -68,7 +68,7 @@ export default function GenerateCard() {
       setLoading(true)
       switch(actualFilter.filter){
         case "category": //filtrado por categoria
-          Promise.resolve(getProductsByCategory(actualFilter.value, pagination[0], pagination[1]))
+          getProductsByCategory(actualFilter.value, pagination[0], pagination[1])
           .then(data => {
             if(data.length === 0){
               setStopObserving(true)
@@ -83,7 +83,7 @@ export default function GenerateCard() {
           break
   
         case "price": //filtrado es por precio
-          Promise.resolve(getProductsByPrice(actualFilter.value, pagination[0], pagination[1]))
+          getProductsByPrice(actualFilter.value, pagination[0], pagination[1])
           .then(data => {
             if(data.length === 0){
               setStopObserving(true)
@@ -98,7 +98,7 @@ export default function GenerateCard() {
           break
 
         case "search": //filtrado es por busqueda
-          Promise.resolve(searchAndProduct(actualFilter.value, pagination[0], pagination[1]))
+          searchAndProduct(actualFilter.value, pagination[0], pagination[1])
           .then(data => {
             if(data.length === 0){
               setStopObserving(true)
@@ -113,7 +113,7 @@ export default function GenerateCard() {
           break  
           
         default: //obtener todos los productos
-          Promise.resolve(getAllProducts(pagination[0], pagination[1]))
+          getAllProducts(pagination[0], pagination[1])
           .then(data => {
             if(data.length === 0){
               setStopObserving(true)

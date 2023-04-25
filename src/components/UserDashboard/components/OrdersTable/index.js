@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import getPedidosOfSeller from "../../../../services/getPedidosOfSeller"
 import setPedidosFinalizados from '../../../../services/setPedidosFinalizados'
 import ProgresGif from '../../../ProgresGif'
+import {Link} from 'react-router-dom'
+import ChatIcon from '../../../../assets/navBarIcons/chat-icon.svg'
 import './index.css'
 
 export default function OrdersTable(){
@@ -12,7 +14,7 @@ export default function OrdersTable(){
 
     useEffect(() => {
         setLoading(true)
-       Promise.resolve(getPedidosOfSeller())
+       getPedidosOfSeller()
        .then(data => {
         setOrders(data)
         setLoading(false)
@@ -83,7 +85,7 @@ export default function OrdersTable(){
                         <td>{order.unidades}</td>
                         <td>${order.precio_producto}</td>
                         <td>${order.total}</td>
-                        <td>{order.user}</td>
+                        <td>{order.user}<Link to = {`/chat/${order.user}`}><img alt = "chat-icon" src = {ChatIcon}/></Link></td>
                         <td>{order.created_at.substr(0,10)}</td>
                     </tr>)
                     }

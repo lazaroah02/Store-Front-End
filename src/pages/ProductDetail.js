@@ -3,9 +3,10 @@ import getProductDetail from '../services/getProductDetail'
 import ShowProductDetail from '../components/ShowProductDetail'
 import NavBar from '../components/NavBar'
 import ProgresGif from '../components/ProgresGif'
+import {useParams} from 'react-router-dom'
 
-export default function ProductDetail({params}) {
-    const {keyword} = params
+export default function ProductDetail() {
+    const {keyword} = useParams()
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true)
     

@@ -1,0 +1,38 @@
+.desktop-nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    padding-left: 30px;
+    background-color: rgb(183,204,207);
+    z-index: 100;
+    border-bottom: 1px solid;
+    box-shadow: 5px 5px 5px rgb(65, 63, 63);
+}
+
+.desktop-items-navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-left: 100px;
+    float: right;
+    margin-right: 50px;
+}
+
+.desktop-items-navbar div:hover{
+    cursor: pointer;
+}
+.desktop-home-link img{
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 10px;
+    cursor:pointer;
+}

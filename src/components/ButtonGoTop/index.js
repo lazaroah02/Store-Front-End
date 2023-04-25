@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import './index.css'
+import UpArrow from '../../assets/up-arrow.svg'
+
 
 export default function ButtonGoTop(){
     const [showButtonScrollTop, setShowButtonScrollTop] = useState(false)
@@ -10,7 +13,7 @@ export default function ButtonGoTop(){
     }
     //function that detect when scroll is higher than x and show the button go top
     window.onscroll = function(){
-        if(window.scrollY >= 300){
+        if(window.scrollY >= 100){
         setShowButtonScrollTop(true)
         }
         else{
@@ -20,7 +23,7 @@ export default function ButtonGoTop(){
     return(
         <div>
             {showButtonScrollTop?
-            <button className = 'btn btn-primary button-scroll-top' onClick={() => goTop()}><img alt = {"up arrow"} src = 'icons/up-arrow-alt-regular-24.png'/></button>
+            <button className = 'button-scroll-top' onClick={() => goTop()}><img alt = {"up arrow"} src = {UpArrow}/></button>
             :null}
         </div>
     )

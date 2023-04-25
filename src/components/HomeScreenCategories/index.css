@@ -1,0 +1,56 @@
+.home-screen-categories-container{
+    background-color: #fff;
+    width: 100vw;
+    margin-top: 15px;
+    padding:10px;
+}
+.categories-title{
+    color: rgb(0, 0, 0);
+    width: 100%;
+    padding-top: 0px;
+    text-align: center;
+    width: 100%;
+    font-family:cursive;
+    font-size: 25px;
+}
+
+.home-screen-categories{
+    background-color: rgb(65, 144, 149);
+    width: 90vw;
+    min-height: 200px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    display: grid;
+    gap:30px 10px; 
+    resize: both;
+}
+
+/*Mobile*/
+@media (max-width:500px){
+    .home-screen-categories{
+        grid-template-columns: repeat(auto-fit, minmax(120px, 120px));
+    }
+    .categories-title{
+        font-size: 20px;
+    }
+}
+
+/*Tablet*/
+@media (min-width:500px) and (max-width:800px){
+    .home-screen-categories{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    }
+    .categories-title{
+        font-size: 25px;
+    }
+}
+
+/*Desktop*/
+@media (min-width:800px){
+    .home-screen-categories{
+        grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    }
+}
+

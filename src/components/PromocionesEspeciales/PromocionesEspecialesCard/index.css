@@ -1,0 +1,46 @@
+.special-promotion-card{
+    scroll-snap-align: center;
+}
+
+.special-promotion-card img{
+    cursor: pointer;
+    object-fit: inherit;
+}
+
+/*Mobile*/
+@media (max-width:500px){
+    .special-promotion-card{
+        width:100vw;
+        height: 250px;
+    }
+
+    .special-promotion-card img{
+        width: 100vw;
+        height: 250px;
+    }
+}
+
+/*tablet*/
+@media (min-width:500px) and (max-width:800px){
+    .special-promotion-card{
+        width:100vw;
+        height: 400px;
+    }
+    .special-promotion-card img{
+        width: 100vw;
+        height: 400px;
+    }
+}
+
+/*Desktop*/
+@media (min-width:800px){
+    .special-promotion-card{
+        width: 60vw;
+        height: 400px;
+    }
+
+    .special-promotion-card img{
+        width: 60vw;
+        height: 400px;
+    }
+}

@@ -40,6 +40,7 @@ export default function App() {
               <Route path = '/login' element = {<SignIn/>} />
               <Route path = '/register' element = {<SignUp/>} />
               <Route path = '/contact' element = {<ProtectedRoute><Contact/></ProtectedRoute>}/>
+              <Route path = '/chat/:usernameToChat' element = {<ProtectedRoute><Chat/></ProtectedRoute>}/>
               <Route path = '/chat' element = {<ProtectedRoute><Chat/></ProtectedRoute>}/>
               <Route path = '/user/info' element = {<ProtectedRoute><InfoUser/></ProtectedRoute>} />
               <Route path = '/user/seller/list-of-orders'element = {<ProtectedRoute><LisfOfOrders/></ProtectedRoute>} />

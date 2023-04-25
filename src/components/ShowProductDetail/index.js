@@ -5,6 +5,8 @@ import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
 import rightArrow from '../../assets/right-arrow-icon.svg'
 import leftArrow from '../../assets/left-arrow-icon.svg'
+import ChatIcon from '../../assets/navBarIcons/chat-icon.svg'
+import {Link} from 'react-router-dom'
 
 export default function ShowProductDetail(params){
     const {infoUser} = useContext(InfoUserContext)
@@ -32,25 +34,20 @@ export default function ShowProductDetail(params){
         }
       }
     //handle next image   
-    let contador = -1
+    let contador = 0
+    const images = [refImg1.current, refImg2.current, refImg3.current]
     function seeNextImage(){
-        let images = [refImg1.current, refImg2.current, refImg3.current]
-        if(contador < 2 && contador >= -1){
-            if(contador === -1){
-                contador += 2
-            }else{
-                contador += 1
-            }
+        if(contador < 2){
+            contador += 1
             images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
     }
     //handle previous image
     function seePreviousImage(){
-        let images = [refImg1.current, refImg2.current, refImg3.current]
-        if(contador <= 3 && contador > 0){
+        if(contador > 0){
             contador -= 1
+            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
         }  
-        images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
     }
     return(
         <div>
@@ -93,6 +90,15 @@ export default function ShowProductDetail(params){
                 </div>
             <div className = "ProductName container">
                 <h3>{params.product_name}</h3>
+                <br/>
+                <h5>Vendedor:</h5>
+                {params.user !== null && params.user !== undefined?
+                <div>
+                    {params.user}<Link to = {`/chat/${params.user}`}><img src = {ChatIcon} alt = "chat-icon"/></Link>
+                </div>
+                :null
+                }
+                <br/>
                 <br/>
                 <h5>Description:</h5>
                 {params.product_description}

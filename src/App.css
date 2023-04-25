@@ -1,9 +1,7 @@
-.App{
-  margin-top:100px;
-}
-.Home {
-  background-color:rgb(232 232 232);
-  min-height:100vh;
+@media(max-width:500px){
+  .App{
+    margin-top:100px;
+  }
 }
 
 .ProductsContainer{

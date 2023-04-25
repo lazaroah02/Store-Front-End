@@ -1,15 +1,15 @@
 import {useEffect, useState, useRef} from 'react';
 
-export function useIsNear(){
+export function useIsNear(rootMargin = "150px"){
     const [isNear, setIsNear] = useState()
-    const [stopObserving, setStopObserving] = useState(false)
+    const [stopObserving, setStopObserving] = useState()
     const reference = useRef()
+    const rootReference = useRef()
     
     useEffect(() => {
         const onChange = (entries, observer) => {
             const element = entries[0]
             if(stopObserving){
-                console.log("me detuve")
                 observer.disconnect()
             }
             if(element.isIntersecting){
@@ -18,10 +18,10 @@ export function useIsNear(){
             else{
                 setIsNear(false)
             }
-        }    
-        const observer = new IntersectionObserver(onChange, {rootMargin: '150px'}) 
+        } 
+        const observer = new IntersectionObserver(onChange, {root: rootReference.current, rootMargin: rootMargin}) 
         observer.observe(reference.current)
         return () => observer.disconnect()   
     })
-    return([isNear, reference, setStopObserving])
+    return({isNear, reference, setStopObserving, rootReference})
 }
