@@ -1,11 +1,6 @@
 .Home {
     min-height:100vh;
-}
-
-@media (max-width:800px){
-    .Home{
-        padding-top:100px;
-    }
+    padding-top:100px;
 }
 
 .promociones-container{
@@ -13,6 +8,12 @@
     padding: 15px;
     gap:15px
 }
+
+.sub-bar{
+    background-color: rgb(183,204,207);
+    height: 30px;
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
     .promociones-container{

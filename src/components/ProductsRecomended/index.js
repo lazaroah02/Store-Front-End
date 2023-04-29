@@ -9,7 +9,7 @@ export default function ProductsRecomended(){
     useEffect(() => {
         getRecommendedProducts()
         .then((data) => {
-            setItems(data)
+            setItems(data.results)
         })
     },[])
      

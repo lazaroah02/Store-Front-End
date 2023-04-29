@@ -14,7 +14,8 @@ function Home() {
   const startRef = useRef()
   return(
     <div className = "Home">
-        <NavBar startRef = {startRef}/>
+        <NavBar/>
+        <div className = "sub-bar" id = "top" ref = {startRef}></div>
         <ButtonGoTop/>
         <div className = "promociones-container">
           <PromocionesEspeciales/>

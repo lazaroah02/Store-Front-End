@@ -1,6 +1,7 @@
 .category-card{
     background-color: #fff;
     border-radius: 5px;
+    cursor:pointer;
 }
 .category-card img{
     object-fit: contain;

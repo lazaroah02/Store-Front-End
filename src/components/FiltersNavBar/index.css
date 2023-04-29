@@ -1,18 +1,12 @@
-.FiltersNavBar{
-    margin:0 auto;
-    background-color:transparent;
-    width: 100%;
-    text-align: center;
-    white-space:nowrap;
-    height: 60px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-left: 2rem;
-    padding-right: 2rem;
+.filters-nav-bar{
+    background-color: transparent;
+    margin-top: 15px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0px 10px;
 }
 
-.FiltersNavBar::-webkit-scrollbar{
-    width:0px;
-    height:0px;
-    background:transparent;
+.filters-nav-bar li{
+    list-style-type: none;
 }

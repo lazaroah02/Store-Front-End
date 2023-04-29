@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react'
 import './index.css'
 import {useNavigate} from 'react-router-dom'
-import {BASE_URL} from '../../settings'
 import InfoUserContext from '../../context/InfoUserContext'
 import {addProduct} from '../../customHooks/manageCart'
 import addToCartIcon from '../../assets/add-to-cart-icon.svg'
@@ -33,7 +32,7 @@ export default function Card({id, product_name, precio, product_img1}){
     return(
        <div className="ProductCard" id = {id} >
         <div className = 'img-container'>
-            <img loading = "lazy" onClick={() => handleClick()} src={`${BASE_URL}${product_img1}`}  alt={product_name}/>
+            <img loading = "lazy" onClick={() => handleClick()} src={product_img1}  alt={product_name}/>
         </div>
        <div className="body">
          <h5 className="card-title" onClick={() => handleClick()}>{product_name}</h5>

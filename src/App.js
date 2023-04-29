@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Home from './pages/Home'
 import ProductDetail from './pages/ProductDetail'
 import AboutUs from './pages/AboutUs'
+import ShowProducts from './pages/ShowProducts'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Contact from './pages/Contact'
@@ -17,7 +18,6 @@ import ProductSellerDetail from './components/UserDashboard/components/ProductSe
 //context import
 import {InfoUserContextProvider} from './context/InfoUserContext'
 import {ProductsCartContextProvider} from './context/ProductsCartContext'
-import { ActualFilterContextProvider } from './context/ActualFilterContext'
 
 //import ProtectedRoute from "./components/ProtectedRoute"
 import ProtectedRoute from "./components/ProtectedRoute"
@@ -32,12 +32,13 @@ export default function App() {
         <div className = "App">
         <InfoUserContextProvider>
         <ProductsCartContextProvider>
-          <ActualFilterContextProvider>
             <Routes>
               <Route path = "/" element = {<Home/>}/>
               <Route exact path = "/detail/:keyword" element = {<ProductDetail/>} />
               <Route path = '/about-us' element = {<AboutUs/>} />
               <Route path = '/login' element = {<SignIn/>} />
+              <Route path = '/products' element = {<ShowProducts/>} />
+              <Route path = '/products/:filters' element = {<ShowProducts/>} />
               <Route path = '/register' element = {<SignUp/>} />
               <Route path = '/contact' element = {<ProtectedRoute><Contact/></ProtectedRoute>}/>
               <Route path = '/chat/:usernameToChat' element = {<ProtectedRoute><Chat/></ProtectedRoute>}/>
@@ -47,7 +48,6 @@ export default function App() {
               <Route path = '/user/seller/products' element = {<ProtectedRoute><YourProducts/></ProtectedRoute>} />
               <Route path = '/user/seller/product/:keyword' element = {<ProtectedRoute><ProductSellerDetail/></ProtectedRoute>} />
             </Routes>
-          </ActualFilterContextProvider>
         </ProductsCartContextProvider>
         </InfoUserContextProvider>
         </div>
