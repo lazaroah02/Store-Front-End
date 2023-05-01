@@ -1,12 +1,12 @@
 import React, { useEffect, useState} from "react";
-import ProgresGif from "../ProgresGif";
+import Loader from "../Loader";
 import Card from '../Card'
 import "../../vendor/bootstrap/css/bootstrap.min.css";
 import "./index.css";
 import getProducts from "../../services/getProducts";
 
 
-export default function GenerateCard({keyword}) {
+export default function GenerateCard({keyword, setPageSize, startRef}) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,8 +14,14 @@ export default function GenerateCard({keyword}) {
     setLoading(true)
     getProducts(keyword.filters)
     .then(data => {
+      setPageSize(data.count)
       setProducts(data.results)
       setLoading(false)
+      startRef.current.scrollIntoView({block:'center',inline:"center"})
+    })
+    .catch(() => {
+      setLoading(false)
+      setPageSize(0)
     })
   }, [keyword])
 
@@ -23,7 +29,7 @@ export default function GenerateCard({keyword}) {
     <div>
       {loading ? (
         <div className="cargando">
-          <ProgresGif />
+          <Loader />
         </div>
       ) : null}
       <div className=" ProductsContainer row justify-content-center">
@@ -33,7 +39,7 @@ export default function GenerateCard({keyword}) {
       </div>
       {loading ? (
         <div className="cargando">
-          <ProgresGif />
+          <Loader />
         </div>
       ) : null}
     </div>

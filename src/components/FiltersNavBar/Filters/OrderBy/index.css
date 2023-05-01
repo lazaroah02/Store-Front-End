@@ -1,0 +1,16 @@
+.orden{
+    cursor: pointer;
+}
+
+.orden:hover{
+    background-color: rgba(65, 143, 149, 0.629);
+}
+
+.order-modal-header{
+    background-color:rgb(255, 231, 231);
+}
+
+.close-order-modal-button{
+    background-color:rgb(237, 123, 103);
+    color: white;
+}

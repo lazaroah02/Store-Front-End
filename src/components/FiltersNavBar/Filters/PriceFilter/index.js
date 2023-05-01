@@ -1,20 +1,31 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import searchIcon from '../../../../assets/navBarIcons/search-icon.svg'
 import {useNavigate, useLocation} from 'react-router-dom'
-import {createNewPathName} from '../../createNewPathName'
+import {createNewPathName} from '../../../../helpFunctions/createNewPathName'
+import Modal from 'react-bootstrap/Modal'
+import './index.css'
 
-export default function PriceFilter({filterToRemove}) {
+export default function PriceFilter({activeFilters}) {
     const navigate = useNavigate()
+    const [actualPrice, setActualPrice] = useState("Todos")
     const {pathname} = useLocation()
+    const [showModal, setShowModal] = useState(false)
 
+    //useEffect to set the actual price 
     useEffect(() => {
-      if(filterToRemove === "precio"){
-        navigate(createNewPathName(pathname, "precio", ""))
+      let precioUrl = "Todos"
+      for(let i = 0; i < activeFilters.length; i++){
+        if(activeFilters[i].filter === "precio"){
+          precioUrl = activeFilters[i].value
+        }
       }
-    },[filterToRemove])
+      setActualPrice(precioUrl)
+    },[activeFilters])
 
+    //inyecta en la url el precio seleccionado para filtrar
     function handleSetPrice(e){
         e.preventDefault();
+        setShowModal(false)
         let price = e.target[0].value
         if(isNaN(price)) return alert('The price must be a number')
         //inserto el filtro en la nueva ruta
@@ -22,22 +33,25 @@ export default function PriceFilter({filterToRemove}) {
     }
 
   return (
-    <div>
-      <li className="nav-item dropdown">
+    <div className = "filter">
         <button
-          className="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+          className="btn"
+          onClick={() => setShowModal(true)}
         >
-          Precio
+          Precio: {actualPrice}
         </button>
-        <ul className="dropdown-menu">
+        <Modal show = {showModal}>
+          <Modal.Header className = "price-modal-header">
+            <div>Filtrar por precio</div>
+            <button className="btn close-price-modal-button" onClick = {() => setShowModal(false)}>X</button>
+          </Modal.Header>
+          <Modal.Body>
             <form className="d-flex set-price-filter" onSubmit = {(e) => handleSetPrice(e)}>
-                <input className="form-control me-2" placeholder="Set a price"/>
-                <button className="btn"><img alt = "buscar" src = {searchIcon}/></button>
+                <input className="form-control me-2" placeholder="price"/>
+                <button className="btn filter-price-button"><img alt = "buscar" src = {searchIcon}/></button>
             </form>
-        </ul>
-      </li>
+          </Modal.Body>
+        </Modal>
     </div>
   );
 }

@@ -4,56 +4,71 @@
     width: 252px;
     height: 265px;
     background: white;
-    border-radius: 30px;
-    box-shadow: 15px 15px 30px #bebebe,
-               -15px -15px 30px #ffffff;
-    transition: 0.2s ease-in-out;
-    
+    box-shadow: 5px 5px 10px #bebebe;
+    transition: 0.2s ease-in-out;    
+    border-radius: 10px;
 }
 .ProductCard:hover{
     box-shadow:1px 1px 0px 0px gray;
     cursor: pointer;
 }
+
 .img-container {
     width: 100%;
     height: 60%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     display: flex;
     align-items: top;
     justify-content: center;
+    border-radius: 10px;
   }
   
 .img-container img{
     width: 100%;
     transition: 0.2s ease-in-out;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 10px;
   }
-
-.add-to-cart-button{
+.product-card-body{
     width:100%;
-    height: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    background-color: rgba(68, 68, 66, 0.095);
-}
-
-.add-to-cart-button img:hover{
-    width: 30px;
-    cursor: pointer;
-}
-
-.body{
-    width:100%;
+    height: 40%;
     display: flex;
     flex-direction: column;
-    align-items:center;
     justify-content: center;
     text-align: center;
+    background-color: rgb(255, 231, 231);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}  
+.stars-and-button-cart-container{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.add-to-cart-button{
+    width:15%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: gold;
+    cursor: pointer;
+}
+.name-and-price-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.product-card-title{
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+

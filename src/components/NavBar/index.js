@@ -13,7 +13,7 @@ import LogoChat from '../../assets/navBarIcons/chat-icon.svg'
 import Logo from '../../assets/navBarIcons/logo-store.png'
 
 
-export default function PhoneNavBar(){
+export default function NavBar({startRef}){
   const [expandNavBar, setExpandNavBar] = useState(true)
   const styleNavBar = expandNavBar? "new-navbar":"new-navbar-short"
   

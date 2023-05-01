@@ -1,0 +1,23 @@
+.loader-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category{
+    cursor: pointer;
+}
+.category:hover{
+    background-color: rgba(65, 143, 149, 0.629);
+}
+
+.categories-modal-header{
+    background-color:rgb(255, 231, 231);
+}
+
+.close-categories-modal-button{
+    background-color:rgb(237, 123, 103);
+    color: white;
+}

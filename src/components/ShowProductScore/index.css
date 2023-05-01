@@ -1,0 +1,10 @@
+.stars-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.stars-container img{
+    height:18px
+}

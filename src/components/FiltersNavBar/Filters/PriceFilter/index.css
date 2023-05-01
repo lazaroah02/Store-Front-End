@@ -1,0 +1,13 @@
+.filter-price-button{
+    background-color:rgb(249, 171, 158);
+    margin-left: 10px;
+}
+
+.price-modal-header{
+    background-color:rgb(255, 231, 231);
+}
+
+.close-price-modal-button{
+    background-color:rgb(237, 123, 103);
+    color: white;
+}

@@ -1,3 +1,48 @@
 .ShowProducts{
     padding-top: 100px;
 }
+
+/*Paginator styles*/
+.paginator{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0 5rem;
+    background-color: #fff;
+    gap:6px;
+}
+.paginator a{
+    text-decoration:none;
+    color: black;
+}
+.page{
+    min-width: 32px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page:hover{
+    background-color:rgb(65, 144, 149);
+}
+.page-active{
+    background-color: rgb(65, 144, 149);
+    min-width: 32px;
+}
+.next-page-button{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.next-page-button:hover{
+    background-color: rgb(65, 144, 149);
+}
+.previous-page-button{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.previous-page-button:hover{
+    background-color: rgb(65, 144, 149);
+}

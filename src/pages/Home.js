@@ -11,12 +11,12 @@ import PromocionesEspeciales from '../components/PromocionesEspeciales';
 import './pagesStyles/home.css';
 
 function Home() {
-  const startRef = useRef()
+  const topRef = useRef()
   return(
     <div className = "Home">
         <NavBar/>
-        <div className = "sub-bar" id = "top" ref = {startRef}></div>
-        <ButtonGoTop/>
+        <p ref = {topRef}></p>
+        <ButtonGoTop topRef = {topRef}/>
         <div className = "promociones-container">
           <PromocionesEspeciales/>
           <Promociones/>

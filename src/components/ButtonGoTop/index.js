@@ -3,13 +3,12 @@ import './index.css'
 import UpArrow from '../../assets/up-arrow.svg'
 
 
-export default function ButtonGoTop(){
+export default function ButtonGoTop({topRef}){
     const [showButtonScrollTop, setShowButtonScrollTop] = useState(false)
 
     //function that focus on the start of the page
     function goTop(){
-        let reference = document.getElementById("top")
-        reference.scrollIntoView({behavior:"smooth", block:'center',inline:"center"})
+        topRef.current.scrollIntoView({behavior:"smooth", block:'center',inline:"center"})
     }
     //function that detect when scroll is higher than x and show the button go top
     window.onscroll = function(){

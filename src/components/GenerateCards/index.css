@@ -38,3 +38,8 @@
     margin-right: 10px;
 }
 
+.cargando{
+    display: flex;
+    justify-content: center;
+}
+
