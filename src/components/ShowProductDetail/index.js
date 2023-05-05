@@ -5,8 +5,6 @@ import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
 import rightArrow from '../../assets/right-arrow-icon.svg'
 import leftArrow from '../../assets/left-arrow-icon.svg'
-import ChatIcon from '../../assets/navBarIcons/chat-icon.svg'
-import {Link} from 'react-router-dom'
 
 export default function ShowProductDetail(params){
     const {infoUser} = useContext(InfoUserContext)
@@ -90,14 +88,6 @@ export default function ShowProductDetail(params){
                 </div>
             <div className = "ProductName container">
                 <h3>{params.product_name}</h3>
-                <br/>
-                <h5>Vendedor:</h5>
-                {params.user !== null && params.user !== undefined?
-                <div>
-                    {params.user}<Link to = {`/chat/${params.user}`}><img src = {ChatIcon} alt = "chat-icon"/></Link>
-                </div>
-                :null
-                }
                 <br/>
                 <br/>
                 <h5>Description:</h5>

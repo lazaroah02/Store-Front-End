@@ -3,7 +3,7 @@ import "./index.css";
 import { Link, useNavigate } from "react-router-dom";
 import register from "../../services/register";
 
-export default function SignInForm() {
+export default function SignUpForm() {
   const setNavigate = useNavigate();
 
   //error messages
@@ -50,10 +50,10 @@ export default function SignInForm() {
   }
   return (
     <div className = "RegisterContainer">
-      <div className="card FormContainer container">
-        <div className="card-body">
+      <div className="card SignUpFormContainer container">
+        <div className="card-body SignUpFormBody">
           <div className="SignUpTitle">
-            <h4>Sign up to Store</h4>
+            <h4>Sign up to Bestore</h4>
           </div>
           <form
             onSubmit={(event) => handleSubmit(event)}
@@ -61,7 +61,7 @@ export default function SignInForm() {
           >
             <label>Email</label>
             <br />
-            <input className="Input" type="email" onChange={() => {
+            <input className="SignUpInput" type="email" onChange={() => {
               setErrorEmailExist(false)
               setErrorEmailWrong(false)
               setErrorPasswordNotNaN(false)
@@ -75,7 +75,7 @@ export default function SignInForm() {
             <br />
             <label>Password</label>
             <br />
-            <input className="Input" type="password" onChange={() => {
+            <input className="SignUpInput" type="password" onChange={() => {
               setErrorPasswordDontMatch(false)
               setErrorPasswordShort(false)
               setErrorPasswrodTooEasy(false)
@@ -96,19 +96,19 @@ export default function SignInForm() {
 
             <label>Confirm password</label>
             <br />
-            <input className="Input" type="password" onChange={() => {
+            <input className="SignUpInput" type="password" onChange={() => {
               setErrorPasswordDontMatch(false)
               setErrorPasswordShort(false)
               setErrorPasswrodTooEasy(false)
             }}></input>
-            <button className="btn btn-primary FormButton" type="submit">
+            <button className="btn SignUpFormButton" type="submit">
               Register
             </button>
           </form>
-          <div className="card Fet">
+          <div className="card SignUpFet">
             <p>
-              <span className="align-center">Have already an account?</span>
-              <Link className="SignInLink align-center" to="/login">
+              <span className="SignUpSpan align-center">Have already an account?</span>
+              <Link className="SignUpLink align-center" to="/login">
                 Sign in
               </Link>
             </p>

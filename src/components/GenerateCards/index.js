@@ -11,13 +11,13 @@ export default function GenerateCard({keyword, setPageSize, startRef}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    startRef.current.scrollIntoView({block:'center',inline:"center"})
     setLoading(true)
     getProducts(keyword.filters)
     .then(data => {
       setPageSize(data.count)
       setProducts(data.results)
       setLoading(false)
-      startRef.current.scrollIntoView({block:'center',inline:"center"})
     })
     .catch(() => {
       setLoading(false)

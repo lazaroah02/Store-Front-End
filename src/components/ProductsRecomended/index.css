@@ -50,6 +50,19 @@
     resize: both;
     padding:10px;
 }    
+.ver-mas-productos-recomendados-link{
+    width: 100vw;
+    height: 35px;
+    text-align: end;
+    background-color:rgb(235, 235, 235);
+    padding-right: 40px;
+}
+.ver-mas-productos-recomendados-link a {
+    color:black;
+}
+.ver-mas-productos-recomendados-link a:hover {
+    color:black;
+}
 
 /*Mobile*/
 @media (max-width: 500px){

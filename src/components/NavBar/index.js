@@ -9,7 +9,6 @@ import LogoProfile from "../LogoProfile"
 //images import
 import homeIcon from '../../assets/navBarIcons/home-icon.svg'
 import contactIcon from '../../assets/navBarIcons/mail-icon.svg'
-import LogoChat from '../../assets/navBarIcons/chat-icon.svg'
 import Logo from '../../assets/navBarIcons/logo-store.png'
 
 
@@ -30,11 +29,6 @@ export default function NavBar({startRef}){
     <div className = {styleNavBar}>
       <section className = "top-navbar">
           <div className = "home-link" onClick={() => redirect("/")}><Link to = "/"><img src = {Logo} alt = "Logo"/></Link></div>
-          <div className = "chat-link">
-            <Link to = "/chat">
-              <img src = {LogoChat} alt = "Chat"/>
-            </Link>
-          </div>
       </section>
       <section className = "items-navbar justify-content-center">
         <div>

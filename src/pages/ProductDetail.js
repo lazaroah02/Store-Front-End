@@ -4,6 +4,7 @@ import ShowProductDetail from '../components/ShowProductDetail'
 import NavBar from '../components/NavBar'
 import ProgresGif from '../components/ProgresGif'
 import {useParams} from 'react-router-dom'
+import './pagesStyles/showProductDetail.css'
 
 export default function ProductDetail() {
     const {keyword} = useParams()
@@ -18,7 +19,7 @@ export default function ProductDetail() {
     },[keyword])
 
     return(
-        <div className = "App">
+        <div className = "show-product-detail-page">
             <NavBar/>
             {loading?<div className ="cargando"><ProgresGif/></div>:null }
             <div><ShowProductDetail key = {product.id} {...product}/></div>

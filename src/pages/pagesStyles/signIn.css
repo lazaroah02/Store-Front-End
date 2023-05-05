@@ -1,0 +1,8 @@
+.sign-in-page{
+    background-image: url('../../assets//backgrounds/Fondo\ de\ pagina\ de\ login\ y\ registro\ de\ usuarios.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}

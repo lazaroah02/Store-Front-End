@@ -23,10 +23,10 @@ export default function SignInForm() {
 
   return (
     <div className = "LoginContainer">
-      <div className="card FormContainer container">
-        <div className="card-body">
-          <div className="SignTitle">
-            <h4>Sign in to Store</h4>
+      <div className="card SignInFormContainer container">
+        <div className="card-body SignInFormBody">
+          <div className="SignInTitle">
+            <h4>Sign in to Bestore</h4>
           </div>
           <form
             className="container "
@@ -34,22 +34,22 @@ export default function SignInForm() {
           >
             <label>Email</label>
             <br />
-            <input className="Input" type="email"></input>
+            <input className="SignInInput" type="email"></input>
             <br />
             <label>Password</label>
-            <a className="ForgotPasswordMessage" href="/">
+            <a className="SignInForgotPasswordMessage" href="/">
               Forgot password?
             </a>
             <br />
-            <input className="Input" type="password"></input>
-            <button className="btn btn-primary FormButton" type="submit">
+            <input className="SignInInput" type="password"></input>
+            <button className="btn SignInFormButton" type="submit">
               Enter
             </button>
           </form>
-          <div className="card LoginFet">
+          <div className="card SignInFet">
             <p>
-              <span className="align-center">Don't have an account?</span>
-              <Link className="SignUpLink align-center" to="/register">
+              <span className="SignInSpan align-center">Don't have an account?</span>
+              <Link className="SignInLink align-center" to="/register">
                 Sign up here
               </Link>
             </p>

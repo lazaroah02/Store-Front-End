@@ -35,6 +35,7 @@
 .next-page-button{
     margin-left: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 .next-page-button:hover{
     background-color: rgb(65, 144, 149);
@@ -42,6 +43,7 @@
 .previous-page-button{
     margin-right: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 .previous-page-button:hover{
     background-color: rgb(65, 144, 149);

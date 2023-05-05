@@ -1,8 +1,9 @@
 import React, {useRef, useState, useEffect} from 'react';
-import "./index.css";
 import ProductsRecomendedCard from './ProductsRecomendedCards';
 import getRecommendedProducts from '../../services/getRecommendedProducts'
 import Loader from '../Loader'
+import {Link} from 'react-router-dom'
+import "./index.css";
 
 export default function ProductsRecomended(){
     const [items, setItems] = useState([])
@@ -36,6 +37,7 @@ export default function ProductsRecomended(){
                     }
                 </section>
             }
+            <div className = "ver-mas-productos-recomendados-link"><Link to = "/products/recommended=1">Ver mas</Link></div>
         </div>
     )
 }

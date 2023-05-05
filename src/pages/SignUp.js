@@ -1,11 +1,10 @@
 import React from 'react';
 import SignUpForm from '../components/SignUpForm'
-import NavBar from '../components/NavBar'
+import './pagesStyles/signUp.css'
 
 export default function SignUp(){
     return (
-        <div>
-            <NavBar/>
+        <div className = 'sign-up-page'>
             <SignUpForm/>
         </div>
     )

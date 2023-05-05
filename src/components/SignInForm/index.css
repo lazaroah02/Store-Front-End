@@ -1,35 +1,65 @@
-
-.FormContainer{
-    width: 20rem;
+.SignInFormContainer{
+    width: 90%;
+    max-width: 40rem;
+    margin-top: 12rem;
     border-radius:1rem;
+    padding-bottom: 1rem;
+    padding:0!important;
+    background-color: transparent;
 }
-
-.FormButton{
+.SignInFormBody{
+    background-color: rgba(255, 255, 255, 0.779);
+    border-radius: 1rem;
+}
+.SignInTitle{
+    position: relative;
+    bottom: 3.5rem;
+    text-align: center;
+    font-size:1.5rem;
+    color: #fff;
+}
+.SignInFormButton{
     margin-top:1rem;
+    color: #fff;
     width:100%;
+    background: rgb(65, 144, 149);
 }
 
-.Input{
+.SignInInput{
     width:100%;
+    background-color: rgb(255, 231, 231);
+    border: 1px solid;
 }
-.ForgotPasswordMessage{
+.SignInInput:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px rgb(255, 231, 231) inset;
+}   
+.SignInForgotPasswordMessage{
     float:right;
     font-size:0.8rem;
     margin-top:0.2rem;
+    color:black;
 }
-.LoginFet{
+.SignInForgotPasswordMessage:hover{
+    color:black;
+}
+.SignInFet{
+    background-color: rgba(255, 255, 255, 0.373);
     margin-top:1rem;
     border-radius:1rem;
     padding:0.5rem 0.5rem 0 0.5rem;
     font-size:1rem
 }
-.SignUpLink{
+.SignInLink{
     position: relative;
     top:0.2rem;
     right: 0.5rem;
     float:right;
+    color:black;
 }
-span{
+.SignInLink:hover{
+    color:black;
+}
+.SignInSpan{
     position:relative;
     top:0.2rem
 }

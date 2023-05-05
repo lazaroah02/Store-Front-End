@@ -1,31 +1,51 @@
-.FormContainer{
-    width: 20rem;
+.SignUpFormContainer{
+    width: 90%;
+    max-width: 40rem;
+    margin-top: 10rem;
     border-radius:1rem;
+    padding-bottom: 1rem;
+    padding:0!important;
+    background-color: transparent;
 }
-
-.FormButton{
+.SignUpFormBody{
+    background-color: rgba(255, 255, 255, 0.779);
+    border-radius: 1rem;
+}
+.SignUpFormButton{
     margin-top:1rem;
     width:100%;
+    background: rgb(65, 144, 149);
+    color: #fff;
 }
 .SignUpTitle{
-   text-align:center
+   text-align:center;
 }
-.Input{
+.SignUpInput{
     width:100%;
+    background-color: rgb(255, 231, 231);
+    border: 1px solid;
 }
-.Fet{
+.SignUpInput:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px rgb(255, 231, 231) inset;
+}
+.SignUpFet{
     margin-top: 1rem;
     border-radius:1rem;
     padding:0.5rem 0.5rem 0 0.5rem;
-    font-size:1rem
+    font-size:1rem;
+    background-color: rgba(255, 255, 255, 0.373);
 }
-.SignInLink{
+.SignUpLink{
     float:right;
     position:relative;
     top:0.1rem;
     right:0.5rem;
+    color:black;
 }
-span{
+.SignUpLink:hover{
+    color:black;
+}
+.SignUpSpan{
     position:relative;
     top:0.2rem
 }
