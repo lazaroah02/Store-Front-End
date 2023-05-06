@@ -7,7 +7,7 @@ import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 import ShowProductScore from '../ShowProductScore'
 
-export default function Card({id, product_name, precio, product_img1}){
+export default function Card({id, product_name, precio, product_img1, puntuacion}){
   const {infoUser} = useContext(InfoUserContext)
   const navigate = useNavigate()
   const [,add] = addProduct()
@@ -37,7 +37,7 @@ export default function Card({id, product_name, precio, product_img1}){
         </div>
        <div className="product-card-body">
         <div className = "stars-and-button-cart-container">
-          <ShowProductScore score = {3}/>
+          <ShowProductScore score = {puntuacion}/>
           <div onClick={addToCart} className="add-to-cart-button ">
               {productAdded
               ?

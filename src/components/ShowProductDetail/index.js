@@ -1,14 +1,17 @@
-import React, {useContext, useState, useRef} from 'react';
+import React, {useContext, useState, useRef, useEffect} from 'react';
 import './index.css';
 import InfoUserContext from '../../context/InfoUserContext';
 import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
 import rightArrow from '../../assets/right-arrow-icon.svg'
 import leftArrow from '../../assets/left-arrow-icon.svg'
+import RateProduct from '../RateProduct'
+import { checkIfUserCanRate } from '../../services/checkIfUserCanRate';
 
 export default function ShowProductDetail(params){
     const {infoUser} = useContext(InfoUserContext)
     const [productAdded, setProductAdded] = useState(false)
+    const [showRateProductComponent, setShowRateProductComponent] = useState(false)
     const [,add] = addProduct()
 
     //images references
@@ -16,8 +19,20 @@ export default function ShowProductDetail(params){
     const refImg2 = useRef()
     const refImg3 = useRef()
 
+    //check if the user can rate the product and show the RateProductComponent
+    useEffect(() => {
+        if(infoUser.token !== null && params.id !== undefined){
+            checkIfUserCanRate({productId:params.id, userToken:infoUser.token})
+            .then(res => {
+                if(res.status === 200){
+                    setShowRateProductComponent(true)
+                }
+            })
+        }
+    },[])
+
     function addToCart(){
-        if(infoUser === null){
+        if(infoUser.info === null){
           alert('Login to use the Cart')
         }
         else{
@@ -72,7 +87,7 @@ export default function ShowProductDetail(params){
                     alt = {params.name}
                     />
             </section>
-
+            {showRateProductComponent?<RateProduct userToken={infoUser.token} productId = {params.id} userId={infoUser.info.id}/>:null}
             <div>
                 <button className = "boton-next-image2 btn" onClick={() => seeNextImage()}>
                     <img alt = "right-arrow" src = {rightArrow}/>

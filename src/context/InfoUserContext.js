@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useInfoUser} from '../customHooks/useInfoUser'
 
-const InfoUserContext = React.createContext(null)
+const InfoUserContext = React.createContext({info:null, token:null})
 
 export function InfoUserContextProvider({children}){
     const {info, token} = useInfoUser()
-    const [infoUser, setInfoUser] = useState(info)
+    const [infoUser, setInfoUser] = useState({info:null, token:null})
 
     useEffect(() => {
         setInfoUser({info:info, token:token})

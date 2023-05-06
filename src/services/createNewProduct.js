@@ -3,6 +3,7 @@ import {URL_PRODUCTS_OF_SELLER} from "../settings"
 const key = localStorage.getItem('SessionToken')
 const cok = document.cookie
 const token = cok.substring(10,cok.length)
+console.log(token)
 
 export default function createNewCategory(info){
     let formData = new FormData()
