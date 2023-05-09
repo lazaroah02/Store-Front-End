@@ -1,9 +1,12 @@
+const pathExcluded = ["/products/", "/products", "/", ""]
 export function checkActiveFilters(pathname) {
   let listOfFilters = [];
-  if (pathname !== "/products/" && pathname !== "/products") {
+  if (pathExcluded.indexOf(pathname) === -1) {
+    
     let separatedPathName = pathname.split("&");
     let firstPartOfPathName = separatedPathName[0].split("/");
     separatedPathName[0] = firstPartOfPathName[2];
+    
     for (let i = 0; i < separatedPathName.length; i++) {
       if (
         !separatedPathName[i].endsWith("=") &&

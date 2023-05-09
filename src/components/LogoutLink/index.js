@@ -16,7 +16,7 @@ export default function ShowLinks(){
     function handleLogout(){
         window.localStorage.removeItem('SessionToken')
         setLogged(false)
-        setInfoUser(null)
+        setInfoUser({info:null, token:null})
         setNavigate("/")
     }
     return(

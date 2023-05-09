@@ -13,6 +13,7 @@ import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
 import YourProducts from './components/UserDashboard/components/YourProducts'
 import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
+import Page404 from './pages/Page404'
 
 //context import
 import {InfoUserContextProvider} from './context/InfoUserContext'
@@ -44,6 +45,7 @@ export default function App() {
               <Route path = '/user/seller/list-of-orders'element = {<ProtectedRoute><LisfOfOrders/></ProtectedRoute>} />
               <Route path = '/user/seller/products' element = {<ProtectedRoute><YourProducts/></ProtectedRoute>} />
               <Route path = '/user/seller/product/:keyword' element = {<ProtectedRoute><ProductSellerDetail/></ProtectedRoute>} />
+              <Route path = '*' element = {<Page404/>} />
             </Routes>
         </ProductsCartContextProvider>
         </InfoUserContextProvider>

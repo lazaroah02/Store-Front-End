@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import CartContent from './BodyCart/CartContent'
-import './index.css'
 import CartIcon from '../../assets/navBarIcons/cart-icon.svg'
+import './index.css'
 
 export default function Cart(){
     const [showModal, setShowModal] = useState(false)
     
     return(
-        <div className = 'logoCart'>
-            <div onClick = {() => setShowModal(true)}><img alt = "cart" src = {CartIcon}></img></div>
+        <>
+            <div className = "cart" onClick = {() => setShowModal(true)}>
+                <img alt = "cart" src = {CartIcon}></img>
+                <div className = "cart-text">Carro</div>
+            </div>
             <Modal show = {showModal}>
             <Modal.Header>
                 <Modal.Title>
@@ -23,6 +26,6 @@ export default function Cart(){
                 </div>
             </Modal.Body>
         </Modal>
-        </div>
+        </>
     )
 }

@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
-import getCategories from "../../../../services/getCategories";
 import Loader from "../../../Loader";
 import { useNavigate, useLocation } from "react-router-dom";
 import {createNewPathName} from '../../../../helpFunctions/createNewPathName'
 import Modal from 'react-bootstrap/Modal'
+import {useCategories} from '../../../../customHooks/useCategories'
 import './index.css'
 
 export default function CategoriesFilter({activeFilters}) {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {categories, loadingCategories} = useCategories()
   const [showModal, setShowModal] = useState(false)
   const [actualCategory, setActualCategory] = useState("Todas")
   const navigate = useNavigate()
   const {pathname} = useLocation()
-
-  //useEffect to get the categories
-  useEffect(() => {
-    setLoading(true)
-    getCategories().then((data) => {
-      setLoading(false);
-      setCategories(data);
-    });
-  },[])
 
   //useEffect para recuperar la categoria actual
   useEffect(() => {
@@ -61,7 +51,7 @@ export default function CategoriesFilter({activeFilters}) {
           </Modal.Header>
 
           <Modal.Body>
-            {loading ? 
+            {loadingCategories ? 
             <div className = "loader-container">
               <Loader/>
             </div>

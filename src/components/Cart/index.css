@@ -2,3 +2,25 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 }
+
+.cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 13%;
+    height: 100%;
+    text-align: center;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.cart-text{
+    color:white;
+}
+
+@media (max-width:700px){
+    .cart-text{
+        display:none;
+    }
+}

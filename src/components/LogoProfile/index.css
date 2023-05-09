@@ -1,0 +1,17 @@
+.user-profile-icon-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    color:white;
+    width: 13%;
+    height: 100%;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+@media (max-width:700px){
+    .user-profile-text{
+        display:none;
+        min-width: none;
+    }
+}

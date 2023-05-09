@@ -18,6 +18,7 @@
     box-shadow: 5px 10px 5px rgb(65, 63, 63);
 }
 
+/*Mitad superior de la navbar que se oculta al hacer scroll*/
 .top-navbar{
     background-color: rgb(65, 144, 149);
     height: 50px;
@@ -28,33 +29,47 @@
     text-align: center;
 }
 
-.items-navbar{
+/*Mitad inferiror de la navbar que contiene los items de navegacion*/
+.bottom-navbar{
     width: 100%;
     height: 55px;
     background-color: rgb(65, 144, 149);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
-.items-navbar > div{
-    display: inline-block;
+
+.items-container{
+    width: 40%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*home-icon*/
+.home-icon-container{
     width: 20%;
-    height: 100%;
-    text-align: center;
-    padding-top: 10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
-
-.items-navbar img{
-    color:#fff
-}
-
-.items-navbar img:hover{
+.home-icon{
     cursor: pointer;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    color:white;
+    margin-left: 100px;
 }
 
+/*(Logo)*/
 .home-link{
     text-align: center;
-    margin-left: 10px;
     cursor:pointer;
 }
-
 .home-link img{
     width: 150px;
     height: 50px;
@@ -66,15 +81,30 @@
     cursor:pointer;
 }
 
-.chat-link{
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    padding-top: 10px;
-    float: right;
-    margin-right: 15px;
-    cursor:pointer;
+/*Mobile*/
+@media (max-width:500px){
+    .home-icon-container{
+        width: 10%;
+    }
+    .home-icon div{
+        display:none;
+    }
+    .home-icon{
+        margin-left:0;
+    }
+    .items-container{
+        width: 40%;
+    }
 }
+
+/*Tablet*/
+@media (min-width: 500px) and (max-width:800px){
+    .home-icon{
+        margin-left:30px;
+    }
+}
+
+
 
 
 
