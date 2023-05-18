@@ -7,7 +7,7 @@ import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 import ShowProductScore from '../ShowProductScore'
 
-export default function Card({id, product_name, precio, product_img1, puntuacion}){
+export default function Card({id, product_name, precio, product_img1, puntuacion, cantidad_puntuaciones}){
   const {infoUser} = useContext(InfoUserContext)
   const navigate = useNavigate()
   const [,add] = addProduct()
@@ -36,8 +36,8 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
             <img loading = "lazy" onClick={() => handleClick()} src={product_img1}  alt={product_name}/>
         </div>
        <div className="product-card-body">
-        <div className = "stars-and-button-cart-container">
-          <ShowProductScore score = {puntuacion}/>
+        <div className = "name-and-button-cart-container">
+          <h5 className="product-card-name" onClick={() => handleClick()}>{product_name}</h5>
           <div onClick={addToCart} className="add-to-cart-button ">
               {productAdded
               ?
@@ -47,9 +47,12 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
               }
             </div>
         </div>
-        <div className = "name-and-price-container">
-          <h5 className="product-card-title" onClick={() => handleClick()}>{product_name}</h5>
-          <p className="card-text" onClick={() => handleClick()}>${precio}</p>
+        <div className = "price-and-score-container">
+          <div className = "score-and-opinions-container">
+            <ShowProductScore score = {puntuacion}/>
+            <div className = "opinions">{puntuacion}/5 ({cantidad_puntuaciones} opiniones)</div>
+          </div>
+          <p className="card-text price" onClick={() => handleClick()}>{precio} usd</p>
         </div>
        </div>
      </div>

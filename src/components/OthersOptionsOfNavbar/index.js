@@ -4,7 +4,7 @@ import './index.css'
 
 function OtherOptionsOfNavbar() {
     return ( 
-        <div className="dropdown">
+        <div className="dropdown options-dropdown">
             <div className = "options-dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img alt = "cat" src = {ListItemsIcons}/>
                 <div>Mas</div>

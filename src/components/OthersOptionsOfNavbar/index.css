@@ -8,6 +8,12 @@
     width:13%;
 }
 
+.options-dropdown:hover{
+    border-bottom: 2px solid;
+    color:white;
+}
+
+
 .options-dropdown-menu{
     transform: translate3d(-0px, 36px, 0px)!important;
 }

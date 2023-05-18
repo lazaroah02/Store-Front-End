@@ -3,10 +3,9 @@ import './index.css';
 import InfoUserContext from '../../context/InfoUserContext';
 import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
-import rightArrow from '../../assets/right-arrow-icon.svg'
-import leftArrow from '../../assets/left-arrow-icon.svg'
 import RateProduct from '../RateProduct'
 import { checkIfUserCanRate } from '../../services/checkIfUserCanRate';
+import ShowProductScore from '../ShowProductScore'
 
 export default function ShowProductDetail(params){
     const {infoUser} = useContext(InfoUserContext)
@@ -46,72 +45,92 @@ export default function ShowProductDetail(params){
               }
         }
       }
-    //handle next image   
-    let contador = 0
-    const images = [refImg1.current, refImg2.current, refImg3.current]
-    function seeNextImage(){
-        if(contador < 2){
-            contador += 1
-            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
-        }  
-    }
-    //handle previous image
-    function seePreviousImage(){
-        if(contador > 0){
-            contador -= 1
-            images[contador].scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
-        }  
+
+    function handleFocusImage(ref){
+        console.log("center")
+        ref.current.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
     }
     return(
-        <div>
-            <section className = "PhotosDetailContainer ">
-                <img 
-                    key = {0}
-                    ref = {refImg1}
-                    className = "PhotoProduct"
-                    src={`${BASE_URL}${params.product_img1}`} 
-                    alt = {params.name}
-                    />
-                <img 
-                    key = {1}
-                    ref = {refImg2}
-                    className = "PhotoProduct"
-                    src={`${BASE_URL}${params.product_img2}`} 
-                    alt = {params.name}
-                    />
-                <img 
-                    key = {2}
-                    ref = {refImg3}
-                    className = "PhotoProduct"
-                    src={`${BASE_URL}${params.product_img3}`} 
-                    alt = {params.name}
-                    />
-            </section>
-            {showRateProductComponent?<RateProduct userToken={infoUser.token} productId = {params.id} userId={infoUser.info.id}/>:null}
-            <div>
-                <button className = "boton-next-image2 btn" onClick={() => seeNextImage()}>
-                    <img alt = "right-arrow" src = {rightArrow}/>
-                </button>
-                <button  className = "boton-previous-image2 btn" onClick={() => seePreviousImage()}>
-                    <img alt = "left-arrow" src = {leftArrow}/>  
-                </button> 
-             </div> 
-
-            <div className = "ProductPrice">
-                <h3>${params.precio}</h3>
-                <button onClick={() => addToCart()} className = "btn btn-primary">{productAdded?'In Cart':'Add to cart'}</button>
+        <div className = "detail-product-container">
+            <section className = "photos-detail-container">
+                <div className = "photos-detail-scroll">
+                    <img 
+                        ref = {refImg1}
+                        className = "PhotoProduct"
+                        src={`${BASE_URL}${params.product_img1}`} 
+                        alt = {params.name}
+                        />
+                    <img 
+                        ref = {refImg2}
+                        className = "PhotoProduct"
+                        src={`${BASE_URL}${params.product_img2}`} 
+                        alt = {params.name}
+                        />
+                    <img 
+                        ref = {refImg3}
+                        className = "PhotoProduct"
+                        src={`${BASE_URL}${params.product_img3}`} 
+                        alt = {params.name}
+                        />
                 </div>
-            <div className = "ProductName container">
-                <h3>{params.product_name}</h3>
-                <br/>
-                <br/>
-                <h5>Description:</h5>
-                {params.product_description}
-                <br/>
-                <br/>
-                <h5>About the product:</h5>
-                {params.about}
-            </div>
+                <div className = "images-navigator">
+                    <img 
+                        onClick={() => handleFocusImage(refImg1)}
+                        src={`${BASE_URL}${params.product_img1}`} 
+                        alt = "navigator"
+                        />
+                    <img 
+                        onClick={() => handleFocusImage(refImg2)}
+                        src={`${BASE_URL}${params.product_img2}`} 
+                        alt = "navigator"
+                        />
+                    <img 
+                        onClick={() => handleFocusImage(refImg3)}
+                        src={`${BASE_URL}${params.product_img3}`} 
+                        alt = "navigator"
+                        />
+                </div>
+            </section>
+            <div className = "info-product-container">
+                <header className = "product-name-container">
+                    <h3>{params.product_name}</h3>
+                    <hr className = "info-product-separator"/>
+                </header>
+                <section className = "product-score-container">
+                    <ShowProductScore score = {params.puntuacion}/>
+                    <div>
+                        {params.puntuacion}/5 ({params.cantidad_puntuaciones} opiniones)
+                    </div>
+                </section>
+                <div className = "div-separator"></div>
+                <section className = "product-price-detail-container">
+                    <div className = "price-detail">{params.precio-params.descuento} usd</div>
+                    <div className = "discount-container">
+                        <div className = "old-price">
+                            {params.precio}
+                            <hr/>   
+                        </div>
+                        <div className = "discount-percent">{Math.round((params.descuento/params.precio)*100)}% OFF</div>
+                    </div>
+                </section>
+                <div className = "div-separator"></div>
+                <section className = "description-container">
+                    {params.product_description}
+                    <p>
+                        {params.about}
+                    </p>
+                </section>
+                <div className = "div-separator"></div>
+                <hr className = "info-product-separator"/>
+                <div className = "add-to-cart-button-and-rate-product-container">
+                    <div>
+                        <button onClick={() => addToCart()} className = "btn btn-add-to-cart">{productAdded?'Producto añadido':'Añadir al carrito'}</button>
+                    </div>
+                    <div className = "rate-product-detail-container">
+                        {showRateProductComponent?<RateProduct userToken={infoUser.token} productId = {params.id} userId={infoUser.info.id}/>:null}
+                    </div>
+                </div>
+             </div> 
         </div>
     )
 }

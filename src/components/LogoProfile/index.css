@@ -9,6 +9,11 @@
     cursor: pointer;
 }
 
+.user-profile-icon-container:hover{
+    border-bottom: 2px solid;
+}
+
+
 @media (max-width:700px){
     .user-profile-text{
         display:none;

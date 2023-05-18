@@ -63,6 +63,10 @@
     align-items: center;
     color:white;
     margin-left: 100px;
+    padding-top: 10px;
+}
+.home-icon:hover{
+    border-bottom: 2px solid;
 }
 
 /*(Logo)*/

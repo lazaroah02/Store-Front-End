@@ -10,16 +10,16 @@ export function useNavigateItems(reference, items){
     //useEffect to control the interval of scrolling the items
     useEffect(() => {
         if(items.length > 0 && reference.current !== undefined){
-            const interval = setInterval(() => seeCurrentItem(), 10000)
+            const interval = setInterval(() => seeCurrentItem(), 5000)
             return () => clearInterval(interval)
         }
-    },[items, reference])
+    },[items, reference, cont])
 
     //function to see the current item of the list
     function seeCurrentItem(){
+        cont += 1
+        setContador(cont)
         if(cont < items.length){
-            cont += 1
-            setContador(cont)
             reference.current.scrollTo({
                 top:0, 
                 left:reference.current.offsetWidth*cont,

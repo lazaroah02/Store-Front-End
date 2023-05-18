@@ -11,13 +11,13 @@ export default function SearchProductForm(){
     const navigate = useNavigate()
     const {pathname} = useLocation()
     const {categories, loadingCategories} = useCategories()
-    const [actualCategory, setActualCategory] = useState({name:"Todos", id:""})
+    const [actualCategory, setActualCategory] = useState({name:"Todas", id:""})
 
     //useEffect para recuperar la categoria actual
     useEffect(() => {
         if(categories.length > 0){
         let categoryUrlId = ""
-        let category = "Todos"
+        let category = "Todas"
         let activeFilters = checkActiveFilters(pathname)
 
         //recorro la lista de filtros actuales para ver si esta categoria
@@ -32,11 +32,16 @@ export default function SearchProductForm(){
         setActualCategory({name:category, id:categoryUrlId})
         }
     },[pathname, categories])
+
+    function handleSetCategory(category){
+        setActualCategory(category)
+        navigate(`/products/categoria=${category.id}`)
+    }
     
     function handleSearchSubmit(e){
         e.preventDefault()
         let nameProduct = e.target[0].value
-        navigate(`/products/search=${nameProduct}&categoria=${actualCategory.id}`)
+        navigate(`/products/search=${nameProduct}`)
     }
     return(
         <>
@@ -57,9 +62,9 @@ export default function SearchProductForm(){
                             <>
                                 {categories.length === 0?null:
                                 <>
-                                    <li className = "dropdown-item li-category" onClick={() => setActualCategory({name:"Todos", id:0})}>Todos</li>
+                                    <li className = "dropdown-item li-category" onClick={() => handleSetCategory({name:"Todos", id:""})}>{actualCategory.name}</li>
                                     {categories.map(cat => 
-                                    <li key = {cat.id} className = "dropdown-item li-category" onClick={() => setActualCategory({name:cat.nombre, id:cat.id})}>{cat.nombre}</li>
+                                    <li key = {cat.id} className = "dropdown-item li-category" onClick={() => handleSetCategory({name:cat.nombre, id:cat.id})}>{cat.nombre}</li>
                                     )}
                                 </>
                                 }

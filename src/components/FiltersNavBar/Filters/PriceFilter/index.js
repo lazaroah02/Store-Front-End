@@ -11,7 +11,7 @@ export default function PriceFilter({activeFilters}) {
     const {pathname} = useLocation()
     const [showModal, setShowModal] = useState(false)
 
-    //useEffect to set the actual price 
+    //useEffect to see the actual price 
     useEffect(() => {
       let precioUrl = "Todos"
       for(let i = 0; i < activeFilters.length; i++){

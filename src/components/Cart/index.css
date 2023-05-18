@@ -13,7 +13,13 @@
     text-align: center;
     padding-top: 10px;
     cursor: pointer;
+    color: #fff;
 }
+
+.cart:hover{
+    border-bottom: 2px solid;
+}
+
 
 .cart-text{
     color:white;
