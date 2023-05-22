@@ -9,10 +9,7 @@ import "./index.css";
 export default function PromocionesEspeciales() {
   const scrollRef = useRef();
   const [specialPromotions, setSpecialPromotions] = useState([]);
-  const { contador, updateCont } = useNavigateItems(
-    scrollRef,
-    specialPromotions
-  );
+  const { contador, updateCont } = useNavigateItems(scrollRef, true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,8 +20,13 @@ export default function PromocionesEspeciales() {
     });
   }, []);
 
+  function updateContByScroll(){
+    if(scrollRef.current !== undefined && scrollRef.current !== null){
+      updateCont(Math.round(scrollRef.current.scrollLeft/scrollRef.current.offsetWidth))
+    }
+  }
   //function to update the navigation status when the user make scroll
-  const processScrollChange = debounce(() => updateCont(Math.round(scrollRef.current.scrollLeft/scrollRef.current.offsetWidth)), 50);
+  const processScrollChange = debounce(() => updateContByScroll(), 50);
 
   return (
     <>

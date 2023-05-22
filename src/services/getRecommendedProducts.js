@@ -1,7 +1,7 @@
-import {URL_RECOMMENDED_PRODUCTS} from "../settings"
+import {URL_PRODUCTS} from "../settings"
 
 export default function getRecommendedProducts(){
-  return fetch(URL_RECOMMENDED_PRODUCTS)
+  return fetch(`${URL_PRODUCTS}?ordering=-puntuacion`)
   .then(res => res.json())
   .then(data => {return data})
 }

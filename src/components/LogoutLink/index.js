@@ -1,8 +1,8 @@
-import './index.css'
 import React, {useContext, useState, useEffect} from 'react'
 import InfoUserContext from '../../context/InfoUserContext'
 import {useNavigate} from 'react-router-dom'
 import logoutIcon from "../../assets/log-out-icon.svg"
+import "./index.css"
 
 export default function ShowLinks(){
     const {infoUser, setInfoUser} = useContext(InfoUserContext)
@@ -10,7 +10,7 @@ export default function ShowLinks(){
     const setNavigate = useNavigate()
 
     useEffect(() =>{
-        infoUser === null?setLogged(false):setLogged(true)
+        infoUser.token === null?setLogged(false):setLogged(true)
     },[infoUser])
     
     function handleLogout(){
@@ -20,13 +20,9 @@ export default function ShowLinks(){
         setNavigate("/")
     }
     return(
-        <div className = "button-container">
-            <button className = "LogoutButton btn " onClick={() => handleLogout()}>
-                <div>
-                    <img alt = "log-out" src = {logoutIcon}/>
-                    Cerrar Sesion
-                </div>
-            </button>
-        </div>    
+        <button className = "btn button-option " onClick={() => handleLogout()}>
+            <img alt = "log-out" src = {logoutIcon}/>
+            <span>Cerrar Sesion</span>
+        </button>
     )
 }

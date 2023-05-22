@@ -6,7 +6,7 @@ import './index.css'
 
 export default function InfoUser(){
     return(
-        <div className = 'info-user'>
+        <div className = 'info-user-dashboard'>
             <NavBar/>
             <OptionsNavBar/>
             <div>

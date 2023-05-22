@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Toast from 'react-bootstrap/Toast';
 import "./index.css"
 
-function ShowFloatMessage({title, message}) {
-  const [show, setShow] = useState(true);
-
+function ShowFloatMessage({show, setShow, title = "", message = ""}) {
   return (
     <>
         {show?
-            <div className = "toast-container" delay={2000} autohide = {false}>
-                <Toast onClose={() => setShow(false)} show={show} delay={2000} autohide = {false}>
+            <div className = "toast-container" >
+                <Toast show={show} onClose = {() => setShow(false)} delay={2000} autohide = {true}>
                 <Toast.Header>
                     <strong className="me-auto">{title}</strong>
                 </Toast.Header>

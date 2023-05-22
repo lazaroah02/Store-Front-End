@@ -1,35 +1,10 @@
 .products-recomended{
     background-color: #fff;
-    width: 100vw;
+    width: 90vw;
     margin:0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.recomended-products-title-container{
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    text-align: center;
-}
-.recomended-products-title{
-    background-color: rgb(65, 144, 149);
-    text-align: center;
-    width: 100%;
-    height: 3px;
-}
-.recomended-products-title p{
-    background-color: #fff;
-    color:rgb(249, 171, 158);
-    width:300px;
-    position: relative;
-    bottom: 15px;
-    margin: 0 auto;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 25px;
 }
 
 .no-products-recommended{
@@ -43,31 +18,43 @@
     height: 265px;
 }
 .ProductsRecomendedContainer{
-    background-color:rgb(235, 235, 235);
-    display: grid;
-    gap:30px 30px;
-    max-width: 100%;
-    resize: both;
-    padding:10px;
-}    
-.ver-mas-productos-recomendados-link{
-    width: 100vw;
-    height: 35px;
-    text-align: end;
-    background-color:rgb(235, 235, 235);
-    padding-right: 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    white-space:nowrap;
+    width: 90%;
+    margin:0 auto;
+    padding-bottom: 10px;
+}   
+.ProductsRecomendedContainer::-webkit-scrollbar{
+    display: none;
 }
-.ver-mas-productos-recomendados-link a {
-    color:black;
+
+/*buttons to navigate and see the recommended products*/
+.btn-to-navigate{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border:0 solid;
+    background-color: rgb(65, 144, 149);
+    cursor: pointer;
 }
-.ver-mas-productos-recomendados-link a:hover {
-    color:black;
+.btn-to-navigate:active{
+    border:0 solid;
+}
+.button-go-left{
+    position: absolute;
+    left: 70px;
+}
+
+.button-go-right{
+    position: absolute;
+    right:50px;
 }
 
 /*Mobile*/
 @media (max-width: 500px){
     .ProductsRecomendedContainer{
-        grid-template-columns: repeat(auto-fit, minmax(130px, 130px));
+        width: 100%;
     }
     .recomended-products-title p{
         width:250px;
@@ -75,19 +62,16 @@
         bottom: 12px;
         font-size: 20px;
     }
+    .btn-to-navigate{
+        display: none;
+    }
 }
 
 /*Tablet*/
 @media (min-width: 500px) and (max-width:800px){
-    .ProductsRecomendedContainer{
-        grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    .btn-to-navigate{
+        display: none;
     }
 }
 
-/*Desktop*/
-@media (min-width: 800px){
-    .ProductsRecomendedContainer{
-        grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
-    }
-}
 

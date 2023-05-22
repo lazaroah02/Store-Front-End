@@ -14,6 +14,32 @@
     height: 30px;
 }
 
+.recomended-products-title-container{
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-align: center;
+}
+.recomended-products-title{
+    background-color: rgb(65, 144, 149);
+    text-align: center;
+    width: 100%;
+    height: 3px;
+}
+.recomended-products-title p{
+    background-color: #fff;
+    color:rgba(0, 0, 0, 0.603);
+    width:300px;
+    position: relative;
+    bottom: 15px;
+    margin: 0 auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+}
+
 /*Mobile*/
 @media (max-width: 500px) {
     .promociones-container{

@@ -55,5 +55,7 @@
 .toast-body {
     padding: var(--bs-toast-padding-x);
     word-wrap: break-word;
+    background-color: rgb(30, 74, 75);
+    color:white;
 }
 

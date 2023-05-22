@@ -1,67 +1,148 @@
-.FormInfoContainer{
-    width: 20rem;
-    margin-top: 3rem;
-    border-radius:1rem;
-}
-
-.FormButton{
-    margin-top:1rem;
+.info-user-header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
     width:100%;
+    height:100px;
+    background-color:#fff;
 }
-.FormInfoTitle{
-    position: relative;
-    bottom: 7rem;
-    left:4.5rem;
-}
-.Input{
-    width:100%;
-}
-.Foot{
-    position:relative;
-    top:2.5rem;
-    width: 20rem;
-    border-radius:1rem;
-    padding:0.5rem 0.5rem 0 0.5rem;
-    font-size:1rem;
-    margin:0 auto
-}
-.GoHomeLink{
-    float:right;
-    position:relative;
-    top:0.2rem;
-    right:2rem;
-}
-span{
-    position:relative;
-    top:0.2rem
+.username-and-email-container{
+    height:100%;
+    background-color:#fff;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:15px;
 }
 
-.Foot span{
-    position:relative;
-    left:2rem;
+.username-and-email-container span{
+    font-size: 18px;
+    margin-left:10px;
+    margin-right:5px;
 }
 
-.infoContainer button{
-    width:30px;
-    height:20px;
-    font-size:0.8rem;
-    float:right;
+.historial-and-wishlist-container{
+    height: 100%;
+    background-color:#fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.historial-and-wishlist-container div{
+    text-align: end;
+    padding-right: 10px;
+}
+.historial-and-wishlist-container span{
+    margin-right:10px
+}
+.historial-and-wishlist-container img{
+    cursor: pointer;
 }
 
-.infoContainer span{
-    position:relative;
-    top:-0.4rem;
-    right:0.6rem;
+.separator{
+    width: 100%;
+    height: 10px;
+    background-color:gray;
 }
 
-.ModalEditInfoBody button{
-    float:right;
-    margin-top:1rem;
-}
-.ModalEditInfoBody input{
-    width:100%;
-    border-radius:5px;
+.form-info-user{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    gap:10px;
 }
 
+.input-form{
+    border:0 solid;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}
+.input-form:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+} 
 
+.input-form:focus{
+    outline: none;
+}
 
+.name-input{
+    width: 90%;
+}
+
+.country-and-city-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:0 20px;
+}
+.country-and-city-container div{
+    width: 50%;
+}
+.country-and-city-container input{
+    width: 80%;
+}
+
+.address-input{
+    width: 90%;
+}
+
+.phone-and-zip-code-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:0 20px;
+}
+.phone-and-zip-code-container div{
+    width: 50%;
+}
+.phone-and-zip-code-container input{
+    width: 80%;
+}
+.buttons-container{
+    padding-left:15px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.buttons-container button{
+    width: 43%;
+}
+.buttons-container img{
+    width: 7%;
+    padding-bottom: 5px;
+}
+.btn-save-info{
+    background-color: rgb(117, 193, 189);
+}
+.btn-edit-info{
+    background-color: rgb(217, 217, 217);
+}
+
+/*Mobile and Tablet*/
+@media (max-width: 700px){
+    .username-and-email-container h5{
+        font-size:17px;
+    }
+    .username-and-email-container span{
+        font-size:16px;
+    }
+    .username-and-email-container img{
+        width: 15px;
+    }
+    .buttons-container button{
+        font-size: 12px;
+    }
+    .input-form{
+        font-size: 12px;
+    }
+    .historial-and-wishlist-container span{
+        display: none;
+    }
+    .historial-and-wishlist-container{
+        padding-bottom: 5px;
+    }
+
+}

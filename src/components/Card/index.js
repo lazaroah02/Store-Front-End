@@ -35,27 +35,25 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
         <div className = 'img-container'>
             <img loading = "lazy" onClick={() => handleClick()} src={product_img1}  alt={product_name}/>
         </div>
-       <div className="product-card-body">
-        <div className = "name-and-button-cart-container">
-          <h5 className="product-card-name" onClick={() => handleClick()}>{product_name}</h5>
-          <div onClick={addToCart} className="add-to-cart-button ">
-              {productAdded
-              ?
-              <img alt = "product-added" className = 'cart-product-added' src = {inCartIcon}/>
-              :
+        <div onClick={addToCart} className="add-to-cart-button ">
+            {productAdded
+            ?
+            <img alt = "product-added" className = 'cart-product-added' src = {inCartIcon}/>
+            :
+            <>
               <img alt = "add-to-cart-icon" className = 'CartIcon' src = {addToCartIcon}/>
-              }
-            </div>
+              Agregar al Carrito
+            </>
+            }
         </div>
-        <div className = "price-and-score-container">
-          <div className = "score-and-opinions-container">
-            <ShowProductScore score = {puntuacion}/>
-            <div className = "opinions">{puntuacion}/5 ({cantidad_puntuaciones} opiniones)</div>
-          </div>
+        <div className = "name-and-price-container">
+          <h5 className="product-card-name" onClick={() => handleClick()}>{product_name}</h5>
           <p className="card-text price" onClick={() => handleClick()}>{precio} usd</p>
         </div>
+        <div className = "score-and-opinions-container">
+          <ShowProductScore score = {puntuacion}/>
+        </div>
        </div>
-     </div>
 
     )
 }

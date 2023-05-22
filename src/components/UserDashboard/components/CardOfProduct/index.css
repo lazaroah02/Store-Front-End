@@ -9,7 +9,7 @@
     display:inline-block;
 }
 
-.ProductCard:hover{
+.SellerProductCard:hover{
     box-shadow:1px 1px 0px 0px gray;
     cursor: pointer;
 }

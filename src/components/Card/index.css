@@ -1,24 +1,20 @@
+@font-face{
+    font-family:"Raleway";
+    src: url("../../fonts/Raleway-VariableFont_wght.woff2") format("woff2");
+}
 .ProductCard{
     margin:1rem 1rem 0rem 1rem;
-    display:inline-block;
     width: 252px;
-    height: 265px;
-    box-shadow: 3px 3px 5px #bebebed9;
-    transition: 0.2s ease-in-out;    
-    border-radius: 10px;
-}
-.ProductCard:hover{
-    box-shadow:1px 1px 0px 0px gray;
+    height: 350px;   
     cursor: pointer;
 }
 
 .img-container {
     width: 100%;
-    height: 100%;
+    height: 250px;
     display: flex;
     align-items: top;
     justify-content: center;
-    border-radius: 10px;
     background: rgb(243 241 241);
   }
   
@@ -30,74 +26,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    object-fit: contain;
-    border-radius: 10px;
+    object-fit: cover;
     mix-blend-mode: multiply;
     background-blend-mode: multiply;
   }
-.product-card-body{
-    position: relative;
-    bottom: 35%;
-    width:100%;
-    height: 35%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.501);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: #fff;
-}  
 
-.name-and-button-cart-container{
-    padding-left: 10px;
-    padding-right: 10px;
+.add-to-cart-button{
+    width:100%;
+    height: 40px;
+    color:white;
+    text-align: center;
+    padding-top: 6px;
+    background-color: rgba(13, 13, 14, 0.411);
+    cursor: pointer;
+}
+
+.name-and-price-container{
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    background-color: transparent;
 }
 
 .product-card-name{
-    margin: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.add-to-cart-button{
-    width:15%;
-    height: 30px;
-    border-bottom-left-radius: 5px;
-    background-color: rgb(65, 144, 149);
-    cursor: pointer;
-    position: relative;
-    left:10px;
-    bottom: 3px;
-    box-shadow: 0px 5px 5px rgb(65, 63, 63);
-}
-
-.price-and-score-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 10px;
+    text-align: start;
+    margin-bottom: 0;
+    font-family: "Raleway";
 }
 
 .price{
-    font-size: 23px;
-    position: relative;
-    top:8px;
+    font-size: 18px;
+    text-align: start;
 }
 
 .score-and-opinions-container{
     display:flex;
+    width: 100%;
     flex-direction: column;
+    justify-content: center;
     position: relative;
-    top:10px
-}
-
-.opinions{
-    font-size:12px;
+    bottom:340px;
+    padding-left:10px;
+    padding-top: 5px;
 }
 

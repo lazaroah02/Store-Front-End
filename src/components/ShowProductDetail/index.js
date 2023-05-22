@@ -1,22 +1,23 @@
 import React, {useContext, useState, useRef, useEffect} from 'react';
-import './index.css';
 import InfoUserContext from '../../context/InfoUserContext';
 import {addProduct} from '../../customHooks/manageCart'
 import {BASE_URL} from '../../settings'
 import RateProduct from '../RateProduct'
+import {debounce} from '../../helpFunctions/debounce'
+import { useNavigateItems } from '../../customHooks/useNavigateItems';
 import { checkIfUserCanRate } from '../../services/checkIfUserCanRate';
 import ShowProductScore from '../ShowProductScore'
+import './index.css';
 
 export default function ShowProductDetail(params){
     const {infoUser} = useContext(InfoUserContext)
     const [productAdded, setProductAdded] = useState(false)
     const [showRateProductComponent, setShowRateProductComponent] = useState(false)
+    const scrollRef = useRef()
+    const {contador, updateCont} = useNavigateItems({reference:scrollRef, itemsLength:3, interval:false})
     const [,add] = addProduct()
-
+    
     //images references
-    const refImg1 = useRef()
-    const refImg2 = useRef()
-    const refImg3 = useRef()
 
     //check if the user can rate the product and show the RateProductComponent
     useEffect(() => {
@@ -46,56 +47,45 @@ export default function ShowProductDetail(params){
         }
       }
 
-    function handleFocusImage(ref){
-        console.log("center")
-        ref.current.scrollIntoView({behavior:"smooth",block:"center", inline:"center"})
-    }
+    function updateContbyScroll(){
+        if(scrollRef.current !== undefined && scrollRef.current !== null){
+            return updateCont(Math.round(scrollRef.current.scrollLeft/scrollRef.current.offsetWidth))
+        }
+    }  
+
+    const focusImageByScroll = debounce(() => updateContbyScroll(), 50)
+
     return(
         <div className = "detail-product-container">
             <section className = "photos-detail-container">
-                <div className = "photos-detail-scroll">
+                <div className = "photos-detail-scroll" ref = {scrollRef} onScroll={() => focusImageByScroll()}>
                     <img 
-                        ref = {refImg1}
                         className = "PhotoProduct"
                         src={`${BASE_URL}${params.product_img1}`} 
                         alt = {params.name}
                         />
                     <img 
-                        ref = {refImg2}
                         className = "PhotoProduct"
                         src={`${BASE_URL}${params.product_img2}`} 
                         alt = {params.name}
                         />
                     <img 
-                        ref = {refImg3}
                         className = "PhotoProduct"
                         src={`${BASE_URL}${params.product_img3}`} 
                         alt = {params.name}
                         />
                 </div>
                 <div className = "images-navigator">
-                    <img 
-                        onClick={() => handleFocusImage(refImg1)}
-                        src={`${BASE_URL}${params.product_img1}`} 
-                        alt = "navigator"
-                        />
-                    <img 
-                        onClick={() => handleFocusImage(refImg2)}
-                        src={`${BASE_URL}${params.product_img2}`} 
-                        alt = "navigator"
-                        />
-                    <img 
-                        onClick={() => handleFocusImage(refImg3)}
-                        src={`${BASE_URL}${params.product_img3}`} 
-                        alt = "navigator"
-                        />
+                    <div className = {contador === 0?"active":null} onClick={() => updateCont(0)}></div>
+                    <div className = {contador === 1?"active":null} onClick={() => updateCont(1)}></div>
+                    <div className = {contador === 2?"active":null} onClick={() => updateCont(2)}></div>
                 </div>
             </section>
             <div className = "info-product-container">
                 <header className = "product-name-container">
                     <h3>{params.product_name}</h3>
-                    <hr className = "info-product-separator"/>
                 </header>
+                <hr className = "info-product-separator-dark"/>
                 <section className = "product-score-container">
                     <ShowProductScore score = {params.puntuacion}/>
                     <div>
@@ -105,13 +95,16 @@ export default function ShowProductDetail(params){
                 <div className = "div-separator"></div>
                 <section className = "product-price-detail-container">
                     <div className = "price-detail">{params.precio-params.descuento} usd</div>
-                    <div className = "discount-container">
-                        <div className = "old-price">
-                            {params.precio}
-                            <hr/>   
+                    {params.descuento > 0?
+                        <div className = "discount-container">
+                            <div className = "old-price">
+                                {params.precio} usd
+                                <hr/>   
+                            </div>
+                            <div className = "discount-percent">{Math.round((params.descuento/params.precio)*100)}% OFF</div>
                         </div>
-                        <div className = "discount-percent">{Math.round((params.descuento/params.precio)*100)}% OFF</div>
-                    </div>
+                        :null
+                    }
                 </section>
                 <div className = "div-separator"></div>
                 <section className = "description-container">
@@ -121,7 +114,7 @@ export default function ShowProductDetail(params){
                     </p>
                 </section>
                 <div className = "div-separator"></div>
-                <hr className = "info-product-separator"/>
+                <hr className = "info-product-separator-soft"/>
                 <div className = "add-to-cart-button-and-rate-product-container">
                     <div>
                         <button onClick={() => addToCart()} className = "btn btn-add-to-cart">{productAdded?'Producto añadido':'Añadir al carrito'}</button>

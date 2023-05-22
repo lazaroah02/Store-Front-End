@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import NavBar from '../components/NavBar'
 //import FiltersNavBar from '../components/FiltersNavBar'
 //import GenerateCards from '../components/GenerateCards'
@@ -11,15 +11,18 @@ import PromocionesEspeciales from '../components/PromocionesEspeciales';
 import './pagesStyles/home.css';
 
 function Home() {
-  const topRef = useRef()
   return(
     <div className = "Home">
         <NavBar/>
-        <p ref = {topRef}></p>
-        <ButtonGoTop topRef = {topRef}/>
+        <ButtonGoTop/>
         <div className = "promociones-container">
           <PromocionesEspeciales/>
           <Promociones/>
+        </div>
+        <div className = "recomended-products-title-container">
+          <div className = "recomended-products-title">
+              <p>Productos Recomendados</p>
+          </div>
         </div>
         <ProductsRecomended/>
         <HomeScreenCategories/>
