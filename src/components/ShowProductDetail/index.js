@@ -46,7 +46,7 @@ export default function ShowProductDetail(params){
             if(productAdded === false){
                 addProduct({
                   id:params.id,
-                  name:params.name,
+                  name:params.product_name,
                   price:params.precio,
                   cantidad:1})
                 setProductAdded(true)

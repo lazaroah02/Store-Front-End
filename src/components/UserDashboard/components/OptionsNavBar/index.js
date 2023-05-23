@@ -72,7 +72,6 @@ export default function OptionsNavBar() {
                     <img alt="icon" src={DejarDeSerVendedorIcon} />
                     <span>Dejar de vender</span>
                   </button>
-                  <LogoutLink />
                 </>
               ) : (
                 <button
@@ -83,6 +82,7 @@ export default function OptionsNavBar() {
                   <span>Convertirte en vendedor</span>
                 </button>
               )}
+              <LogoutLink />
             </>
           ) }
     </div>

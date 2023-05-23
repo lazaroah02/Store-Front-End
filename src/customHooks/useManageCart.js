@@ -26,7 +26,6 @@ export function useManageCart(){
 
     function restProduct(newProduct){
         let productsCartCopy = Array(...productsCart)
-        console.log([...productsCart])
         if(newProduct !== undefined && newProduct !== null){
             for(let i = 0; i < productsCartCopy.length; i++){
                 if(newProduct.id === productsCartCopy[i].id){

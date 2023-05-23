@@ -15,7 +15,7 @@ export default function login(email, password){
         }),
       }).then(response => {
         if(response.status !== 200){
-          throw new Error('Have ocurred an error, please try again later')
+          throw new Error('Nombre de usuario o contraseña incorrecta')
         }
         return response.json();
       })

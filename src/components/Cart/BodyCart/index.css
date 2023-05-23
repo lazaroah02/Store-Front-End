@@ -1,38 +1,91 @@
+.ul-items-cart{
+    padding-left: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.cart-product-row-container{
+    display:flex;
+    flex-direction: row;
+}
 .cart-product-row{
-    border:1px solid #ccc;
+    border: 1px solid;
     border-radius:10px;
     width: 100%;
+    resize: horizontal;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap:10px;
+}
+.name-container{
+    width: 60%;
+    text-align: start;
+    padding-left: 0;
+}
+.name-container p{
+    text-align: start;
+    padding-left: 0;
+}
+.cantidad-container{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
 }
 .addButton{
+    background-color: transparent;
     margin-left: 2.5px;
     border: 0;
     cursor:pointer;
+    font-size: 20px;
 }
-
 .restButton{
+    background-color: transparent;
     margin-right: 2.5px;
     border: 0;
     cursor: pointer;
+    font-size: 20px;
 }
 
-.Total{
-    text-align:center;
+.sub-total{
+    border-left: 3px solid;
+    padding-left: 5px;
+    padding-top: 3px;
+    width: auto;
 }
 
-.td-cantidad{
+.trash-can{
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.total{
+    margin-top:10px;
+}
+
+.buttons-pay-and-clean-cart-container{
+    margin-top: 10px;
     display: flex;
     flex-direction:row;
+    justify-content: space-between;
 }
-.CantidadContainer{
-    text-align:center;
-    resize: horizontal;
+.btn-pay{
+    background-color:rgb(65, 144, 149);
+    color:#fff;
+    border-radius: 15px!important;
 }
-.buttons-add-rest-container{
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-    justify-content: center;
+.btn-clean-cart{
+    background-color:#f88787;
+    color:#fff;
+    border-radius: 15px!important;
 }
-.tableFooter{
-    text-align:center;
+
+@media (max-width: 500px){
+    .name-container{
+        width: 35%;
+    }
 }

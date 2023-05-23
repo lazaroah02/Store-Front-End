@@ -107,7 +107,7 @@ export default function EditInfoUser(){
                 </section>
               </form>
               <div className = "buttons-container">
-                <button className = "btn btn-edit-info" onClick={() => setEditingInfo(!editingInfo)}>{!editingInfo?'Editar Información':'Cancelar'}</button>
+                <button className = "btn btn-edit-info" onClick={() => setEditingInfo(!editingInfo)}>{!editingInfo?'Editar Info':'Cancelar'}</button>
                 <button className = "btn btn-success btn-save-info" style = {!editingInfo?{display:"none"}:null} onClick = {() => saveInfo()}>
                   Guardar
                   <img alt = "check" src = {CheckConfirm}/>

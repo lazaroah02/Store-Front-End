@@ -31,13 +31,9 @@ export default function Cart(){
                 <button className = "btn close-modal-button" onClick={() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body>
-                <div className = "table-container">
-                    <table className = "table cart-table">
-                        <tbody >
-                            <BodyCart/>
-                        </tbody>
-                    </table>
-                </div>
+                <section className = "body-cart-container">
+                    <BodyCart/>
+                </section>
             </Modal.Body>
         </Modal>
         </>

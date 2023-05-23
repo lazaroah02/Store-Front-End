@@ -7,7 +7,6 @@ import "./index.css";
 export default function BodyCart() {
   const [total, setTotal] = useState(0);
   const {productsCart, addProduct, restProduct, deleteProduct, cleanCart, calculateTotal} = useManageCart()
-  const [timesStateChanged, setStateChange] = useState(0);
 
   useEffect(() => {
     setTotal(calculateTotal());
@@ -24,53 +23,50 @@ export default function BodyCart() {
   }
 
   return (
-    <>
+    <ul className = "ul-items-cart">
       {productsCart.map((product) => (
-        <tr className = "cart-product-row" key = {product.id}>
-          <td>{product.name}</td>
-          <td className = "td-cantidad">
-              <button
-                className="restButton"
-                onClick={() => {
-                  restProduct({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    cantidad: 1,
-                  });
-                  setStateChange(timesStateChanged + 1);
-                }}
-              >-</button>
-              <div className="CantidadContainer">x{product.cantidad}</div>
-              <button
-                className="addButton"
-                onClick={() => {
-                  addProduct({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    cantidad: 1,
-                  });
-                  setStateChange(timesStateChanged + 1);
-                }}
-              >+</button>
-          </td>
-          <td>${product.subtotal}</td>
-          <td><img alt = "trash" src = {TrashCan} onClick={() => {deleteProduct(product)}}/></td>
-        </tr>
+        <li className = "cart-product-row-container" key = {product.id}>
+          <section className = "cart-product-row">
+            <div className = "name-container"><p className = "name">{product.name.length > 10?`${product.name.substring(0, 10)}...`:product.name}</p></div>
+            <div className = "cantidad-container">
+                <button
+                  className="restButton"
+                  onClick={() => {
+                    restProduct({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      cantidad: 1,
+                    });
+                  }}
+                >-</button>
+                <div className="cantidad">x{product.cantidad}</div>
+                <button
+                  className="addButton"
+                  onClick={() => {
+                    addProduct({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      cantidad: 1,
+                    });
+                  }}
+                >+</button>
+            </div>
+            <div className = "sub-total">{product.subtotal} usd</div>
+          </section>
+          <img className = "trash-can" alt = "trash" src = {TrashCan} onClick={() => {deleteProduct(product)}}/>
+        </li>
       ))}
-      <tr>
-        <td colSpan="2" className="tableFooter">
-          <button className="btn btn-primary" onClick={() => procesarPago()}>
-            Pagar Total {total} usd
+      <div className = "total">Total: {total} usd</div>
+      <section className = "buttons-pay-and-clean-cart-container">
+          <button className="btn btn-pay" onClick={() => procesarPago()}>
+            Procesar Pago
           </button>
-        </td>
-        <td colSpan="2" className="tableFooter">
-          <button className="btn btn-primary" onClick={() => cleanCart()}>
+          <button className="btn btn-clean-cart" onClick={() => cleanCart()}>
             Vaciar Carrito
           </button>
-        </td>
-      </tr>
-    </>
+      </section>
+    </ul>
   );
 }

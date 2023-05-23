@@ -56,7 +56,7 @@
         width:100%;
         transition:all .1s;
         position:fixed;
-        bottom:0;
+        bottom:0vh;
         background-color:gray;
         z-index: 50;
         display: flex;
