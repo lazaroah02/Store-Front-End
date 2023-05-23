@@ -13,10 +13,13 @@
     border-bottom: 2px solid;
 }
 
-
+/*Mobile and tablet*/
 @media (max-width:700px){
     .user-profile-text{
         display:none;
         min-width: none;
+    }
+    .user-profile-icon-container{
+        width: auto;
     }
 }

@@ -1,8 +1,8 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import './index.css'
 import {useNavigate} from 'react-router-dom'
 import InfoUserContext from '../../context/InfoUserContext'
-import {addProduct} from '../../customHooks/manageCart'
+import {useManageCart} from '../../customHooks/useManageCart'
 import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 import ShowProductScore from '../ShowProductScore'
@@ -10,20 +10,24 @@ import ShowProductScore from '../ShowProductScore'
 export default function Card({id, product_name, precio, product_img1, puntuacion, cantidad_puntuaciones}){
   const {infoUser} = useContext(InfoUserContext)
   const navigate = useNavigate()
-  const [,add] = addProduct()
+  const {productsCart, addProduct, checkProductInCart} = useManageCart()
   const [productAdded, setProductAdded] = useState(false)
+
+  //check if the product is already in the cart
+  useEffect(() => {
+      setProductAdded(checkProductInCart(id))
+  }, [productsCart])
 
   function addToCart(){
     if(infoUser === null){
       alert('Login to use the Cart')
     }
     else{
-        add({
+        addProduct({
           id:id,
           name:product_name,
           price:precio,
           cantidad:1})
-        setProductAdded(true)
     }
   }
 

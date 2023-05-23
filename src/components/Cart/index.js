@@ -1,28 +1,42 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Modal from 'react-bootstrap/Modal'
-import CartContent from './BodyCart/CartContent'
+import BodyCart from './BodyCart'
 import CartIcon from '../../assets/navBarIcons/cart-icon.svg'
+import ProductsCartContext from "../../context/ProductsCartContext";
 import './index.css'
 
 export default function Cart(){
     const [showModal, setShowModal] = useState(false)
+    const {productsCart} = useContext(ProductsCartContext)
+    const [contItemsCart, setContItemsCart] = useState(0)
+
+    useEffect(() => {
+        setContItemsCart(productsCart.length)
+    },[productsCart])
     
     return(
         <>
-            <div className = "cart" onClick = {() => setShowModal(true)}>
-                <img alt = "cart" src = {CartIcon}></img>
-                <div className = "cart-text">Carro</div>
+            <div className = "cart-container">  
+                <div className = "cart" onClick = {() => setShowModal(true)}>
+                    <img alt = "cart" src = {CartIcon}></img>
+                    <div className = "cart-text">Carro</div>
+                </div>
+                {contItemsCart > 0?<div className = "contador-items-cart">{contItemsCart}</div>:null}
             </div>
             <Modal show = {showModal}>
             <Modal.Header>
                 <Modal.Title>
-                    Cart
+                    Carrito de Compra
                 </Modal.Title>
-                <button className = "btn btn-danger" onClick={() => setShowModal(false)}>X</button>
+                <button className = "btn close-modal-button" onClick={() => setShowModal(false)}>X</button>
             </Modal.Header>
             <Modal.Body>
                 <div className = "table-container">
-                    <CartContent />
+                    <table className = "table cart-table">
+                        <tbody >
+                            <BodyCart/>
+                        </tbody>
+                    </table>
                 </div>
             </Modal.Body>
         </Modal>

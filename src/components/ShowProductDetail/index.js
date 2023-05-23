@@ -1,6 +1,6 @@
 import React, {useContext, useState, useRef, useEffect} from 'react';
 import InfoUserContext from '../../context/InfoUserContext';
-import {addProduct} from '../../customHooks/manageCart'
+import {useManageCart} from '../../customHooks/useManageCart'
 import {BASE_URL} from '../../settings'
 import RateProduct from '../RateProduct'
 import {debounce} from '../../helpFunctions/debounce'
@@ -14,8 +14,8 @@ export default function ShowProductDetail(params){
     const [productAdded, setProductAdded] = useState(false)
     const [showRateProductComponent, setShowRateProductComponent] = useState(false)
     const scrollRef = useRef()
-    const {contador, updateCont} = useNavigateItems({reference:scrollRef, itemsLength:3, interval:false})
-    const [,add] = addProduct()
+    const {contador, updateCont} = useNavigateItems(scrollRef,false)
+    const {productsCart, addProduct, checkProductInCart} = useManageCart()
     
     //images references
 
@@ -31,13 +31,20 @@ export default function ShowProductDetail(params){
         }
     },[])
 
+    //check if product is in cart
+    useEffect(() => {
+        if(params.id !== undefined){
+            setProductAdded(checkProductInCart(params.id))
+        }
+    }, [productsCart])
+
     function addToCart(){
         if(infoUser.info === null){
           alert('Login to use the Cart')
         }
         else{
             if(productAdded === false){
-                add({
+                addProduct({
                   id:params.id,
                   name:params.name,
                   price:params.precio,

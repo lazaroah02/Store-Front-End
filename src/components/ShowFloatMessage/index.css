@@ -1,7 +1,7 @@
 .toast-container{
-    position:fixed;
+    position:absolute;
     bottom: 10px;
-    width: 100%;
+    right: 10px;
     z-index: 1000;
     display: flex;
     justify-content: flex-end;

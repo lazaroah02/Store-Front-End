@@ -1,10 +1,18 @@
+.cart-product-row{
+    border:1px solid #ccc;
+    border-radius:10px;
+    width: 100%;
+}
 .addButton{
     margin-left: 2.5px;
+    border: 0;
+    cursor:pointer;
 }
 
 .restButton{
     margin-right: 2.5px;
-    width: 36px;
+    border: 0;
+    cursor: pointer;
 }
 
 .Total{
@@ -13,7 +21,7 @@
 
 .td-cantidad{
     display: flex;
-    flex-direction:column;
+    flex-direction:row;
 }
 .CantidadContainer{
     text-align:center;
