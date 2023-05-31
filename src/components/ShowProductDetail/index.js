@@ -1,7 +1,6 @@
 import React, {useContext, useState, useRef, useEffect} from 'react';
 import InfoUserContext from '../../context/InfoUserContext';
 import {useManageCart} from '../../customHooks/useManageCart'
-import {BASE_URL} from '../../settings'
 import RateProduct from '../RateProduct'
 import {debounce} from '../../helpFunctions/debounce'
 import { useNavigateItems } from '../../customHooks/useNavigateItems';
@@ -68,17 +67,17 @@ export default function ShowProductDetail(params){
                 <div className = "photos-detail-scroll" ref = {scrollRef} onScroll={() => focusImageByScroll()}>
                     <img 
                         className = "PhotoProduct"
-                        src={`${BASE_URL}${params.product_img1}`} 
+                        src={params.product_img1} 
                         alt = {params.name}
                         />
                     <img 
                         className = "PhotoProduct"
-                        src={`${BASE_URL}${params.product_img2}`} 
+                        src={params.product_img2} 
                         alt = {params.name}
                         />
                     <img 
                         className = "PhotoProduct"
-                        src={`${BASE_URL}${params.product_img3}`} 
+                        src={params.product_img3} 
                         alt = {params.name}
                         />
                 </div>

@@ -1,0 +1,62 @@
+.your-products{
+    width:100vw;
+    min-height:100vh;
+    padding-top:110px;
+}
+
+.AddProductForm input{
+    width:100%;
+}
+.AddProductForm textarea{
+    width:100%;
+}
+.AddProductForm select{
+    width:100%;
+}
+.error-message{
+    color:red;
+}
+.btn-add-category{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.div-buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin:0 auto;
+    margin-top: 10px;
+}
+.div-buttons-container button{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+.delete-buttons-container{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.button-delete-product{
+    background-color: rgb(232, 154, 154);
+}
+.button-cancel-delete-product{
+    background-color: gray;
+}
+.button-confirm-delete-product-hidden{
+    display: none!important;
+}
+.button-confirm-delete-product{
+    background-color:rgb(232, 154, 154);
+}
+.button-add-product{
+    background-color: rgb(85, 180, 174); 
+ }
+
+/*Mobile*/
+@media (max-width: 500px){
+    .div-buttons-container span{
+        display:none
+    } 
+}

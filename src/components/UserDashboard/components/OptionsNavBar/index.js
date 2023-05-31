@@ -11,6 +11,7 @@ import YourProductsIcon from "../../../../assets/products-of-seller-icon.svg";
 import ListOfOrdersIcon from "../../../../assets/list-of-orders-icon.svg";
 import MakeYouSellerIcon from "../../../../assets/navBarIcons/LogoProfile.png";
 import DejarDeSerVendedorIcon from "../../../../assets/dejar-de-ser-vendedor-icon.svg";
+import UserIcon from '../../../../assets/logo-profile.svg'
 
 export default function OptionsNavBar() {
   const myNavigate = useMyNavigate();
@@ -45,6 +46,15 @@ export default function OptionsNavBar() {
           </>:null}
           {infoUser.info === null ? null: (
             <>
+              <button
+                    className="btn button-option"
+                    onClick={() => {
+                     myNavigate("/user/info");
+                    }}
+                  >
+                    <img alt="icon" src={UserIcon} />
+                    <span>Tu perfil</span>
+                </button>
               {infoUser.info.is_seller? (
                 <>
                   <button

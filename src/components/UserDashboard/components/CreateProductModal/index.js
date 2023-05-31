@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import getCategories from '../../../../services/getCategories'
 import createNewProduct from '../../../../services/createNewProduct'
 import ProgresGif from '../../../ProgresGif'
+import InfoUserContext from '../../../../context/InfoUserContext';
 
-export default function ({showModal, setShowModal, updateProductList, setUpdateProductList}){
+export default function ({showModal, setShowModal, getProducts}){
     const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([])
+    const {infoUser} = useContext(InfoUserContext)
 
     //error messages
     const [showEmptyName, setShowEmptyName] = useState(true);
     const [showErrorPrice, setShowErrorPrice] = useState(true);
+    const [showErrorDescuento, setShowErrorDescuento] = useState(true);
+    const [showErrorCantidad, setShowErrorCantidad] = useState(true);
     const [showErrorImg1, setShowImg1] = useState(true);
 
     useEffect(() => {
@@ -28,7 +32,9 @@ export default function ({showModal, setShowModal, updateProductList, setUpdateP
           description: e.target[1].value,
           about: e.target[2].value,
           precio: e.target[3].value,
-          categoria_id: e.target[4].value,
+          descuento: e.target[4].value,
+          in_stock: e.target[5].value,
+          categoria_id: e.target[6].value,
           img1: document.getElementById("img1").files[0],
           img2: document.getElementById("img2").files[0],
           img3: document.getElementById("img3").files[0],
@@ -39,16 +45,20 @@ export default function ({showModal, setShowModal, updateProductList, setUpdateP
             setShowEmptyName(false)
         }else if(info.precio === "" || (info.precio.replace(/[^0-9]/g,"")).length !== info.precio.length){
             setShowErrorPrice(false)
+        }else if((info.descuento.replace(/[^0-9]/g,"")).length !== info.descuento.length){
+            setShowErrorDescuento(false)
+        }else if((info.in_stock.replace(/[^0-9]/g,"")).length !== info.in_stock.length || info.in_stock === "0"){
+            setShowErrorCantidad(false)
         }else if(info.img1 === undefined){
             setShowImg1(false)
         }
         else{
             setLoading(true)
-            createNewProduct(info)
+            createNewProduct({info:info, token:infoUser.token, username:infoUser.info.username})
             .then(res => {
                 if(res.status === 200){
                     setLoading(false)
-                    setUpdateProductList(updateProductList + 1)
+                    getProducts()
                     setShowModal(false)
                 }
                 else{
@@ -86,6 +96,16 @@ export default function ({showModal, setShowModal, updateProductList, setUpdateP
                     <p className = 'error-message' hidden={showErrorPrice}>Debes ingresar un precio valido</p>
                     <br />
                     <br />
+                    <label>Descuento: 0 por defecto</label>
+                    <input onChange={() => setShowErrorDescuento(true)}></input>
+                    <p className = 'error-message' hidden={showErrorDescuento}>Debes ingresar un descuento valido</p>
+                    <br />
+                    <br />
+                    <label>Cantidad: 1 por defecto</label>
+                    <input onChange={() => setShowErrorCantidad(true)}></input>
+                    <p className = 'error-message' hidden={showErrorCantidad}>Debes ingresar una cantidad valida mayor que cero</p>
+                    <br/>
+                    <br/>
                     <label>Categoria</label>
                     <br />
                     <select>

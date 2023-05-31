@@ -2,7 +2,7 @@ import React from 'react';
 import Toast from 'react-bootstrap/Toast';
 import "./index.css"
 
-function ShowFloatMessage({show, setShow, title = "", message = ""}) {
+function ShowFloatMessage({show, setShow, title = "", message = "", type = "success"}) {
   return (
     <>
         {show?
@@ -11,7 +11,7 @@ function ShowFloatMessage({show, setShow, title = "", message = ""}) {
                 <Toast.Header>
                     <strong className="me-auto">{title}</strong>
                 </Toast.Header>
-                <Toast.Body>{message}</Toast.Body>
+                <Toast.Body className = {type}>{message}</Toast.Body>
                 </Toast>
             </div>
         :null}

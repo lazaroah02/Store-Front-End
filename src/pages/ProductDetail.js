@@ -15,7 +15,7 @@ export default function ProductDetail() {
     
     useEffect(function(){
         getProductDetail(keyword).then(data => {
-            setProduct(data)
+            setProduct(data.results[0])
             setLoading(false)
         })
     },[keyword])

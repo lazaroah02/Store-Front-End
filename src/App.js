@@ -11,7 +11,7 @@ import SignUp from './pages/SignUp'
 import Contact from './pages/Contact'
 import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
-import YourProducts from './components/UserDashboard/components/YourProducts'
+import YourProducts from './components/UserDashboard/components/ProductsOfSeller'
 import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
 import Page404 from './pages/Page404'
 

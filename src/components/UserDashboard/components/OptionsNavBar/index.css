@@ -22,12 +22,12 @@
 .button-option{
     transition:all .5s;
     width:90%;
+    margin:0 auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap:10px;
     margin-top:1rem;
-    float: right;
     border-radius: 0;
 }
 
