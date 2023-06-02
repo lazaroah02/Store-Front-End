@@ -17,7 +17,7 @@ export default function LogoProfile(){
                 <div className = "user-profile-text">Perfil</div>
             </div>
             :
-            <div className = "user-profile-icon-container" onClick={() => navigate("/user/info")}>
+            <div className = "user-profile-icon-container" onClick={() => navigate("/login")}>
                 <img alt = "user-profile" src = {LoginIcon}/>
                 <div className = "user-profile-text">Entrar</div>
             </div>

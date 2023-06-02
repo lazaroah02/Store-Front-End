@@ -1,14 +1,12 @@
-.Orders-Container{
-    overflow-y: hidden;
-    padding-top: 110px;
-}
 .mensaje-debes-ser-vendedor{
     text-align: center;
-    margin-top: 40vh;
-    height: 50px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    height: auto;
     border:1px solid;
     border-radius: 1rem;
-    padding-top: 10px;
+    padding: 10px;
+    width: 90%;
+    margin:0 auto;
+    position: relative;
+    top:30vh;
+    background-color:rgb(190, 227, 224);
 }

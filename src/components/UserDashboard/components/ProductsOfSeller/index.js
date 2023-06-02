@@ -89,48 +89,66 @@ export default function ProductsOfSeller() {
       <NavBar/>
       <OptionsNavBar/>
       <section className = "user-dashboard-panel">
-        <ShowFloatMessage 
-          show={showFloatMessage} 
-          setShow={setShowFloatMessage}
-          message={message.message}
-          title={message.title}
-          type = {message.type}
-          />
-        {loading?
-          <div className = "loader-container">
-            <Loader/>
-          </div>
-          :
-          <>
-            <ListOfProducts 
-              products = {products} 
-              showSelectButtons={showSelectButtons} 
-              setSelectButtons={setShowSelectButtons}
-              addProductsToDelete = {addProductsToDelete}
-              />
-            <div className = 'div-buttons-container'>
-              <section className = "delete-buttons-container">
-                <button className = {showSelectButtons?'btn button-cancel-delete-product':'btn button-delete-product'} onClick={() => {
-                  setShowSelectButtons(!showSelectButtons)
-                  }}><img alt = "Trash" src = {showSelectButtons?CancelIcon:TrashWhite}/><span>{showSelectButtons?"Cancelar":"Eliminar Producto"}</span>
-                </button>
-                <button className = {showSelectButtons?'btn button-confirm-delete-product':"btn button-confirm-delete-product-hidden"} 
-                  onClick={() => {
-                  deleteProducts()
-                  }}><img alt = "trash" src = {TrashWhite}/><span>Confirmar</span>
-                </button>
-              </section>
-              <button className = 'btn button-add-product' onClick={() => {
-                setShowModal(true)
-              }}><img alt = "add" src = {AddIcon}/><span>Agregar nuevo producto</span></button>
+        {infoUser.info === null
+        ?
+        <div className = "user-not-seller-message">
+          Debes iniciar session
+        </div>
+        :
+        <>
+          {!infoUser.info.is_seller
+          ?
+            <div className = "user-not-seller-message">
+              Debes ser vendedor para ver esta seccion
             </div>
-          </>
+            :
+            <>
+              <ShowFloatMessage 
+              show={showFloatMessage} 
+              setShow={setShowFloatMessage}
+              message={message.message}
+              title={message.title}
+              type = {message.type}
+              />
+            {loading?
+              <div className = "loader-container">
+                <Loader/>
+              </div>
+              :
+              <>
+                <ListOfProducts 
+                  products = {products} 
+                  showSelectButtons={showSelectButtons} 
+                  setSelectButtons={setShowSelectButtons}
+                  addProductsToDelete = {addProductsToDelete}
+                  />
+                <div className = 'div-buttons-container'>
+                  <section className = "delete-buttons-container">
+                    <button className = {showSelectButtons?'btn button-cancel-delete-product':'btn button-delete-product'} onClick={() => {
+                      setShowSelectButtons(!showSelectButtons)
+                      }}><img alt = "Trash" src = {showSelectButtons?CancelIcon:TrashWhite}/><span>{showSelectButtons?"Cancelar":"Eliminar Producto"}</span>
+                    </button>
+                    <button className = {showSelectButtons?'btn button-confirm-delete-product':"btn button-confirm-delete-product-hidden"} 
+                      onClick={() => {
+                      deleteProducts()
+                      }}><img alt = "trash" src = {TrashWhite}/><span>Confirmar</span>
+                    </button>
+                  </section>
+                  <button className = 'btn button-add-product' onClick={() => {
+                    setShowModal(true)
+                  }}><img alt = "add" src = {AddIcon}/><span>Agregar nuevo producto</span></button>
+                </div>
+              </>
+            }
+            <CreateProductModal 
+              showModal = {showModal} 
+              setShowModal = {setShowModal}
+              getProducts = {getProducts}
+              />
+            </>
+          }
+        </>
         }
-        <CreateProductModal 
-          showModal = {showModal} 
-          setShowModal = {setShowModal}
-          getProducts = {getProducts}
-          />
       </section>
     </div>
   );

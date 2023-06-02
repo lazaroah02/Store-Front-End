@@ -3,6 +3,7 @@ import getPedidosOfSeller from "../../../../services/getPedidosOfSeller"
 import setPedidosFinalizados from '../../../../services/setPedidosFinalizados'
 import ProgresGif from '../../../ProgresGif'
 import './index.css'
+import "../user-dashboard-panel-styles.css"
 
 export default function OrdersTable(){
     const [orders, setOrders] = useState([])
@@ -18,6 +19,11 @@ export default function OrdersTable(){
         setLoading(false)
     })
     },[pedirOrders])
+
+    function formatDate(timestamp) {
+        const date = new Date(timestamp);
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+      }
 
     function handleSendPedidosHechos(){
         if(pedidosHechos.length > 0){
@@ -54,44 +60,40 @@ export default function OrdersTable(){
         }
     }
     return(
-        <div className = "orders-table-container">
-            <div className = 'list-of-orders'>
+        <div className = "user-dashboard-panel">
+            <div className = 'list-of-orders-container'>
                 {loading?<ProgresGif/>:null}
-                <table className = "table tabla-orders">
-                    <thead>
-                        <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Unidades</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <ul className = "orders-list">
+                        <li className = "orders-list-header">
+                            <div className = "check-button-space-header"></div>
+                            <div>Producto</div>
+                            <div>Unidades</div>
+                            <div>Precio</div>
+                            <div>Total</div>
+                            <div>Comprador</div>
+                            <div>Fecha</div>
+                        </li>
                     {orders.lenght === 0 
                     ?
-                    <tr>
-                        <td collSpan="5">"No tienes ordenes"</td>
-                    </tr>
+                    <li>
+                        "No tienes ordenes"
+                    </li>
                     :
                     orders.map(order => 
-                    <tr key = {order.id}>
-                        <td><input type = "checkbox" onChange={(e) => handleAddPedidoHecho(e)} value = {order.id}></input></td>
-                        <td>{order.nombre_producto}</td>
-                        <td>{order.unidades}</td>
-                        <td>${order.precio_producto}</td>
-                        <td>${order.total}</td>
-                        <td>{order.user}</td>
-                        <td>{order.created_at.substr(0,10)}</td>
-                    </tr>)
+                    <li key = {order.id}>
+                        <div className = "check-button-space"><input type = "checkbox" onChange={(e) => handleAddPedidoHecho(e)} value = {order.id}></input></div>
+                        <div>{order.nombre_producto}</div>
+                        <div>{order.unidades}</div>
+                        <div>${order.precio_producto}</div>
+                        <div>${order.total}</div>
+                        <div>{order.user}</div>
+                        <div>{formatDate(order.created_at)}</div>
+                    </li>)
                     }
-                    </tbody>
-                </table>
+                </ul>
             </div>
                 <div className = 'button-marcar-como-hecho-container'>
-                    <button className = "btn btn-primary" onClick = {() => handleSendPedidosHechos()}>Marcar como hecho</button>
+                    <button className = "btn" onClick = {() => handleSendPedidosHechos()}>Marcar como hecho</button>
                 </div>
         </div>
     )

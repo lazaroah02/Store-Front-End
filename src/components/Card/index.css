@@ -2,6 +2,10 @@
     font-family:"Raleway";
     src: url("../../fonts/Raleway-VariableFont_wght.woff2") format("woff2");
 }
+@font-face {
+    font-family: "Glory";
+    src: url("../../fonts/Glory-VariableFont_wght.woff2") format("woff2");
+}
 .ProductCard{
     margin:1rem 1rem 0rem 1rem;
     width: 252px;
@@ -55,16 +59,20 @@
 .price{
     font-size: 18px;
     text-align: start;
+    font-family: "Glory";
 }
-
 .score-and-opinions-container{
     display:flex;
     width: 100%;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     position: relative;
     bottom:340px;
     padding-left:10px;
     padding-top: 5px;
 }
-
+.add-product-to-favorite{
+    width: 50px;
+    border: 0;
+    padding-left: 13px;
+}

@@ -1,11 +1,13 @@
 import React, {useContext, useState, useEffect} from 'react'
-import './index.css'
 import {useNavigate} from 'react-router-dom'
 import InfoUserContext from '../../context/InfoUserContext'
 import {useManageCart} from '../../customHooks/useManageCart'
 import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 import ShowProductScore from '../ShowProductScore'
+import ShowFloatMessage from '../ShowFloatMessage'
+import HeartIcon from '../../assets/heart.svg'
+import './index.css'
 
 export default function Card({id, product_name, precio, product_img1, puntuacion, cantidad_puntuaciones}){
   const {infoUser} = useContext(InfoUserContext)
@@ -13,14 +15,19 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
   const {productsCart, addProduct, checkProductInCart} = useManageCart()
   const [productAdded, setProductAdded] = useState(false)
 
+  //show float message states
+  const [showMessage, setShowMessage] = useState(false)
+  const [message, setMessage] = useState({title: "", message: "", type: "success"})
+
   //check if the product is already in the cart
   useEffect(() => {
       setProductAdded(checkProductInCart(id))
   }, [productsCart])
 
   function addToCart(){
-    if(infoUser === null){
-      alert('Login to use the Cart')
+    if(infoUser.token === null){
+      setMessage({title:"!", message:"Debes iniciar session para usar el carro", type:"angry"})
+      setShowMessage(true)
     }
     else{
         addProduct({
@@ -36,6 +43,13 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
   }
     return(
        <div className="ProductCard" id = {id} >
+        <ShowFloatMessage 
+          show={showMessage} 
+          setShow={setShowMessage} 
+          message = {message.message} 
+          title = {message.title} 
+          type = {message.type}
+          />
         <div className = 'img-container'>
             <img loading = "lazy" onClick={() => handleClick()} src={product_img1}  alt={product_name}/>
         </div>
@@ -56,6 +70,9 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
         </div>
         <div className = "score-and-opinions-container">
           <ShowProductScore score = {puntuacion}/>
+          <div className = "add-product-to-favorite">
+            <img alt = "favorite" src = {HeartIcon}/>
+          </div>
         </div>
        </div>
 

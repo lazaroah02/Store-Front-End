@@ -20,7 +20,7 @@ export default function ShowLinks(){
         setNavigate("/")
     }
     return(
-        <button className = "btn button-option " onClick={() => handleLogout()}>
+        <button className = "btn " onClick={() => handleLogout()}>
             <img alt = "log-out" src = {logoutIcon}/>
             <span>Cerrar Sesion</span>
         </button>

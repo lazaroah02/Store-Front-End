@@ -6,6 +6,7 @@ import {debounce} from '../../helpFunctions/debounce'
 import { useNavigateItems } from '../../customHooks/useNavigateItems';
 import { checkIfUserCanRate } from '../../services/checkIfUserCanRate';
 import ShowProductScore from '../ShowProductScore'
+import ShowFloatMessage from '../ShowFloatMessage'
 import './index.css';
 
 export default function ShowProductDetail(params){
@@ -15,9 +16,11 @@ export default function ShowProductDetail(params){
     const scrollRef = useRef()
     const {contador, updateCont} = useNavigateItems(scrollRef,false)
     const {productsCart, addProduct, checkProductInCart} = useManageCart()
-    
-    //images references
 
+    //show float message states
+    const [showMessage, setShowMessage] = useState(false)
+    const [message, setMessage] = useState({title:"", message:"", type:"success"})
+    
     //check if the user can rate the product and show the RateProductComponent
     useEffect(() => {
         if(infoUser.token !== null && params.id !== undefined){
@@ -39,7 +42,8 @@ export default function ShowProductDetail(params){
 
     function addToCart(){
         if(infoUser.info === null){
-          alert('Login to use the Cart')
+          setMessage({title:"!", message:"Debes iniciar sesion para usar el carrito.", type:"angry"})
+          setShowMessage(true)
         }
         else{
             if(productAdded === false){
@@ -63,6 +67,13 @@ export default function ShowProductDetail(params){
 
     return(
         <div className = "detail-product-container">
+            <ShowFloatMessage
+                show={showMessage}
+                setShow={setShowMessage}
+                title = {message.title}
+                message = {message.message}
+                type = {message.type}
+            />
             <section className = "photos-detail-container">
                 <div className = "photos-detail-scroll" ref = {scrollRef} onScroll={() => focusImageByScroll()}>
                     <img 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItemsIcons from '../../assets/navBarIcons/list-items-icon.svg'
+import LogoutLink from '../LogoutLink'
 import './index.css'
 
 function OtherOptionsOfNavbar() {
@@ -12,7 +13,7 @@ function OtherOptionsOfNavbar() {
             <ul className="dropdown-menu options-dropdown-menu">
                 <li className="dropdown-item">Action</li>
                 <li className="dropdown-item">Another action</li>
-                <li className="dropdown-item">Something else here</li>
+                <li className="dropdown-item"><LogoutLink/></li>
             </ul>
         </div>
     );
