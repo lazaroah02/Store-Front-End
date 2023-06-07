@@ -47,7 +47,7 @@ function sendListaPedido(id_pedido,listaPedido){
                 window.location.reload()
             }
             else{
-                alert('no se pudo realizar el prducto')
+                alert('no se pudo realizar el pedido')
             }
         })
     )

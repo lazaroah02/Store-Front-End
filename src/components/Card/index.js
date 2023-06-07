@@ -2,18 +2,23 @@ import React, {useContext, useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import InfoUserContext from '../../context/InfoUserContext'
 import {useManageCart} from '../../customHooks/useManageCart'
+import {addProductToFavoriteList} from '../../services/addProductToFavoriteList'
+import {removeProductOfFavoriteList} from '../../services/removeProductOfFavoriteList'
+//icons import
 import addToCartIcon from '../../assets/add-to-cart-icon.svg'
 import inCartIcon from '../../assets/in-cart-icon.svg'
 import ShowProductScore from '../ShowProductScore'
 import ShowFloatMessage from '../ShowFloatMessage'
-import HeartIcon from '../../assets/heart.svg'
+import EmptyHeartIcon from '../../assets/heart.svg'
+import FullyHeartIcon from '../../assets/fully-heart.svg'
 import './index.css'
 
-export default function Card({id, product_name, precio, product_img1, puntuacion, cantidad_puntuaciones}){
+export default function Card({id, product_name, precio, product_img1, puntuacion, favoriteProducts}){
   const {infoUser} = useContext(InfoUserContext)
   const navigate = useNavigate()
   const {productsCart, addProduct, checkProductInCart} = useManageCart()
   const [productAdded, setProductAdded] = useState(false)
+  const [favorite, setFavorite] = useState(productInFavoriteList())
 
   //show float message states
   const [showMessage, setShowMessage] = useState(false)
@@ -23,6 +28,12 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
   useEffect(() => {
       setProductAdded(checkProductInCart(id))
   }, [productsCart])
+
+  function productInFavoriteList(){
+    if(favoriteProducts !== null){
+      return favoriteProducts.indexOf(id) === -1?false:true
+    }
+  }
 
   function addToCart(){
     if(infoUser.token === null){
@@ -40,6 +51,40 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
 
   function handleClick(){
     navigate(`/detail/${id}/`)
+  }
+
+  function handleAddToFavorite(productId){
+    addProductToFavoriteList({productId:productId, token:infoUser.token})
+    .then(res => {
+      if(res.status === 200){
+        setMessage({title:"!", message:"Producto agregado a tu lista de favoritos", type:"success"})
+        setShowMessage(true)
+        setFavorite(true)
+      }
+      else if(res.status === 226){
+        setMessage({title:"!", message:"EL producto ya esta en tu lista de favoritos", type:"angry"})
+        setShowMessage(true)
+      }
+      else{
+        setMessage({title:"!", message:"Error al agregar el producto a favoritos", type:"angry"})
+        setShowMessage(true)
+      }
+    })
+  }
+
+  function handleRemoveOfFavoriteList(productId){
+    removeProductOfFavoriteList({productId:productId, token:infoUser.token})
+    .then(res => {
+      if(res.status === 200){
+        setMessage({title:"!", message:"Producto eliminado tu lista de favoritos", type:"success"})
+        setShowMessage(true)
+        setFavorite(false)
+      }
+      else{
+        setMessage({title:"!", message:"Error al eliminar el producto de favoritos", type:"angry"})
+        setShowMessage(true)
+      }
+    })
   }
     return(
        <div className="ProductCard" id = {id} >
@@ -70,9 +115,12 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
         </div>
         <div className = "score-and-opinions-container">
           <ShowProductScore score = {puntuacion}/>
-          <div className = "add-product-to-favorite">
-            <img alt = "favorite" src = {HeartIcon}/>
-          </div>
+          {infoUser.token !== null?
+            <div className = "add-product-to-favorite" onClick={() => {favorite?handleRemoveOfFavoriteList(id):handleAddToFavorite(id)}}>
+              <img alt = "favorite" src = {favorite?FullyHeartIcon:EmptyHeartIcon}/>
+            </div>
+            :null
+          }
         </div>
        </div>
 

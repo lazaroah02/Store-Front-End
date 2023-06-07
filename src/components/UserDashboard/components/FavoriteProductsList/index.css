@@ -1,0 +1,5 @@
+.favorite-products-container{
+    max-height: 85vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}

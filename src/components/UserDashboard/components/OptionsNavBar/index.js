@@ -41,7 +41,7 @@ export default function OptionsNavBar() {
       <div className = "options-nav-bar">
           {infoUser.info?<>
             {infoUser.info.is_seller?
-              <div className = "is-seller-message">Felicidades ahora eres vendedor</div> 
+              <div className = "is-seller-message">Barra de administración para vendedores</div> 
             :
               null
             }

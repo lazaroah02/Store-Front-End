@@ -13,6 +13,9 @@ import InfoUser from './components/UserDashboard/components/InfoUser'
 import LisfOfOrders from './components/UserDashboard/components/ListOfOrders'
 import YourProducts from './components/UserDashboard/components/ProductsOfSeller'
 import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
+import FavoriteList from './components/UserDashboard/components/FavoriteProductsList'
+import OrdersHistory from './components/UserDashboard/components/OrdersHistory'
+import OrderDetail from './components/UserDashboard/components/OrderDetail'
 import Page404 from './pages/Page404'
 
 //context import
@@ -42,6 +45,9 @@ export default function App() {
               <Route path = '/register' element = {<SignUp/>} />
               <Route path = '/contact' element = {<ProtectedRoute><Contact/></ProtectedRoute>}/>
               <Route path = '/user/info' element = {<ProtectedRoute><InfoUser/></ProtectedRoute>} />
+              <Route path = '/user/favorite-list' element = {<ProtectedRoute><FavoriteList/></ProtectedRoute>} />
+              <Route path = '/user/orders-history' element = {<ProtectedRoute><OrdersHistory/></ProtectedRoute>} />
+              <Route path = '/user/order-detail/:orderId' element = {<ProtectedRoute><OrderDetail/></ProtectedRoute>} />
               <Route path = '/user/seller/list-of-orders'element = {<ProtectedRoute><LisfOfOrders/></ProtectedRoute>} />
               <Route path = '/user/seller/products' element = {<ProtectedRoute><YourProducts/></ProtectedRoute>} />
               <Route path = '/user/seller/product/:keyword' element = {<ProtectedRoute><ProductSellerDetail/></ProtectedRoute>} />

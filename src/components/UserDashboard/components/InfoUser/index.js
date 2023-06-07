@@ -8,6 +8,7 @@ import CheckConfirm from '../../../../assets/check-confirm.svg'
 import ShowFloatMessage from '../../../ShowFloatMessage';
 import Heart from "../../../../assets/heart.svg"
 import History from "../../../../assets/history.svg"
+import {useMyNavigate} from '../../../../customHooks/useMyNavigate'
 import './index.css'
 import '../user-dashboard-panel-styles.css'
 
@@ -15,6 +16,7 @@ export default function InfoUser(){
     const {infoUser, setInfoUser} = useContext(InfoUserContext)
     const [info, setInfo] = useState(null)
     const [editingInfo, setEditingInfo] = useState(false)
+    const myNavigate = useMyNavigate()
 
     //state to show a toast with a message
     const [showToast, setShowToast] = useState(false)
@@ -69,8 +71,14 @@ export default function InfoUser(){
                   <h5>Email:<span>{info?info.email:null}</span></h5>
               </div>
               <div className = "historial-and-wishlist-container">
-                  <div><span>Lista de Deseos</span><img alt = "wish-list" src = {Heart}/></div>
-                  <div><span>Historial de Pedidos</span><img alt = "pedidos" src = {History}/></div>
+                  <div onClick={() => myNavigate("/user/favorite-list")}>
+                    <span>Lista de Favoritos</span>
+                    <img alt = "wish-list" src = {Heart}/>
+                  </div>
+                  <div onClick={() => myNavigate("/user/orders-history")}>
+                    <span>Historial de Pedidos</span>
+                    <img alt = "pedidos" src = {History}/>
+                  </div>
               </div>
             </header>
               <div className = "separator"></div>
