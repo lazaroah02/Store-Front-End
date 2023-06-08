@@ -26,6 +26,7 @@ export default function ShowProducts(){
         navigate(createNewPathName(pathname, "page", page.selected + 1));
       }
     
+    //get products of store
     useEffect(() => {
         startRef.current.scrollIntoView({block:'center',inline:"center"})
         setLoading(true)
@@ -41,6 +42,7 @@ export default function ShowProducts(){
         })
     }, [keyword])
 
+    //get the favorite products list to check the products in there
     useEffect(() => {
         if(infoUser.token !== null){
             getIdOfProductsInFavoriteList({token:infoUser.token})

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext, useRef} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import {getOrderDetail} from'../../../../services/getOrderDetail';
 import InfoUserContext from '../../../../context/InfoUserContext'
@@ -14,8 +14,7 @@ function OrderDetail() {
     const [orderDetail, setOrderDetail]= useState(null)
     const [loading, setLoading] = useState(false)
     const {infoUser} = useContext(InfoUserContext)
-    const parentRef = useRef()
-    const {showFloatMessage} = useShowFloatMessage({parentRef:parentRef})
+    const {showFloatMessage, FloatMessage} = useShowFloatMessage()
 
     useEffect(() => {
         if(orderId !== undefined && orderId !== null){
@@ -33,7 +32,6 @@ function OrderDetail() {
         <NavBar/>
         <OptionsNavBar/>
         <div className = "user-dashboard-panel">
-            <div ref = {parentRef}></div>
             <button onClick = {() => showFloatMessage({message:"Hello World"})}>Mostrar</button>
             {loading?
                 <div className = "loader-container">
@@ -41,7 +39,7 @@ function OrderDetail() {
                 </div>
                 :
                 <div className = "order-detail-container">
-                    Pedido: {orderId}
+                    {FloatMessage}
                 </div>
             }
         </div>

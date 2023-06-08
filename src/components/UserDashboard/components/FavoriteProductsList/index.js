@@ -10,12 +10,14 @@ import './index.css'
 import '../user-dashboard-panel-styles.css'
 
 function FavoriteList() {
+    //favorite products list
     const [favoriteList, setFavoriteList] = useState([])
-    //id of hte favorite products 
-    const [favoriteProducts, setFavoriteProducts] = useState([])
+    //ids of favorite products 
+    const [favoriteProductsId, setFavoriteProductsId] = useState([])
     const [loading, setLoading] = useState(false)
     const {infoUser} = useContext(InfoUserContext)
 
+    //get the favorite products list
     useEffect(() => {
         setLoading(true)
         getFavoriteProductsList({token:infoUser.token})
@@ -25,11 +27,12 @@ function FavoriteList() {
         })
     },[])
 
+    //get the ids of favorite products
     useEffect(() => {
         if(infoUser.token !== null){
             getIdOfProductsInFavoriteList({token:infoUser.token})
             .then(data => {
-                setFavoriteProducts(data.products)
+                setFavoriteProductsId(data.products)
             })
         }
     },[infoUser])
@@ -47,7 +50,7 @@ function FavoriteList() {
                 <GenerateCards 
                     products={favoriteList} 
                     loading={loading}
-                    favoriteProducts={favoriteProducts}
+                    favoriteProducts={favoriteProductsId}
                     />
             </div>
             }
