@@ -34,7 +34,8 @@ export default function CategoriesFilter({activeFilters}) {
   function handleSetCategory(category_id) {
     //inserto el filtro en la nueva ruta
     setShowModal(false)
-    navigate(createNewPathName(pathname, "categoria", category_id));
+    let pathNameWithPage1 = createNewPathName(pathname, "page", 1)
+    navigate(createNewPathName(pathNameWithPage1, "categoria", category_id));
   }
 
   return (

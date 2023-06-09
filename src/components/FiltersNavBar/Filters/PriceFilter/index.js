@@ -29,7 +29,8 @@ export default function PriceFilter({activeFilters}) {
         let price = e.target[0].value
         if(isNaN(price)) return alert('The price must be a number')
         //inserto el filtro en la nueva ruta
-        navigate(createNewPathName(pathname, "precio", price))
+        let pathNameWithPage1 = createNewPathName(pathname, "page", 1)
+        navigate(createNewPathName(pathNameWithPage1, "precio", price))
     }
 
   return (

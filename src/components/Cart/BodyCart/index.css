@@ -65,6 +65,8 @@
 
 .total{
     margin-top:10px;
+    text-align: end;
+    padding-right: 10px;
 }
 
 .buttons-pay-and-clean-cart-container{

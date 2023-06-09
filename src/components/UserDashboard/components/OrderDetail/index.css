@@ -1,0 +1,13 @@
+.order-detail-modal-dialog{
+    max-width: 90%!important;
+    margin: 0 auto;
+    margin-top:10px;
+}
+
+.order-detail-container{
+    min-height:80vh;
+}
+
+.order-detail-total{
+    width: 100%;
+}

@@ -1,5 +1,29 @@
+.favorite-list-panel{
+    background-color:#fff;
+    min-height: 85vh;
+    width: 90%;
+    margin-right: 5%;
+    margin:0 auto;
+}
+
 .favorite-products-container{
     max-height: 85vh;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
+}
+
+.favorite-products-title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    gap:10px;
+}
+
+.favorite-products-title-container div{
+    font-size: 20px;
+}
+.favorite-products-title-container img{
+    width: 36px;
 }

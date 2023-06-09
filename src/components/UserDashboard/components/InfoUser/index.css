@@ -33,7 +33,8 @@
     padding-right: 10px;
 }
 .historial-and-wishlist-container span{
-    margin-right:10px
+    margin-right:10px;
+    cursor: pointer;
 }
 .historial-and-wishlist-container img{
     cursor: pointer;

@@ -24,7 +24,7 @@ export default function ShowProducts(){
 
     function handleSetPage(page) {
         navigate(createNewPathName(pathname, "page", page.selected + 1));
-      }
+      }  
     
     //get products of store
     useEffect(() => {
@@ -56,7 +56,7 @@ export default function ShowProducts(){
         <div className = "ShowProducts">
             <NavBar />
             <ButtonGoTop topRef = {startRef}/>
-            <FiltersNavBar topRef = {startRef}/>
+            <FiltersNavBar topRef = {startRef} />
             <GenerateCards 
                 products = {products}
                 loading = {loading}
@@ -76,7 +76,7 @@ export default function ShowProducts(){
                 breakLabel = {"..."}
                 marginPagesDisplayed = {1}
                 onPageChange={handleSetPage}
-                initialPage = {0}
+                initialPage={0}
             />    
         </div>    
     )

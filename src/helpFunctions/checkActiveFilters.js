@@ -9,8 +9,7 @@ export function checkActiveFilters(pathname) {
     
     for (let i = 0; i < separatedPathName.length; i++) {
       if (
-        !separatedPathName[i].endsWith("=") &&
-        !separatedPathName[i].includes("page")
+        !separatedPathName[i].endsWith("=") 
       ) {
         listOfFilters.push({
           filter: separatedPathName[i].split("=")[0],

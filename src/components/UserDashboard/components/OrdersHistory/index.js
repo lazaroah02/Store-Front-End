@@ -1,22 +1,21 @@
 import React, {useEffect, useState, useContext} from 'react';
 import NavBar from '../../../NavBar'
-import OptionsNavBar from '../OptionsNavBar'
 import Loader from '../../../Loader';
 import InfoUserContext from '../../../../context/InfoUserContext';
 import { getOrdersHistory } from '../../../../services/getOrdersHistory';
 import OrdersHistoryIcon from '../../../../assets/history.svg'
 import CheckGreenIcon from '../../../../assets/check-confirm-green.svg'
 import ClockOrangeIcon from '../../../../assets/clock-orange-icon.svg'
+import BackArrowIcon from '../../../../assets/back-arrow.svg' 
+import OrderDetail from '../OrderDetail';
 import './index.css'
 import '../user-dashboard-panel-styles.css'
-import { useMyNavigate } from '../../../../customHooks/useMyNavigate';
 
 function OrdersHistory() {
     const [orders, setOrders] = useState([])
     const [loading, setLoading] = useState(false)
     const {infoUser} = useContext(InfoUserContext)
-
-    const myNavigate = useMyNavigate()
+    const {OrderDetailModal, showOrderDetail} = OrderDetail()
 
     useEffect(() =>{
         setLoading(true)
@@ -31,17 +30,18 @@ function OrdersHistory() {
         const date = new Date(timestamp);
         return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
       }
-
+    
     return ( 
     <div className = "user-dashboard-panel-container">
         <NavBar/>
-        <OptionsNavBar/>
-        <main className = "user-dashboard-panel">
+        {OrderDetailModal}
+        <main className = "orders-history-panel">
             {loading?
             <div className = "loader-container"><Loader/></div>
             :
             <section className = "orders-history-list-container">
                 <div className = "orders-history-title-container">
+                    <img className = "back-arrow" alt = "back" src = {BackArrowIcon} onClick={() => window.history.back()}/>
                     <div>Historial de Pedidos</div>
                     <img alt = "orders-history" src = {OrdersHistoryIcon}/>
                 </div>
@@ -54,7 +54,7 @@ function OrdersHistory() {
                     </li>
                     {orders.map(order => 
                         <section  key = {order.id} className = "li-order-container">
-                            <li className = "order" onClick={() => myNavigate(`/user/order-detail/${order.id}`)}>
+                            <li className = "order" onClick={() => showOrderDetail({orderId:order.id, orderInfo:order})}>
                                 <div>{order.id}</div>
                                 <div>{order.total} usd</div>
                                 <div className = {order.finalizado?"order-state green":"order-state orange"}>
@@ -63,7 +63,7 @@ function OrdersHistory() {
                                 </div>
                                 <div className = "order-date">{formatDate(order.created_at)}</div>
                             </li>
-                            <button className = "btn" onClick={() => myNavigate(`/user/order-detail/${order.id}`)}>Ver mas</button>
+                            <button className = "btn" onClick={() => showOrderDetail({orderId:order.id, orderInfo: order})}>Ver mas</button>
                         </section>
                     )}
                 </ul>

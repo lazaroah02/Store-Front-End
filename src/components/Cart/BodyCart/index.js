@@ -60,11 +60,11 @@ export default function BodyCart() {
       ))}
       <div className = "total">Total: {total} usd</div>
       <section className = "buttons-pay-and-clean-cart-container">
-          <button className="btn btn-pay" onClick={() => procesarPago()}>
-            Procesar Pago
-          </button>
           <button className="btn btn-clean-cart" onClick={() => cleanCart()}>
             Vaciar Carrito
+          </button>
+          <button className="btn btn-pay" onClick={() => procesarPago()}>
+            Procesar Pago
           </button>
       </section>
     </ul>

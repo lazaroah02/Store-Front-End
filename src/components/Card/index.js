@@ -46,7 +46,7 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
     }
   }
 
-  function handleClick(){
+  function handleSeeProductDetail(){
     navigate(`/detail/${id}/`)
   }
 
@@ -54,7 +54,7 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
        <div className="ProductCard" id = {id} >
         {FloatMessage}
         <div className = 'img-container'>
-            <img loading = "lazy" onClick={() => handleClick()} src={product_img1}  alt={product_name}/>
+            <img loading = "lazy" onClick={() => handleSeeProductDetail()} src={product_img1}  alt={product_name}/>
         </div>
         <div onClick={addToCart} className="add-to-cart-button ">
             {productAdded
@@ -68,8 +68,8 @@ export default function Card({id, product_name, precio, product_img1, puntuacion
             }
         </div>
         <div className = "name-and-price-container">
-          <h5 className="product-card-name" onClick={() => handleClick()}>{product_name}</h5>
-          <p className="card-text price" onClick={() => handleClick()}>{precio} usd</p>
+          <h5 className="product-card-name" onClick={() => handleSeeProductDetail()}>{product_name}</h5>
+          <p className="card-text price" onClick={() => handleSeeProductDetail()}>{precio} usd</p>
         </div>
         <div className = "score-and-opinions-container">
           <ShowProductScore score = {puntuacion}/>
