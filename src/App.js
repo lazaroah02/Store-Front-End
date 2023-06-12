@@ -15,6 +15,7 @@ import YourProducts from './components/UserDashboard/components/ProductsOfSeller
 import ProductSellerDetail from './components/UserDashboard/components/ProductSellerDetail'
 import FavoriteList from './components/UserDashboard/components/FavoriteProductsList'
 import OrdersHistory from './components/UserDashboard/components/OrdersHistory'
+import Processpay from './pages/ProcessPay'
 import Page404 from './pages/Page404'
 
 //context import
@@ -42,7 +43,8 @@ export default function App() {
               <Route path = '/products' element = {<ShowProducts/>} />
               <Route path = '/products/:filters' element = {<ShowProducts/>} />
               <Route path = '/register' element = {<SignUp/>} />
-              <Route path = '/contact' element = {<ProtectedRoute><Contact/></ProtectedRoute>}/>
+              <Route path = '/contact' element = {<Contact/>}/>
+              <Route path = '/process-pay' element = {<ProtectedRoute><Processpay/></ProtectedRoute>}/>
               <Route path = '/user/info' element = {<ProtectedRoute><InfoUser/></ProtectedRoute>} />
               <Route path = '/user/favorite-list' element = {<ProtectedRoute><FavoriteList/></ProtectedRoute>} />
               <Route path = '/user/orders-history' element = {<ProtectedRoute><OrdersHistory/></ProtectedRoute>} />

@@ -1,0 +1,8 @@
+.process-pay-panel{
+    width: 95%;
+    height: 75vh;
+    margin: 0 auto;
+    background-color:rgb(235, 234, 234);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

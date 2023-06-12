@@ -43,7 +43,12 @@ export function useManageCart(){
 
     function deleteProduct(product){
         let productsCartCopy = [...productsCart]
-        productsCartCopy.splice(product, 1)
+        for(let i = 0; i < productsCartCopy.length; i++){
+            if(productsCartCopy[i].id === product.id){
+                productsCartCopy.splice(i, 1)
+                break
+            }
+        }
         return setProductCart(productsCartCopy)
     }
 

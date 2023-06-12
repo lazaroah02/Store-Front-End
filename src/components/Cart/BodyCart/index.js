@@ -1,24 +1,24 @@
 import React, { useEffect, useState} from "react";
 import { useManageCart} from "../../../customHooks/useManageCart";
-import realizarPedido from '../../../services/realizarPedido'
+import { useMyNavigate } from "../../../customHooks/useMyNavigate";
 import TrashCan from '../../../assets/trash.svg'
 import "./index.css";
 
 export default function BodyCart() {
   const [total, setTotal] = useState(0);
   const {productsCart, addProduct, restProduct, deleteProduct, cleanCart, calculateTotal} = useManageCart()
+  const myNavigate = useMyNavigate()
 
   useEffect(() => {
     setTotal(calculateTotal());
   },[productsCart]);
 
-
-  function procesarPago() {
-    if (productsCart.length > 0) {
-      realizarPedido(productsCart)
+  function goToProcessPay(){
+    if (productsCart.length === 0) {
+      alert("Tu carrito esta vacio!")
     }
     else{
-      alert("Tu carrito esta vacio!")
+      myNavigate("/process-pay")
     }
   }
 
@@ -63,7 +63,7 @@ export default function BodyCart() {
           <button className="btn btn-clean-cart" onClick={() => cleanCart()}>
             Vaciar Carrito
           </button>
-          <button className="btn btn-pay" onClick={() => procesarPago()}>
+          <button className="btn btn-pay" onClick={() => goToProcessPay()}>
             Procesar Pago
           </button>
       </section>

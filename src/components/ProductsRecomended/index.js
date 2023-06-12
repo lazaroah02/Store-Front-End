@@ -11,7 +11,7 @@ export default function ProductsRecomended(){
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const scrollRef = useRef()
-    const {contador, updateCont} = useNavigateItems(scrollRef, false)
+    const {contador, updateCont} = useNavigateItems(scrollRef)
 
     useEffect(() => {
         setLoading(true)

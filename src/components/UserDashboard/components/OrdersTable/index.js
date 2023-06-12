@@ -70,7 +70,6 @@ export default function OrdersTable(){
                             <div>Unidades</div>
                             <div>Precio</div>
                             <div>Total</div>
-                            <div>Comprador</div>
                             <div>Fecha</div>
                         </li>
                     {orders.lenght === 0 
@@ -82,11 +81,10 @@ export default function OrdersTable(){
                     orders.map(order => 
                     <li key = {order.id}>
                         <div className = "check-button-space"><input type = "checkbox" onChange={(e) => handleAddPedidoHecho(e)} value = {order.id}></input></div>
-                        <div>{order.nombre_producto}</div>
-                        <div>{order.unidades}</div>
-                        <div>${order.precio_producto}</div>
-                        <div>${order.total}</div>
-                        <div>{order.user}</div>
+                        <div>{order.producto.product_name}</div>
+                        <div>{order.cantidad}</div>
+                        <div>${order.producto.precio}</div>
+                        <div>${order.subtotal}</div>
                         <div>{formatDate(order.created_at)}</div>
                     </li>)
                     }

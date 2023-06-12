@@ -1,11 +1,20 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
-export function useNavigateItems(reference){
+export function useNavigateItemsWithInterval(reference){
     /*This Hook recive an reference of an element with scroll and a list of items inside of the element. 
     Then navigate throw the items using cont = (index of item) and then using the scrollTo function set an scroll
     equal to the width of the reference*cont making posible a slider*/
     const [contador, setContador] = useState(0)
     let cont = contador
+
+    //useEffect to control the interval of scrolling the items
+    useEffect(() => {
+        if(reference.current !== undefined){
+            console.log("inteval")
+            const interval = setInterval(() => seeCurrentItem(), 5000)
+            return () => clearInterval(interval)
+        }
+    },[reference.current, cont])
 
     //function to see the current item of the list
     function seeCurrentItem(){

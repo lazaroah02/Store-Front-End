@@ -1,0 +1,36 @@
+.process-pay-page{
+    min-height:100vh;
+    padding-top:130px;
+}
+
+.process-pay-header{
+    width: 95%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:10px;
+}
+
+.process-pay-body{
+    width: 100%;
+    height: 75vh;
+}
+
+.tab{
+    width: 30%;
+    text-align: center;
+    padding:5px;
+    background-color:rgb(235, 234, 234);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.tab-off{
+    background-color:rgb(184, 178, 178)!important;
+}
+
+/*Mobile*/
+@media (max-width:600px){
+
+}

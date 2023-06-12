@@ -1,4 +1,9 @@
-const pathExcluded = ["/products/", "/products", "/", ""]
+const pathExcluded = ["/products/", "/products", 
+                      "/", "", 
+                      "/process-pay", "/process-pay/", 
+                      "/contact", "/contact/", 
+                      "/about-us", "/about-us/"]
+
 export function checkActiveFilters(pathname) {
   let listOfFilters = [];
   if (pathExcluded.indexOf(pathname) === -1) {

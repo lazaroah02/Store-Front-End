@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getSpecialPromotions } from "../../services/getSpecialPromotions";
 import PromocionesEspecialesCard from "./PromocionesEspecialesCard";
-import { useNavigateItems } from "../../customHooks/useNavigateItems";
+import { useNavigateItemsWithInterval } from "../../customHooks/useNavigateItemsWithInterval";
 import {debounce} from '../../helpFunctions/debounce'
 import Loader from "../Loader";
 import "./index.css";
@@ -9,7 +9,7 @@ import "./index.css";
 export default function PromocionesEspeciales() {
   const scrollRef = useRef();
   const [specialPromotions, setSpecialPromotions] = useState([]);
-  const { contador, updateCont } = useNavigateItems(scrollRef, true);
+  const { contador, updateCont } = useNavigateItemsWithInterval(scrollRef);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
