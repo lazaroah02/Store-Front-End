@@ -14,15 +14,15 @@ function PurchaseSummary() {
                 <ul className = "purchase-summary-products-list">
                     {productsCart.map(product => 
                         <li key = {product.id}>
-                            <div className = "purchase-summary-product-name">{product.name}</div>
-                            <div>{product.price} usd</div>
-                            <div>{product.cantidad}</div>
-                            <div>{product.subtotal} usd</div>
-                            <div>
-                                <button className = "btn" onClick = {() => deleteProduct(product)}>
+                            <section>
+                                <button className = "btn btn-quit-product-of-order" onClick = {() => deleteProduct(product)}>
                                     <img alt= "trash" src = {TrashCanIcon}/>
                                 </button>
-                            </div>
+                            </section>
+                            <div className = "purchase-summary-product-name">{product.name}</div>
+                            <div>{product.price} usd</div>
+                            <div className = "purchase-summary-cantidad">{product.cantidad}</div>
+                            <div>{product.subtotal} usd</div>
                         </li>
                     )}
                 </ul>

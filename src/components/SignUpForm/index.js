@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import "./index.css";
 import { Link, useNavigate } from "react-router-dom";
 import register from "../../services/register";
+import InfoUserContext from '../../context/InfoUserContext'
 
 export default function SignUpForm() {
-  const setNavigate = useNavigate();
+  const navigate = useNavigate();
+  const {setInfoUser} = useContext(InfoUserContext)
 
   //error messages
   const [errorEmailExist, setErrorEmailExist] = useState(false)
@@ -43,7 +45,8 @@ export default function SignUpForm() {
       register(email, password1, password2)
       .then((key) => {
         window.localStorage.setItem('SessionToken',key.key)
-        setNavigate("/");
+        setInfoUser({info:{}, token:key.key})
+        navigate("/");
       })
       .catch(error => setErrorEmailExist(true))
     }

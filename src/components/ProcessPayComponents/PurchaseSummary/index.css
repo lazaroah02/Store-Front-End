@@ -12,12 +12,13 @@
 .purchase-summary-products-list{
     width: 100%;
     padding-top: 10px;
+    padding-left: 0;
     max-height: 50vh;
     overflow-y: auto;
 }
 
 .purchase-summary-products-list li{
-    width: 100%;
+    width: 97%;
     margin-top: 10px;
     display:flex;
     flex-direction: row;
@@ -26,11 +27,11 @@
 
 .purchase-summary-products-list div{
     text-align: start;
-    width: 15%;
+    width: 30%;
 }
 
-.purchase-summary-product-name{
-    width: 30%!important;
+.purchase-summary-cantidad{
+    width: 50px !important;;
 }
 
 .purchase-summary-separator{
@@ -47,4 +48,8 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 10px;
+}
+
+.btn-quit-product-of-order{
+    background-color:rgb(235, 234, 234);
 }
