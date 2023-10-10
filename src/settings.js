@@ -1,0 +1,34 @@
+//export const BASE_URL = `http://127.0.0.1:8000`
+//export const BASE_URL = `http://192.168.137.1:8000`
+//export const BASE_URL = `http://192.168.1.246:8000`
+export const BASE_URL = `https://bestore.pythonanywhere.com/`
+
+//store urls
+export const URL_STORE_GET_CATEGORIES= `${BASE_URL}/store/categories/`
+export const URL_STORE_GET_PROMOTIONS= `${BASE_URL}/store/promotions/`
+export const URL_STORE_GET_SPECIAL_PROMOTIONS= `${BASE_URL}/store/special-promotions/`
+export const URL_GET_VIDEO = `${BASE_URL}/store/video/`
+export const URL_PRODUCT_DETAIL = `${BASE_URL}/store/products`
+export const URL_PRODUCT_OF_SELLER_DETAIL = `${BASE_URL}/store/product-of-seller/`
+export const URL_REGISTER = `${BASE_URL}/authentication/register/`
+export const URL_LOGIN = `${BASE_URL}/authentication/login/`
+export const URL_INFO_USER = `${BASE_URL}/authentication/user/`
+export const URL_SEARCH_PRODUCT = `${BASE_URL}/store/product/`
+export const URL_REALIZAR_PEDIDO = `${BASE_URL}/pedido/`
+export const URL_LISTA_PEDIDO = `${BASE_URL}/pedido/lista-pedido/`
+export const URL_CONTACT = `${BASE_URL}/contact`
+export const URL_MAKE_USER_SELLER = `${BASE_URL}/user-profile/make-user-seller/`
+export const URL_QUIT_USER_SELLER = `${BASE_URL}/user-profile/quit-user-seller/`
+export const URL_PRODUCTS_OF_SELLER = `${BASE_URL}/store/products-of-seller/`
+export const URL_PRODUCTS = `${BASE_URL}/store/products`
+export const URL_GET_PEDIDOS_OF_SELLER = `${BASE_URL}/pedido/pedidos-of-seller/`
+export const URL_SET_PEDIDOS_FINALIZADOS = `${BASE_URL}/pedido/set-pedidos-finalizados/`
+export const URL_GET_PRODUCTS = `${BASE_URL}/store/products`
+export const URL_RATE_PRODUCT = `${BASE_URL}/store/rate-product/`
+export const URL_CHECK_USER_CAN_RATE = `${BASE_URL}/store/check-user-can-rate/`
+export const URL_GET_FAVORITE_PRODUCTS_LIST = `${BASE_URL}/user-profile/get-favorite-products-list`
+export const URL_GET_ID_OF_PRODUCTS_IN_FAVORITE_LIST  = `${BASE_URL}/user-profile/id-of-favorite-products/`
+export const URL_ADD_PRODUCT_TO_FAVORITE_LIST = `${BASE_URL}/user-profile/favorite-products-list/add`
+export const URL_REMOVE_PRODUCT_OF_FAVORITE_LIST = `${BASE_URL}/user-profile/favorite-products-list/remove`
+export const URL_GET_ORDERS_HISTORY = `${BASE_URL}/pedido`
+export const URL_ORDER_DETAIL = `${BASE_URL}/pedido/lista-pedido`
